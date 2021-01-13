@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "estadoNutricional"
+  "defaultProject": "estadoNutricional",
+  "cli": {
+    "analytics": false
+  }
 }
