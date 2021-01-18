@@ -6,10 +6,11 @@
                 <div class="card-content app-alinear-texto">
                     <span class="card-title">Nombre App</span>
                     <div class="app-centrar app-ancho-50">
-                        <div class="col s12">
+                        <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" class="col s12">
+                        <div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="email" type="email" class="validate">
+                                    <input id="email" type="email" class="validate" formControlName="correoElectronico">
                                     <label for="email">Correo electrónico</label>
                                     <span class="helper-text" data-error="Ingrese un email válido" data-success="right"></span>
                                 </div>
@@ -17,7 +18,7 @@
 
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="password" type="password" class="validate">
+                                    <input id="password" type="password" class="validate" formControlName="clave">
                                     <label for="password">Contraseña</label>
                                     <span class="helper-text" data-error="Ingrese un email válido" data-success="right"></span>
                                 </div>
@@ -28,11 +29,17 @@
                             </div>
 
                             <div class="card-action app-mg-der-dentro-24">
-                                <a href="">Registrar</a>
+                                <input type="submit" class="fadeIn fourth" value="Log In">
                             </div>
 
                             <p>2020</p>
+
                         </div>
+                        <div class="row" *ngIf="errorStatus">
+                            <p>{{errorStatus}}</p>
+                        </div>
+                        </form>
+
                     </div>
 
                 </div>
