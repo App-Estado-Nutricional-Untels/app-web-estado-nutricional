@@ -22,21 +22,21 @@ export class LoginComponent implements OnInit {
   errorMsj:any = "";
 
   ngOnInit(): void{
+    this.checkLocalStorage();
+  }
+
+  checkLocalStorage() {
+    if(localStorage.getItem('token')) {
+      this.router.navigate(['inicioAlumno']);
+    }
   }
 
   onLogin(form:LoginI){
     //console.log(form);
     this.api.loginByEmail(form).subscribe(data =>{
-      //console.log(data);  
+      console.log(data);  
       let dataResponse:ResponseI = data;
-      if(dataResponse.ok){
-        localStorage.setItem("token",dataResponse.token);
-        this.router.navigate(['inicioAlumno'])
-      }else{
-        this.errorStatus =true;
-        this.errorMsj = dataResponse.errores;
-        
-      }
+    
     })
     
   }

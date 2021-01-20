@@ -24,27 +24,24 @@
                                 </div>
                             </div>
 
-                            <div class="col s12 app-mg-ver-10">
-                                <a class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p">Ingresar</a>
+                            <div class="card-action app-mg-der-dentro-24">
+                                <input type="submit" class="fadeIn fourth" value="Ingresar">
                             </div>
 
-                            <div class="card-action app-mg-der-dentro-24">
-                                <input type="submit" class="fadeIn fourth" value="Log In">
+                            <div class="col s12 app-mg-ver-10">
+                                <a class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p" href="../base/">Regresar</a>
                             </div>
 
                             <p>2020</p>
-
-                        </div>
-                        <div class="row" *ngIf="errorStatus">
-                            <p>{{errorStatus}}</p>
                         </div>
                         </form>
-
+                        
+                        <div *ngIf="errorStatus">
+                            <p>{{errorMsj}}</p>
+                        </div>
+                        
                     </div>
-
                 </div>
-
             </div>
         </div>
-
     </div>
