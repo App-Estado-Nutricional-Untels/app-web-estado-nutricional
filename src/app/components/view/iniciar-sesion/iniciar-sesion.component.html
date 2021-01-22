@@ -5,7 +5,13 @@
       <div class="app-centrar app-ancho-50p">
         <form (submit)="iniciarSesion($event)">
           <div class="input-field">
-            <input id="ingre_correo" type="email" class="validate" />
+            <input
+              [(ngModel)]="formulario.correoElectronico"
+              name="correoElectronico"
+              id="ingre_correo"
+              type="email"
+              class="validate"
+            />
             <label for="ingre_correo">Correo electrónico</label>
             <span
               class="helper-text"
@@ -15,7 +21,13 @@
           </div>
 
           <div class="input-field">
-            <input id="ingre_contra" type="password" class="validate" />
+            <input
+              [(ngModel)]="formulario.clave"
+              name="clave"
+              id="ingre_contra"
+              type="password"
+              class="validate"
+            />
             <label for="ingre_contra">Contraseña</label>
             <span
               class="helper-text"

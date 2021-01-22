@@ -30,7 +30,8 @@ import { FiltroListaAlumnosCardComponent } from './components/filtro-lista-alumn
 import { NuevoAlumnoFormModalComponent } from './components/nuevo-alumno-form-modal/nuevo-alumno-form-modal.component';
 import { DetallesActualesAlumnoModalComponent } from './components/detalles-actuales-alumno-modal/detalles-actuales-alumno-modal.component';
 import { DatosAntropometricosHistorialAlumnoModalComponent } from './components/datos-antropometricos-historial-alumno-modal/datos-antropometricos-historial-alumno-modal.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -57,21 +58,20 @@ import { DatosAntropometricosHistorialAlumnoModalComponent } from './components/
     FiltroListaAlumnosCardComponent,
     NuevoAlumnoFormModalComponent,
     DetallesActualesAlumnoModalComponent,
-    DatosAntropometricosHistorialAlumnoModalComponent
+    DatosAntropometricosHistorialAlumnoModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
       preventDuplicates: true,
     }),
   ],
-  providers: [
-    AutenticacionService,
-    AppUsuarioService
-  ],
-  bootstrap: [AppComponent]
+  providers: [AutenticacionService, AppUsuarioService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
