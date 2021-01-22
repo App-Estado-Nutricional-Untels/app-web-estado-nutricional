@@ -6,6 +6,7 @@ import { AutenticacionService } from 'src/app/services/api/autenticacion/autenti
 import { IniciarSesionBody } from '../../../models/request/body/iniciar-sesion-body.interface';
 import { ToastrService } from 'ngx-toastr';
 import { ErrorResponse } from '../../../models/response/error-response.interface';
+import { ComboService } from '../../../services/api/combo/combo.service';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -22,7 +23,8 @@ export class IniciarSesionComponent implements OnInit {
     private _autenticacionService: AutenticacionService,
     private _appUsuarioService: AppUsuarioService,
     private _router: Router,
-    private _toastr: ToastrService
+    private _toastr: ToastrService,
+    private _test: ComboService
   ) {}
 
   ngOnInit(): void {}
@@ -35,7 +37,19 @@ export class IniciarSesionComponent implements OnInit {
 
         this._appUsuarioService.guardarPersonaAutenticada(persona);
         this._appUsuarioService.guardarToken(resp.token);
-        if (persona.usuario.rol.rolNombre === 'ROLE_ALUMNO') {
+        this._appUsuarioService.guardarTipoToken(resp.tipoToken);
+
+        // Aqui test
+        this._test.obtenerComboRendimientoAcademico().subscribe(
+          (resp) => {
+            console.log(resp);
+          },
+          (resp) => {
+            console.log(resp);
+          }
+        );
+        // Fin
+        /*if (persona.usuario.rol.rolNombre === 'ROLE_ALUMNO') {
           this._router.navigate(['/principal/alumno'], { replaceUrl: true });
         }
 
@@ -47,7 +61,7 @@ export class IniciarSesionComponent implements OnInit {
 
         if (persona.usuario.rol.rolNombre === 'ROLE_MEDICO') {
           this._router.navigate(['/principal/medico'], { replaceUrl: true });
-        }
+        }*/
       },
       (resp) => {
         const error: ErrorResponse = resp.error;

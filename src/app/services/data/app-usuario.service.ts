@@ -2,30 +2,38 @@ import { Injectable } from '@angular/core';
 import { Persona } from '../../models/persona.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppUsuarioService {
+  private _personaAutenticadaKey = 'personaAutenticada';
+  private _tokenKey = 'token';
+  private _tipoTokenKey = 'tipoToken';
 
-  private _personaAutenticadaKey = "personaAutenticada";
-  private _tokenKey = "token";
-
-  constructor() { }
+  constructor() {}
 
   guardarPersonaAutenticada(persona: Persona): void {
     localStorage.setItem(this._personaAutenticadaKey, JSON.stringify(persona));
   }
-  
+
   guardarToken(token: string): void {
     localStorage.setItem(this._tokenKey, token);
   }
 
+  guardarTipoToken(tipoToken: string): void {
+    localStorage.setItem(this._tipoTokenKey, tipoToken);
+  }
+
   obtenerPersonaAutenticada(): Persona | null {
     const personaString = localStorage.getItem(this._personaAutenticadaKey);
-    return (personaString != null) ? JSON.parse(personaString) : null;
+    return personaString != null ? JSON.parse(personaString) : null;
   }
 
   obtenerToken(): string | null {
     return localStorage.getItem(this._tokenKey);
+  }
+
+  obtenerTipoToken(): string | null {
+    return localStorage.getItem(this._tipoTokenKey);
   }
 
   eliminarStorage(): void {
