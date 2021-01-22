@@ -39,8 +39,8 @@ export class IniciarSesionComponent implements OnInit {
         this._appUsuarioService.guardarToken(resp.token);
         this._appUsuarioService.guardarTipoToken(resp.tipoToken);
 
-        // Aqui test
-        this._test.obtenerComboRendimientoAcademico().subscribe(
+        // Aqui test------------------------
+        this._test.obtenerComboCategoriaICC().subscribe(
           (resp) => {
             console.log(resp);
           },
@@ -48,7 +48,7 @@ export class IniciarSesionComponent implements OnInit {
             console.log(resp);
           }
         );
-        // Fin
+        // Fin-----------------------------------
         /*if (persona.usuario.rol.rolNombre === 'ROLE_ALUMNO') {
           this._router.navigate(['/principal/alumno'], { replaceUrl: true });
         }
