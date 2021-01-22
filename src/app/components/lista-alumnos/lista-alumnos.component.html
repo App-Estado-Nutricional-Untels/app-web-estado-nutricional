@@ -1,0 +1,216 @@
+<app-filtro-lista-alumnos-card></app-filtro-lista-alumnos-card>
+
+<div class="card">
+  <div class="card-content">
+    <div class="row app-flex">
+      <div class="left-align">
+        <h6>Niveles de estrés</h6>
+      </div>
+      <div class="col s3" style="float: right">
+        <a
+          href="#app-nuevo-alumno-form-modal"
+          class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p modal-trigger"
+        >
+          Nuevo alumno
+        </a>
+      </div>
+    </div>
+    <table class="striped responsive-table">
+      <thead>
+        <tr>
+          <th>Id alumno</th>
+          <th>DNI</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Edad</th>
+          <th>Código Universitario</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>123456789</td>
+          <td>Ignacio Raúl</td>
+          <td>Rueda Boada</td>
+          <td>23</td>
+          <td>1823002101</td>
+          <td>
+            <a class="dropdown-trigger" data-target="opciones" href=""
+              >Acciones</a
+            >
+          </td>
+          <ul id="opciones" class="dropdown-content">
+            <li>
+              <a
+                href="#modal-detalles-actuales"
+                class="modal-trigger"
+                style="display: flex"
+                >Detalles actuales</a
+              >
+            </li>
+            <li>
+              <a
+                href="#modal-historial-alumno"
+                class="modal-trigger"
+                style="display: flex"
+                >Detalles de registro</a
+              >
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a
+                href="#modal-eliminar"
+                class="modal-trigger"
+                style="display: flex"
+                >Eliminar</a
+              >
+            </li>
+          </ul>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>123456789</td>
+          <td>Ignacio Raúl</td>
+          <td>Rueda Boada</td>
+          <td>23</td>
+          <td>1823002101</td>
+          <td>
+            <a class="dropdown-trigger" data-target="opciones" href=""
+              >Acciones</a
+            >
+          </td>
+          <ul id="opciones" class="dropdown-content">
+            <li>
+              <a
+                href="#modal-detalles-actuales"
+                class="modal-trigger"
+                style="display: flex"
+                >Detalles actuales</a
+              >
+            </li>
+            <li>
+              <a
+                href="#modal-historial-alumno"
+                class="modal-trigger"
+                style="display: flex"
+                >Detalles de registro</a
+              >
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a
+                href="#modal-eliminar"
+                class="modal-trigger"
+                style="display: flex"
+                >Eliminar</a
+              >
+            </li>
+          </ul>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>123456789</td>
+          <td>Ignacio Raúl</td>
+          <td>Rueda Boada</td>
+          <td>23</td>
+          <td>1823002101</td>
+          <td>
+            <a class="dropdown-trigger" data-target="opciones" href=""
+              >Acciones</a
+            >
+          </td>
+          <ul id="opciones" class="dropdown-content">
+            <li>
+              <a
+                href="#modal-detalles-actuales"
+                class="modal-trigger"
+                style="display: flex"
+                >Detalles actuales</a
+              >
+            </li>
+            <li>
+              <a
+                href="#modal-historial-alumno"
+                class="modal-trigger"
+                style="display: flex"
+                >Detalles de registro</a
+              >
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a
+                href="#modal-eliminar"
+                class="modal-trigger"
+                style="display: flex"
+                >Eliminar</a
+              >
+            </li>
+          </ul>
+        </tr>
+
+        <tr>
+          <td>4</td>
+          <td>123456789</td>
+          <td>Ignacio Raúl</td>
+          <td>Rueda Boada</td>
+          <td>23</td>
+          <td>1823002101</td>
+          <td>
+            <a class="dropdown-trigger" data-target="opciones" href=""
+              >Acciones</a
+            >
+          </td>
+          <ul id="opciones" class="dropdown-content">
+            <li>
+              <a
+                href="#modal-detalles-actuales"
+                class="modal-trigger"
+                style="display: flex"
+                >Detalles actuales</a
+              >
+            </li>
+            <li>
+              <a
+                href="#modal-historial-alumno"
+                class="modal-trigger"
+                style="display: flex"
+                >Detalles de registro</a
+              >
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a
+                href="#modal-eliminar"
+                class="modal-trigger"
+                style="display: flex"
+                >Eliminar</a
+              >
+            </li>
+          </ul>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-nuevo-alumno-form-modal
+  modalId="'app-nuevo-alumno-form-modal'"
+></app-nuevo-alumno-form-modal>
+
+<app-detalles-actuales-alumno-modal></app-detalles-actuales-alumno-modal>
+
+<app-datos-antropometricos-historial-alumno-modal></app-datos-antropometricos-historial-alumno-modal>

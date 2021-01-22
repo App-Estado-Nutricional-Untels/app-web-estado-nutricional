@@ -1,0 +1,21 @@
+<ul [id]="menuId" class="sidenav">
+  <li>
+    <div class="user-view">
+      <div class="background amber darken-2"></div>
+      <h4 class="white-text">Estado Nutricional</h4>
+      <a href="#user">
+        <span class="white-text name">Ignacio Raul Rueda Boada</span>
+      </a>
+    </div>
+  </li>
+  <li>
+    <a href="#!" (click)="aRuta('/principal/lista-alumnos', $event)">
+      <i class="fas fa-users"></i> Listado Alumnos
+    </a>
+  </li>
+  <li>
+    <a href="#!" (click)="aRuta('/principal/lista-usuarios', $event)">
+      <i class="fas fa-users"></i> Listado Usuarios
+    </a>
+  </li>
+</ul>

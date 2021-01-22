@@ -1,0 +1,43 @@
+<div class="app-mg-arr-7p">
+  <div class="card app-ajustar-tamaño card-centrado">
+    <div class="card-content app-alinear-texto">
+      <span class="card-title">Nombre App</span>
+      <div class="app-centrar app-ancho-50p">
+        <form (submit)="iniciarSesion($event)">
+          <div class="input-field">
+            <input id="ingre_correo" type="email" class="validate" />
+            <label for="ingre_correo">Correo electrónico</label>
+            <span
+              class="helper-text"
+              data-error="Ingrese un email válido"
+              data-success="right"
+            ></span>
+          </div>
+
+          <div class="input-field">
+            <input id="ingre_contra" type="password" class="validate" />
+            <label for="ingre_contra">Contraseña</label>
+            <span
+              class="helper-text"
+              data-error="Ingrese un email válido"
+              data-success="right"
+            ></span>
+          </div>
+
+          <div class="app-mg-ver-10">
+            <button
+              class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p"
+            >
+              Ingresar
+            </button>
+          </div>
+        </form>
+
+        <div class="card-action app-mg-der-dentro-24">
+          <a routerLink="/registro" routerLinkActive="active"> Registrarse </a>
+        </div>
+        <p>2020</p>
+      </div>
+    </div>
+  </div>
+</div>

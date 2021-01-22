@@ -1,0 +1,136 @@
+<div class="app-mg-arr-3p">
+  <div class="card app-ajustar-tamaño card-centrado">
+    <div class="card-content app-alinear-texto">
+      <form (submit)="registrar($event)">
+        <div [hidden]="parteRegistro !== 1">
+          <span class="card-title">Nombre App</span>
+
+          <div class="input-field">
+            <input id="reg_nombres" type="text" class="validate" />
+            <label for="reg_nombres">Nombres</label>
+          </div>
+
+          <div class="input-field">
+            <input id="reg_ap_pat" type="text" class="validate" />
+            <label for="reg_ap_pat">Apellido Paterno</label>
+          </div>
+
+          <div class="input-field">
+            <input id="reg_ap_mat" type="text" class="validate" />
+            <label for="reg_ap_mat">Apellido Materno</label>
+          </div>
+
+          <div class="input-field">
+            <input id="reg_correo" type="email" class="validate" />
+            <label for="reg_correo">Correo electrónico</label>
+          </div>
+
+          <div class="input-field">
+            <input id="reg_dni" type="text" class="validate" />
+            <label for="reg_dni">DNI</label>
+          </div>
+
+          <div class="input-field">
+            <input id="reg_contra" type="password" class="validate" />
+            <label for="reg_contra">Contraseña</label>
+            <span
+              class="helper-text"
+              data-error="Ingrese un email válido"
+              data-success="right"
+            ></span>
+          </div>
+
+          <button
+            type="button"
+            (click)="siguienteParte(2)"
+            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p"
+          >
+            Continuar
+          </button>
+        </div>
+        <div [hidden]="parteRegistro !== 2">
+          <div>
+            <div class="left-align">
+              <a (click)="siguienteParte(1)"
+                ><i class="material-icons selector-icono">chevron_left</i></a
+              >
+            </div>
+            <div class="center-align">
+              <span class="card-title">Registro</span>
+            </div>
+          </div>
+          <div>
+            <input name="group1" type="radio" />
+            <span>Masculino</span>
+            <input name="group1" type="radio" />
+            <span>Femenino</span>
+          </div>
+
+          <div class="app-centrar app-ancho-60">
+            <div class="col s12">
+              <h6 class="left-align">Seleccione:</h6>
+
+              <div class="row">
+                <div class="col s6">
+                  <a>
+                    <div
+                      class="selector card valign-wrapper app-centrar-contenido"
+                      style="height: 20vh; display: grid"
+                    >
+                      <i class="material-icons app-color-negro large">school</i>
+                      <p class="app-color-negro">Alumno</p>
+                    </div>
+                  </a>
+                </div>
+                <div class="col s6">
+                  <a href="">
+                    <div
+                      class="selector card valign-wrapper app-centrar-contenido"
+                      style="height: 20vh; display: grid"
+                    >
+                      <i
+                        class="fas fa-user-md app-color-negro tamaño-icono-6r"
+                      ></i>
+                      <p class="app-color-negro">Especialista</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <div class="input-field">
+                <input id="cmp" type="text" class="validate" />
+                <label for="cmp">CMP</label>
+              </div>
+
+              <button
+                type="submit"
+                class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p btn"
+              >
+                Finalizar Registro
+              </button>
+              <div id="registro-exitoso" class="modal modal-pequeño">
+                <div class="modal-content">
+                  <h4 class="center-align">Registro exitoso</h4>
+                  <div class="app-mg-ver-30">
+                    <p class="center-align">Inicie sesión para empezar</p>
+                  </div>
+
+                  <div class="center-align">
+                    <a
+                      class="waves-effect waves-light btn-small amber darken-3 app-ancho-50p"
+                      >Aceptar</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="card-action app-mg-der-dentro-24">
+        <a routerLink="/iniciar-sesion" routerLinkActive="active">Ingresar</a>
+      </div>
+    </div>
+  </div>
+</div>

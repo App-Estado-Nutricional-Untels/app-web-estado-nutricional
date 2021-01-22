@@ -1,0 +1,163 @@
+<div id="modal-detalles-actuales" class="modal">
+  <div class="modal-content">
+    <h4>Detalles actuales</h4>
+    <div class="app-alinear-texto">
+      <p class="app-estilo-nombre">Rueda Boada Ignacio Raúl</p>
+    </div>
+    <div class="row">
+      <div class="col s12 l12">
+        <div class="app-ancho-100p">
+          <div class="app-flex app-distanciamiento app-mg-ver-5">
+            <p>Fecha de registro:</p>
+            <p>12/05/2020</p>
+          </div>
+
+          <div class="app-flex app-distanciamiento app-mg-ver-5">
+            <p>IMC:</p>
+            <p>Obesidad Grado II 125.2</p>
+          </div>
+
+          <div class="app-flex app-distanciamiento app-mg-ver-5">
+            <p>ICC:</p>
+            <p>Normal 44.2</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s4">
+        <div class="input-field">
+          <input
+            disabled
+            value="1.5m"
+            id="estatura_deshabilitado"
+            type="text"
+            class="validate"
+          />
+          <label for="estatura_deshabilitado">Estatura</label>
+        </div>
+
+        <div class="input-field">
+          <input
+            disabled
+            value="12.2cm"
+            id="contorno_cint_deshabilitado"
+            type="text"
+            class="validate"
+          />
+          <label for="contorno_cint_deshabilitado">Contorno cintura</label>
+        </div>
+
+        <div class="input-field">
+          <input
+            disabled
+            value="Excelente"
+            id="rend_acad"
+            type="text"
+            class="validate"
+          />
+          <label for="rend_acad">Rendimiento académico</label>
+        </div>
+
+        <h6>Recomendación:</h6>
+        <p>Ninguna</p>
+      </div>
+
+      <div class="col s4">
+        <div class="input-field">
+          <input
+            disabled
+            value="12.2kg"
+            id="peso_deshabilitado"
+            type="text"
+            class="validate"
+          />
+          <label for="peso_deshabilitado">Peso</label>
+        </div>
+
+        <div class="input-field">
+          <input
+            disabled
+            value="45.2cm"
+            id="contorno_cad_deshabilitado"
+            type="text"
+            class="validate"
+          />
+          <label for="contorno_cad_deshabilitado">Contorno cadera</label>
+        </div>
+
+        <div class="input-field">
+          <input
+            disabled
+            value="Leve"
+            id="nivel_estres"
+            type="text"
+            class="validate"
+          />
+          <label for="nivel_estres">Nivel de estrés</label>
+        </div>
+      </div>
+
+      <div class="col s4">
+        <div class="input-field">
+          <input
+            disabled
+            value="21 años"
+            id="edad_deshabilitado"
+            type="text"
+            class="validate"
+          />
+          <label for="edad_deshabilitado">Edad</label>
+        </div>
+
+        <div class="input-field">
+          <input
+            disabled
+            value="???"
+            id="ac_fis_deshabilitado"
+            type="text"
+            class="validate"
+          />
+          <label for="ac_fis_deshabilitado">Actividad física</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col m12 s12">
+        <div class="col m6 s12 app-alinear-texto app-mg-ver-10">
+          <a
+            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p"
+            >Aceptar</a
+          >
+        </div>
+        <div class="col m6 s12 app-alinear-texto app-mg-ver-10">
+          <a
+            href="#modal-recomendacion"
+            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p modal-trigger"
+            >Dar recomendación</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-recomendacion" class="modal modal-pequeño">
+  <div class="modal-content">
+    <h4>Dar recomendación</h4>
+
+    <div class="input-field">
+      <textarea id="recomendacion" class="materialize-textarea"></textarea>
+      <label for="recomendacion">Actividad física</label>
+
+      <div class="app-alinear-texto">
+        <a
+          class="waves-effect waves-light btn-small amber darken-3 center-align"
+          >Enviar</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

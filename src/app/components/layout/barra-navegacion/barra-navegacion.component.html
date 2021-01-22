@@ -1,0 +1,47 @@
+<div class="navbar-fixed">
+  <nav class="app-padding-left amber darken-3">
+    <div class="nav-wrapper">
+      <!--<a href="#" data-target="slide-out" class="sidenav-trigger">
+        <i class="fas fa-bars app-cursor app-top-17"></i>
+      </a>-->
+      <a
+        *ngIf="!noEsAlumno"
+        href="#"
+        data-target="app-menu"
+        class="sidenav-trigger"
+        style="display: block"
+        ><i class="material-icons">menu</i></a
+      >
+      <a href="javascript:void(0)" (click)="aPrincipal()">
+        <span>Estado Nutricional</span>
+      </a>
+      <ul id="navbar-items" class="right">
+        <li>
+          <a class="dropdown-trigger" data-target="dropdown-menu" href="#">
+            Ignacio <i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+      </ul>
+
+      <ul id="dropdown-menu" class="dropdown-content app-ancho-20p">
+        <li>
+          <a href="#modal-datos-personales" class="modal-trigger">
+            Datos personales<i class="material-icons">person</i>
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a (click)="cerrarSesion()">
+            Salir<i class="material-icons">exit_to_app</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<app-datos-personales-form-modal
+  [modalId]="'modal-datos-personales'"
+></app-datos-personales-form-modal>
+
+<app-menu-lateral [menuId]="'app-menu'"></app-menu-lateral>

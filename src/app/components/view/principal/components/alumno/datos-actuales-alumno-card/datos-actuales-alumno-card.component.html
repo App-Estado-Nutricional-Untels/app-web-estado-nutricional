@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-content">
+    <div class="left-align">
+      <h6>Datos actuales</h6>
+    </div>
+    <div class="center-align">
+      <i class="material-icons">info</i>
+      <p class="app-mg-arr-0">No se encontraron datos</p>
+      <button
+        data-target="modal-formulario-antropom"
+        class="waves-effect waves-light btn-small amber darken-3 modal-trigger"
+      >
+        Ingresar mis datos
+      </button>
+    </div>
+  </div>
+</div>
+
+<app-datos-actuales-alumno-form-modal
+  [modalId]="'modal-formulario-antropom'"
+></app-datos-actuales-alumno-form-modal>
