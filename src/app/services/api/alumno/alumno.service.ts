@@ -1,24 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ListadoAlumnosParam } from 'src/app/models/request/params/listado-alumnos-param.interface';
+import { AppUsuarioService } from '../../data/app-usuario.service';
 import { ApiPaths } from 'src/app/constants/api-paths.constant';
 import { environment } from 'src/environments/environment';
-import { AppUsuarioService } from '../../data/app-usuario.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class IccService {
+export class AlumnoService {
   constructor(
     private _http: HttpClient,
     private _appUsuarioService: AppUsuarioService
   ) {}
 
-  obtenerEvolucionICCPorId(id: number): Observable<any> {
+  obtenerListadoAlumnos(param: ListadoAlumnosParam): Observable<any> {
     throw new Error('sin implementar');
   }
 
-  obtenerListadoICCGrupal(): Observable<any> {
+  obtenerPorcentajeSexos(): Observable<any> {
     throw new Error('sin implementar');
   }
 }

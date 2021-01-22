@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Persona } from '../../../models/persona.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { ApiPaths } from '../../../constants/api-paths.constant';
 import { IniciarSesionBody } from 'src/app/models/request/body/iniciar-sesion-body.interface';
+import { RegistroBody } from '../../../models/request/body/registro-body.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +18,7 @@ export class AutenticacionService {
     return this._http.post(url, body);
   }
 
-  registro(): void {}
+  registro(body: RegistroBody): Observable<any> {
+    throw new Error('not Implemented');
+  }
 }
