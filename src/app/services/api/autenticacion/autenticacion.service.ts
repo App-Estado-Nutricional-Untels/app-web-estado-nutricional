@@ -5,6 +5,9 @@ import { environment } from '../../../../environments/environment';
 import { ApiPaths } from '../../../constants/api-paths.constant';
 import { IniciarSesionBody } from 'src/app/models/request/body/iniciar-sesion-body.interface';
 import { RegistroBody } from '../../../models/request/body/registro-body.interface';
+import { IniciarSesionResponse } from 'src/app/models/response/iniciar-sesion-response.interface';
+import { ApiResponse } from 'src/app/models/response/api-response.interface';
+import { Usuario } from 'src/app/models/usuario.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +15,13 @@ import { RegistroBody } from '../../../models/request/body/registro-body.interfa
 export class AutenticacionService {
   constructor(private _http: HttpClient) {}
 
-  iniciarSesion(body: IniciarSesionBody): Observable<any> {
+  iniciarSesion(body: IniciarSesionBody): Observable<IniciarSesionResponse> {
     const url = `${environment.baseUri}${ApiPaths.iniciarSesion}`;
-
-    return this._http.post(url, body);
+    return this._http.post<IniciarSesionResponse>(url, body);
   }
 
-  registro(body: RegistroBody): Observable<any> {
-    throw new Error('not Implemented');
+  registro(body: RegistroBody): Observable<ApiResponse<Usuario>> {
+    const url = `${environment.baseUri}${ApiPaths.registro}`;
+    return this._http.post<ApiResponse<Usuario>>(url, body);
   }
 }

@@ -1,9 +1,9 @@
 export interface ListadoAlumnosParam {
-    nombres: string;
-    apePaterno: string;
-    apeMaterno: string;
-    dni: string;
-    codigoUniversitario: string;
-    edadMin: string;
-    edadMax: string;
+    nombres: string | undefined;
+    apePaterno: string | undefined;
+    apeMaterno: string | undefined;
+    dni: string | undefined;
+    codigoUniversitario: string | undefined;
+    edadMin: string | undefined;
+    edadMax: string | undefined;
 }

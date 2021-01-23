@@ -6,6 +6,10 @@ import { environment } from 'src/environments/environment';
 import { RegistroDatosAntropometricosBody } from '../../../models/request/body/registro-datos-antropometricos-body.interface';
 import { Observable } from 'rxjs';
 import { RegistroRecomendacionBody } from '../../../models/request/body/registro-recomendacion-body.interface';
+import { HeaderFactory } from 'src/app/utils/header-factory';
+import { ApiResponse } from 'src/app/models/response/api-response.interface';
+import { DatoAntropometrico } from 'src/app/models/dato-antropomentrico.interface';
+import { Recomendacion } from 'src/app/models/recomendacion.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,25 +22,67 @@ export class DatosAntropometricosService {
 
   registroDatosAntropometricosInicialesAutenticado(
     body: RegistroDatosAntropometricosBody
-  ): Observable<any> {
-    throw new Error('sin implementar');
+  ): Observable<ApiResponse<any>> {
+    const url 
+      = `${environment.baseUri}${ApiPaths.registroDatosAntropometricosInicialesAutenticado}`;
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+
+    return this._http.post<ApiResponse<any>>(url, body, { headers: headers });
   }
 
   registroDatosAntropometricosAutenticado(
     body: RegistroDatosAntropometricosBody
-  ): Observable<any> {
-    throw new Error('sin implementar');
+  ): Observable<ApiResponse<any>> {
+    const url 
+      = `${environment.baseUri}${ApiPaths.registroDatosAntropometricosAutenticado}`;
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+
+    return this._http.post<ApiResponse<any>>(url, body, { headers: headers });
   }
 
-  registroRecomendacion(body: RegistroRecomendacionBody): Observable<any> {
-    throw new Error('sin implementar');
+  registroRecomendacion(
+    body: RegistroRecomendacionBody
+  ): Observable<ApiResponse<Recomendacion>> {
+    const url = `${environment.baseUri}${ApiPaths.registroRecomendacion}`;
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+
+    return this._http.post<ApiResponse<Recomendacion>>(url, body, { headers: headers });
   }
 
-  obtenerDatosAntropometricosActualesPorId(id: number): Observable<any> {
-    throw new Error('sin implementar');
+  obtenerDatosAntropometricosActualesPorId(
+    id: number
+  ): Observable<ApiResponse<DatoAntropometrico>> {
+    const url 
+      = `${environment.baseUri}${ApiPaths.obtenerDatosAntropometricosActualesPorId}`
+        .replace(":id", `${id}`);
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+
+    return this._http.get<ApiResponse<DatoAntropometrico>>(url, { headers: headers });
   }
 
-  obtenerHistorialDatosAntropometricosPorId(id: number): Observable<any> {
-    throw new Error('sin implmentar');
+  obtenerHistorialDatosAntropometricosPorId(
+    id: number
+  ): Observable<ApiResponse<DatoAntropometrico[]>> {
+    const url 
+      = `${environment.baseUri}${ApiPaths.obtenerHistorialDatosAntropometricosPorId}`
+        .replace(":id", `${id}`);
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+
+    return this._http.get<ApiResponse<DatoAntropometrico[]>>(url, { headers: headers });
   }
 }

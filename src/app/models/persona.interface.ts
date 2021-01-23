@@ -7,7 +7,7 @@ export interface Persona {
     apematerno: string;
     sexo: string;
     dni: string;
-    fechaNacimiento: Date;
+    fechaNacimiento: string;
     edad: number;
     usuario: Usuario;
 }

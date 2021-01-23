@@ -7,6 +7,8 @@ import { IniciarSesionBody } from '../../../models/request/body/iniciar-sesion-b
 import { ToastrService } from 'ngx-toastr';
 import { ErrorResponse } from '../../../models/response/error-response.interface';
 import { ComboService } from '../../../services/api/combo/combo.service';
+import { ApiResponse } from 'src/app/models/response/api-response.interface';
+import { IniciarSesionResponse } from 'src/app/models/response/iniciar-sesion-response.interface';
 
 @Component({
   selector: 'app-iniciar-sesion',
