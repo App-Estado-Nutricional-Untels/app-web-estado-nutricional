@@ -7,10 +7,10 @@ import { ApiPaths } from '../../../constants/api-paths.constant';
 import { ReporteGrupalIMCParam } from '../../../models/request/params/reporte-grupal-imc-param.interface';
 import { HeaderFactory } from 'src/app/utils/header-factory';
 import { ApiResponse } from 'src/app/models/response/api-response.interface';
-import { ImcMensual } from 'src/app/models/imc-mensual.interface';
+import { ImcMensual }       from 'src/app/models/imc-mensual.interface';
 import { ImcMensualGrupal } from 'src/app/models/imc-mensual-grupal.interface';
-import { ReporteImc } from 'src/app/models/reporte-imc/reporte-imc.interface';
-import { ParamFactory } from 'src/app/utils/param-factory';
+import { ReporteImc }       from 'src/app/models/reporte-imc/reporte-imc.interface';
+import { ParamFactory }     from 'src/app/utils/param-factory';
 
 @Injectable({
   providedIn: 'root',

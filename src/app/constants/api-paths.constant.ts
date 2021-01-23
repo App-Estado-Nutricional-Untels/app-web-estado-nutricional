@@ -5,6 +5,7 @@
 
 export enum ApiPaths {
   obtenerReporteGrupalIMC = '/api/alumnos/imc/reporte',
+  obtenerReporteGrupalICC = '/api/alumnos/imc/reporte',
 
   obtenerComboRendimientoAcademico = '/api/rendimientos-academicos',
   obtenerComboNivelEstres = '/api/niveles-estres',

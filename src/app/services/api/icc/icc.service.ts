@@ -4,10 +4,13 @@ import { Observable } from 'rxjs';
 import { ApiPaths } from 'src/app/constants/api-paths.constant';
 import { IccMensualGrupal } from 'src/app/models/icc-mensual-grupal.interface';
 import { IccMensual } from 'src/app/models/icc-mensual.interface';
+import { ReporteGrupalICCParam } from '../../../models/request/params/reporte-grupal-icc-param.interface';
 import { ApiResponse } from 'src/app/models/response/api-response.interface';
 import { HeaderFactory } from 'src/app/utils/header-factory';
 import { environment } from 'src/environments/environment';
 import { AppUsuarioService } from '../../data/app-usuario.service';
+import { ReporteIcc } from 'src/app/models/reporte-icc/reporte-icc.interface';
+import { ParamFactory }     from 'src/app/utils/param-factory';
 
 @Injectable({
   providedIn: 'root',
@@ -51,4 +54,19 @@ export class IccService {
 
     return this._http.get<ApiResponse<IccMensualGrupal[]>>(url, { headers: headers });
   }
+  obtenerReporteGrupalICC(
+    param: ReporteGrupalICCParam
+  ): Observable<ApiResponse<ReporteIcc>> {
+    const url = `${environment.baseUri}${ApiPaths.obtenerReporteGrupalICC}`;
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+    const params = ParamFactory.build<ReporteGrupalICCParam>(param);
+
+    return this._http.get<ApiResponse<ReporteIcc>>(url, { 
+      headers: headers, 
+      params: params
+    });
+}
 }
