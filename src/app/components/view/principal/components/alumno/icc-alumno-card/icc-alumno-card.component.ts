@@ -61,7 +61,7 @@ export class IccAlumnoCardComponent implements OnInit {
       if (dataSet.data) {
         dataSet.data.length = 0;
         this.listaIccMensual
-          .map(iccMensual => iccMensual.valorIMC)
+          .map(iccMensual => iccMensual.valorICC)
           .forEach(valor => dataSet.data?.push(valor));
       }
     });
