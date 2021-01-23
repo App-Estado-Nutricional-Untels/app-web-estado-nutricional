@@ -1,9 +1,15 @@
 <div class="card">
   <div class="card-content valign-wrapper app-distanciamiento">
     <h6>Estado actual</h6>
-    <div class="app-flex">
+    <div *ngIf="estado === Estado.VACIO" class="app-flex">
       <i class="material-icons">info</i>
       <p class="app-mg-arr-0">No se encontraron datos</p>
+    </div>
+    <app-spinner *ngIf="estado === Estado.CARGANDO"></app-spinner>
+    <div *ngIf="estado === Estado.CON_DATOS" class="app-flex">
+      <p class="app-mg-arr-0">
+        IMC: {{ categoriaIMC }} | ICC: {{ categoriaICC }}
+      </p>
     </div>
   </div>
 </div>

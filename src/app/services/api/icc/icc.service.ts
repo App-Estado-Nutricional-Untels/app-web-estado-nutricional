@@ -18,25 +18,37 @@ export class IccService {
     private _appUsuarioService: AppUsuarioService
   ) {}
 
-  obtenerEvolucionICCPorId(id: number): Observable<any> {
+  obtenerEvolucionICCPorIdAlumno(id: number): Observable<ApiResponse<IccMensual[]>> {
     const url 
-      = `${environment.baseUri}${ApiPaths.obtenerEvolucionICCPorId}`
+      = `${environment.baseUri}${ApiPaths.obtenerEvolucionICCPorIdAlumno}`
         .replace(":id", `${id}`);
     const token = this._appUsuarioService.obtenerToken();
     const tipoToken = this._appUsuarioService.obtenerTipoToken();
 
     const headers = HeaderFactory.build(token, tipoToken);
 
-    return this._http.get<ApiResponse<IccMensual>>(url, { headers: headers });
+    return this._http.get<ApiResponse<IccMensual[]>>(url, { headers: headers });
   }
 
-  obtenerListadoICCGrupal(): Observable<ApiResponse<IccMensualGrupal>> {
+  obtenerEvolucionICCPorIdPersona(id: number): Observable<ApiResponse<IccMensual[]>> {
+    const url 
+      = `${environment.baseUri}${ApiPaths.obtenerEvolucionICCPorIdPersona}`
+        .replace(":id", `${id}`);
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+
+    return this._http.get<ApiResponse<IccMensual[]>>(url, { headers: headers });
+  }
+
+  obtenerListadoICCGrupal(): Observable<ApiResponse<IccMensualGrupal[]>> {
     const url = `${environment.baseUri}${ApiPaths.obtenerListadoICCGrupal}`;
     const token = this._appUsuarioService.obtenerToken();
     const tipoToken = this._appUsuarioService.obtenerTipoToken();
 
     const headers = HeaderFactory.build(token, tipoToken);
 
-    return this._http.get<ApiResponse<IccMensualGrupal>>(url, { headers: headers });
+    return this._http.get<ApiResponse<IccMensualGrupal[]>>(url, { headers: headers });
   }
 }

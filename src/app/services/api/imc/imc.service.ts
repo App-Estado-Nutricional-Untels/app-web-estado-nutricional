@@ -21,26 +21,38 @@ export class ImcService {
     private _appUsuarioService: AppUsuarioService
   ) {}
 
-  obtenerEvolucionIMCPorId(id: number): Observable<ApiResponse<ImcMensual>> {
+  obtenerEvolucionIMCPorIdAlumno(id: number): Observable<ApiResponse<ImcMensual[]>> {
     const url 
-      = `${environment.baseUri}${ApiPaths.obtenerEvolucionIMCPorId}`
+      = `${environment.baseUri}${ApiPaths.obtenerEvolucionIMCPorIdAlumno}`
         .replace(":id", `${id}`);
     const token = this._appUsuarioService.obtenerToken();
     const tipoToken = this._appUsuarioService.obtenerTipoToken();
 
     const headers = HeaderFactory.build(token, tipoToken);
 
-    return this._http.get<ApiResponse<ImcMensual>>(url, { headers: headers });
+    return this._http.get<ApiResponse<ImcMensual[]>>(url, { headers: headers });
   }
 
-  obtenerListadoIMCGrupal(): Observable<ApiResponse<ImcMensualGrupal>> {
+  obtenerEvolucionIMCPorIdPersona(id: number): Observable<ApiResponse<ImcMensual[]>> {
+    const url 
+      = `${environment.baseUri}${ApiPaths.obtenerEvolucionIMCPorIdPersona}`
+        .replace(":id", `${id}`);
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+
+    return this._http.get<ApiResponse<ImcMensual[]>>(url, { headers: headers });
+  }
+
+  obtenerListadoIMCGrupal(): Observable<ApiResponse<ImcMensualGrupal[]>> {
     const url = `${environment.baseUri}${ApiPaths.obtenerListadoIMCGrupal}`;
     const token = this._appUsuarioService.obtenerToken();
     const tipoToken = this._appUsuarioService.obtenerTipoToken();
 
     const headers = HeaderFactory.build(token, tipoToken);
 
-    return this._http.get<ApiResponse<ImcMensualGrupal>>(url, { headers: headers });
+    return this._http.get<ApiResponse<ImcMensualGrupal[]>>(url, { headers: headers });
   }
 
   obtenerReporteGrupalIMC(

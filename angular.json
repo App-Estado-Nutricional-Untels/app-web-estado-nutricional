@@ -39,7 +39,8 @@
               "node_modules/@fortawesome/fontawesome-free/js/all.min.js"
             ],
             "allowedCommonJsDependencies": [
-              "materialize-css"
+              "materialize-css",
+              "chart.js"
             ]
           },
           "configurations": {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Persona } from 'src/app/models/persona.interface';
 import { AppUsuarioService } from 'src/app/services/data/app-usuario.service';
 
 declare const M: any;
@@ -11,10 +12,14 @@ declare const M: any;
 })
 export class BarraNavegacionComponent implements OnInit {
 
+  persona: Persona | null;
+
   constructor(
     private _appUsuarioService: AppUsuarioService,
     private _router: Router
-  ) { }
+  ) { 
+    this.persona = _appUsuarioService.obtenerPersonaAutenticada();
+  }
 
   cerrarSesion(): void {
     this._appUsuarioService.eliminarStorage();

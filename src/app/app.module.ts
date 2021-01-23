@@ -33,6 +33,7 @@ import { DatosAntropometricosHistorialAlumnoModalComponent } from './components/
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/common/spinner/spinner.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { SpinnerComponent } from './components/common/spinner/spinner.component'
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ChartsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
       preventDuplicates: true,

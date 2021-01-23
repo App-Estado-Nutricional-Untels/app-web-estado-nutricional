@@ -58,11 +58,11 @@ export class DatosAntropometricosService {
     return this._http.post<ApiResponse<Recomendacion>>(url, body, { headers: headers });
   }
 
-  obtenerDatosAntropometricosActualesPorId(
+  obtenerDatosAntropometricosActualesPorIdAlumno(
     id: number
   ): Observable<ApiResponse<DatoAntropometrico>> {
     const url 
-      = `${environment.baseUri}${ApiPaths.obtenerDatosAntropometricosActualesPorId}`
+      = `${environment.baseUri}${ApiPaths.obtenerDatosAntropometricosActualesPorIdAlumno}`
         .replace(":id", `${id}`);
     const token = this._appUsuarioService.obtenerToken();
     const tipoToken = this._appUsuarioService.obtenerTipoToken();
@@ -72,11 +72,39 @@ export class DatosAntropometricosService {
     return this._http.get<ApiResponse<DatoAntropometrico>>(url, { headers: headers });
   }
 
-  obtenerHistorialDatosAntropometricosPorId(
+  obtenerDatosAntropometricosActualesPorIdPersona(
+    id: number
+  ): Observable<ApiResponse<DatoAntropometrico>> {
+    const url 
+      = `${environment.baseUri}${ApiPaths.obtenerDatosAntropometricosActualesPorIdPersona}`
+        .replace(":id", `${id}`);
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+
+    return this._http.get<ApiResponse<DatoAntropometrico>>(url, { headers: headers });
+  }
+
+  obtenerHistorialDatosAntropometricosPorIdAlumno(
     id: number
   ): Observable<ApiResponse<DatoAntropometrico[]>> {
     const url 
-      = `${environment.baseUri}${ApiPaths.obtenerHistorialDatosAntropometricosPorId}`
+      = `${environment.baseUri}${ApiPaths.obtenerHistorialDatosAntropometricosPorIdAlumno}`
+        .replace(":id", `${id}`);
+    const token = this._appUsuarioService.obtenerToken();
+    const tipoToken = this._appUsuarioService.obtenerTipoToken();
+
+    const headers = HeaderFactory.build(token, tipoToken);
+
+    return this._http.get<ApiResponse<DatoAntropometrico[]>>(url, { headers: headers });
+  }
+
+  obtenerHistorialDatosAntropometricosPorIdPersona(
+    id: number
+  ): Observable<ApiResponse<DatoAntropometrico[]>> {
+    const url 
+      = `${environment.baseUri}${ApiPaths.obtenerHistorialDatosAntropometricosPorIdPersona}`
         .replace(":id", `${id}`);
     const token = this._appUsuarioService.obtenerToken();
     const tipoToken = this._appUsuarioService.obtenerTipoToken();

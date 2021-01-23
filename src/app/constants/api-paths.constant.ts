@@ -25,12 +25,18 @@ export enum ApiPaths {
 
   obtenerPorcentajeSexos = '/api/alumnos/porcentaje-sexo',
   obtenerListadoAlumnos = '/api/alumnos',
-  obtenerHistorialDatosAntropometricosPorId = '/api/alumnos/datos-antropometricos/:id',
 
-  obtenerEvolucionICCPorId = '/api/alumnos/icc-evolucion/:id',
-  obtenerEvolucionIMCPorId = '/api/alumnos/imc-evolucion/:id',
+  obtenerHistorialDatosAntropometricosPorIdAlumno = '/api/alumnos/datos-antropometricos/:id',
+  obtenerHistorialDatosAntropometricosPorIdPersona = '/api/personas/datos-antropometricos/:id',
 
-  obtenerDatosAntropometricosActualesPorId = '/api/alumnos/datos-antropometricos/actual/:id',
+  obtenerEvolucionICCPorIdAlumno = '/api/alumnos/icc-evolucion/:id',
+  obtenerEvolucionIMCPorIdAlumno = '/api/alumnos/imc-evolucion/:id',
+
+  obtenerEvolucionICCPorIdPersona = '/api/personas/icc-evolucion/:id',
+  obtenerEvolucionIMCPorIdPersona = '/api/personas/imc-evolucion/:id',
+
+  obtenerDatosAntropometricosActualesPorIdAlumno = '/api/alumnos/datos-antropometricos/actual/:id',
+  obtenerDatosAntropometricosActualesPorIdPersona = '/api/personas/datos-antropometricos/actual/:id',
 
   registroDatosAntropometricosAutenticado = '/api/auth/alumnos/datos-antropometricos',
   registroDatosAntropometricosInicialesAutenticado = '/api/auth/alumnos/datos-antropometricos/inicial',
