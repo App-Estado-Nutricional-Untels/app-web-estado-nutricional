@@ -41,22 +41,7 @@
             >
               Ingresar
             </button>
-            <div
-              *ngIf="estado == Estados.CARGANDO"
-              class="preloader-wrapper small active"
-            >
-              <div class="spinner-layer spinner-green-only">
-                <div class="circle-clipper left">
-                  <div class="circle"></div>
-                </div>
-                <div class="gap-patch">
-                  <div class="circle"></div>
-                </div>
-                <div class="circle-clipper right">
-                  <div class="circle"></div>
-                </div>
-              </div>
-            </div>
+            <app-spinner *ngIf="estado == Estados.CARGANDO"></app-spinner>
           </div>
         </form>
         <div class="card-action app-mg-der-dentro-24">

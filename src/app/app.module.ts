@@ -32,6 +32,7 @@ import { DetallesActualesAlumnoModalComponent } from './components/detalles-actu
 import { DatosAntropometricosHistorialAlumnoModalComponent } from './components/datos-antropometricos-historial-alumno-modal/datos-antropometricos-historial-alumno-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SpinnerComponent } from './components/common/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { FormsModule } from '@angular/forms';
     NuevoAlumnoFormModalComponent,
     DetallesActualesAlumnoModalComponent,
     DatosAntropometricosHistorialAlumnoModalComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
