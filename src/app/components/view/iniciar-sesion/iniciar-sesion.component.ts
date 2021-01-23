@@ -5,10 +5,8 @@ import { AppUsuarioService } from 'src/app/services/data/app-usuario.service';
 import { AutenticacionService } from 'src/app/services/api/autenticacion/autenticacion.service';
 import { IniciarSesionBody } from '../../../models/request/body/iniciar-sesion-body.interface';
 import { ToastrService } from 'ngx-toastr';
-import { ApiErrorResponse } from '../../../models/response/api-error-response.interface';
 import { ComboService } from '../../../services/api/combo/combo.service';
-import { ApiResponse } from 'src/app/models/response/api-response.interface';
-import { IniciarSesionResponse } from 'src/app/models/response/iniciar-sesion-response.interface';
+import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response-message-factory';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -66,10 +64,7 @@ export class IniciarSesionComponent implements OnInit {
         }*/
       },
       (resp) => {
-        const error: ApiErrorResponse = resp.error;
-        const mensajes = error.errores
-          .map((err) => err.mensaje)
-          .reduce((prev, curr, i) => curr + ' ' + prev, '');
+        const mensajes = ApiErrorResponseMessageFactory.build(resp.error);
         this._toastr.error(mensajes);
       }
     );
