@@ -9,7 +9,6 @@ import { ApiResponse } from 'src/app/models/response/api-response.interface';
 import { HeaderFactory } from 'src/app/utils/header-factory';
 import { environment } from 'src/environments/environment';
 import { AppUsuarioService } from '../../data/app-usuario.service';
-import { ReporteIcc } from 'src/app/models/reporte-icc/reporte-icc.interface';
 import { ParamFactory }     from 'src/app/utils/param-factory';
 
 @Injectable({
@@ -54,19 +53,5 @@ export class IccService {
 
     return this._http.get<ApiResponse<IccMensualGrupal[]>>(url, { headers: headers });
   }
-  obtenerReporteGrupalICC(
-    param: ReporteGrupalICCParam
-  ): Observable<ApiResponse<ReporteIcc>> {
-    const url = `${environment.baseUri}${ApiPaths.obtenerReporteGrupalICC}`;
-    const token = this._appUsuarioService.obtenerToken();
-    const tipoToken = this._appUsuarioService.obtenerTipoToken();
-
-    const headers = HeaderFactory.build(token, tipoToken);
-    const params = ParamFactory.build<ReporteGrupalICCParam>(param);
-
-    return this._http.get<ApiResponse<ReporteIcc>>(url, { 
-      headers: headers, 
-      params: params
-    });
-}
+  
 }
