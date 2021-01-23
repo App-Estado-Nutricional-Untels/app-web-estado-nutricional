@@ -1,0 +1,145 @@
+<div id="{{ modalId }}" class="modal modal-max">
+  <div class="modal-content">
+    <h5>Detalles de los datos antropométricos</h5>
+
+    <div class="row app-mg-abajo-0">
+      <div class="col s12 m6">
+        <b>Fecha de actualización:</b>
+      </div>
+      <div class="col s12 m6 right-align">
+        <span>{{ datoAntropometrico?.fechaRegistro }}</span>
+      </div>
+    </div>
+    <div class="row app-mg-abajo-0">
+      <div class="col s12 m6">
+        <b>IMC:</b>
+      </div>
+      <div class="col s12 m6 right-align">
+        <span class="new badge red" data-badge-caption="">
+          {{ datoAntropometrico?.categoriaimc }}
+        </span>
+        <span>
+          {{ datoAntropometrico?.valorIMC }}
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
+        <b>ICC:</b>
+      </div>
+      <div class="col s12 m6 right-align">
+        <span class="new badge red" data-badge-caption="">
+          {{ datoAntropometrico?.categoriaicc }}
+        </span>
+        <span>
+          {{ datoAntropometrico?.valorICC }}
+        </span>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="input-field">
+          <input
+            id="m_antro_estatura"
+            type="text"
+            readonly
+            [value]="datoAntropometrico?.estatura"
+          />
+          <label class="active" for="m_antro_estatura">
+            Estatura (metros)
+          </label>
+        </div>
+
+        <div class="input-field">
+          <input
+            id="m_antro_contorno_cintura"
+            type="text"
+            readonly
+            [value]="datoAntropometrico?.contornoCintura"
+          />
+          <label class="active" for="m_antro_contorno_cintura">
+            Contorno cintura (metros)
+          </label>
+        </div>
+
+        <div class="input-field">
+          <input
+            id="m_antro_actividad_fisica"
+            type="text"
+            readonly
+            [value]="datoAntropometrico?.actividadFisica"
+          />
+          <label class="active" for="m_antro_actividad_fisica">
+            Actividad Física (horas)
+          </label>
+        </div>
+
+        <div class="input-field">
+          <input
+            id="m_antro_nivel_estres"
+            type="text"
+            readonly
+            [value]="datoAntropometrico?.nivelEstres"
+          />
+          <label class="active" for="m_antro_nivel_estres">
+            Nivel de estrés
+          </label>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="input-field">
+          <input
+            id="m_antro_peso"
+            type="text"
+            readonly
+            [value]="datoAntropometrico?.peso"
+          />
+          <label class="active" for="m_antro_peso"> Peso (kilogramos) </label>
+        </div>
+
+        <div class="input-field">
+          <input
+            id="m_antro_contorno_cadera"
+            type="text"
+            readonly
+            [value]="datoAntropometrico?.contornoCadera"
+          />
+          <label class="active" for="m_antro_contorno_cadera">
+            Contorno cadera (metros)
+          </label>
+        </div>
+
+        <div class="input-field">
+          <input
+            id="m_antro_rendim_acad"
+            type="text"
+            readonly
+            [value]="datoAntropometrico?.rendimientoAcademico"
+          />
+          <label class="active" for="m_antro_rendim_acad">
+            Rendimiento académico
+          </label>
+        </div>
+        <div *ngIf="datoAntropometrico?.recomendacion" class="input-field">
+          <a
+            href="#historial-datos-alumno-sugerencia-modal"
+            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p modal-trigger"
+          >
+            Sugerencia
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="app-alinear-texto">
+      <a class="waves-effect modal-close waves-light btn-small amber darken-3"
+        >Aceptar</a
+      >
+    </div>
+  </div>
+</div>
+
+<app-sugerencia-modal
+  [modalId]="'historial-datos-alumno-sugerencia-modal'"
+  [sugerencia]="datoAntropometrico?.recomendacion?.mensaje"
+></app-sugerencia-modal>

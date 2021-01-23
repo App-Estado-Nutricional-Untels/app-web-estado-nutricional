@@ -18,7 +18,7 @@ import { AppUsuarioService } from './services/data/app-usuario.service';
 import { DatosActualesAlumnoComponent } from './components/view/principal/components/alumno/datos-actuales-alumno/datos-actuales-alumno.component';
 import { EstadoActualAlumnoCardComponent } from './components/view/principal/components/alumno/estado-actual-alumno-card/estado-actual-alumno-card.component';
 import { DatosActualesAlumnoCardComponent } from './components/view/principal/components/alumno/datos-actuales-alumno-card/datos-actuales-alumno-card.component';
-import { HistorialDatosAlumnoCardComponent } from './components/view/principal/components/alumno/historial-datos-alumno-card/historial-datos-alumno-card.component';
+import { HistorialDatosAlumnoCardComponent } from './components/common/historial-datos-alumno-card/historial-datos-alumno-card.component';
 import { ImcAlumnoCardComponent } from './components/view/principal/components/alumno/imc-alumno-card/imc-alumno-card.component';
 import { IccAlumnoCardComponent } from './components/view/principal/components/alumno/icc-alumno-card/icc-alumno-card.component';
 import { DatosActualesAlumnoFormModalComponent } from './components/view/principal/components/alumno/datos-actuales-alumno-form-modal/datos-actuales-alumno-form-modal.component';
@@ -29,7 +29,6 @@ import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.
 import { FiltroListaAlumnosCardComponent } from './components/filtro-lista-alumnos-card/filtro-lista-alumnos-card.component';
 import { NuevoAlumnoFormModalComponent } from './components/nuevo-alumno-form-modal/nuevo-alumno-form-modal.component';
 import { DetallesActualesAlumnoModalComponent } from './components/detalles-actuales-alumno-modal/detalles-actuales-alumno-modal.component';
-import { DatosAntropometricosHistorialAlumnoModalComponent } from './components/datos-antropometricos-historial-alumno-modal/datos-antropometricos-historial-alumno-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/common/spinner/spinner.component';
@@ -39,6 +38,8 @@ import { IccGrupalCardComponent } from './components/common/icc-grupal-card/icc-
 import { PorcentajeGeneroAlumnosCardComponent } from './components/common/porcentaje-genero-alumnos-card/porcentaje-genero-alumnos-card.component';
 import { InformeImcGrupalCardComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-card/informe-imc-grupal-card.component';
 import { InformeImcGrupalModalComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-modal/informe-imc-grupal-modal.component';
+import { HistorialDatosAlumnoModalComponent } from './components/common/datos-antropometricos-alumno-detalles-modal/datos-antropometricos-alumno-detalles-modal.component';
+import { SugerenciaModalComponent } from './components/common/sugerencia-modal/sugerencia-modal.component';
 
 @NgModule({
   declarations: [
@@ -65,13 +66,14 @@ import { InformeImcGrupalModalComponent } from './components/common/informe-grup
     FiltroListaAlumnosCardComponent,
     NuevoAlumnoFormModalComponent,
     DetallesActualesAlumnoModalComponent,
-    DatosAntropometricosHistorialAlumnoModalComponent,
     SpinnerComponent,
     ImcGrupalCardComponent,
     IccGrupalCardComponent,
     PorcentajeGeneroAlumnosCardComponent,
     InformeImcGrupalCardComponent,
     InformeImcGrupalModalComponent,
+    HistorialDatosAlumnoModalComponent,
+    SugerenciaModalComponent,
   ],
   imports: [
     BrowserModule,

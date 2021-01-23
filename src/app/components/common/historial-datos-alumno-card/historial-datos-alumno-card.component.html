@@ -1,0 +1,51 @@
+<div class="card">
+  <div class="card-content">
+    <div class="left-align">
+      <h6>Historial de Datos</h6>
+      <div *ngIf="estado === Estados.VACIO" class="center-align">
+        <i class="material-icons">info</i>
+        <p class="app-mg-arr-0">No se encontraron datos</p>
+      </div>
+      <table
+        *ngIf="estado === Estados.CON_DATOS"
+        class="striped responsive-table"
+      >
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>IMC</th>
+            <th>ICC</th>
+            <th>Fecha de Registro</th>
+            <th>Detalles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let datoAntropometrico of datosAntropometricos;
+              let i = index
+            "
+          >
+            <td>{{ datoAntropometrico.id }}</td>
+            <td>{{ datoAntropometrico.valorIMC }}</td>
+            <td>{{ datoAntropometrico.valorICC }}</td>
+            <td>{{ datoAntropometrico.fechaRegistro.split("T")[0] }}</td>
+            <td>
+              <a
+                href="#historial-datos-alumno-modal"
+                class="modal-trigger"
+                (click)="abrirModal(i)"
+                >Ver más</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <app-spinner *ngIf="estado === Estados.CARGANDO"></app-spinner>
+    </div>
+  </div>
+</div>
+<app-datos-antropometricos-alumno-detalles-modal
+  [modalId]="'historial-datos-alumno-modal'"
+  [datoAntropometrico]="datoAntropometricoSeleccionado"
+></app-datos-antropometricos-alumno-detalles-modal>
