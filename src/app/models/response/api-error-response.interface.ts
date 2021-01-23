@@ -1,6 +1,6 @@
 import { Error } from './error.interface';
 
-export interface ErrorResponse {
+export interface ApiErrorResponse {
   ok: boolean;
   errores: Error[];
 }
