@@ -34,6 +34,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/common/spinner/spinner.component';
 import { ChartsModule } from 'ng2-charts';
+import { ImcGrupalCardComponent } from './components/common/imc-grupal-card/imc-grupal-card.component';
+import { IccGrupalCardComponent } from './components/common/icc-grupal-card/icc-grupal-card.component';
+import { PorcentajeGeneroAlumnosCardComponent } from './components/common/porcentaje-genero-alumnos-card/porcentaje-genero-alumnos-card.component';
+import { InformeImcGrupalCardComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-card/informe-imc-grupal-card.component';
+import { InformeImcGrupalModalComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-modal/informe-imc-grupal-modal.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +67,11 @@ import { ChartsModule } from 'ng2-charts';
     DetallesActualesAlumnoModalComponent,
     DatosAntropometricosHistorialAlumnoModalComponent,
     SpinnerComponent,
+    ImcGrupalCardComponent,
+    IccGrupalCardComponent,
+    PorcentajeGeneroAlumnosCardComponent,
+    InformeImcGrupalCardComponent,
+    InformeImcGrupalModalComponent,
   ],
   imports: [
     BrowserModule,

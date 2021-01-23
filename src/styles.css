@@ -11,6 +11,11 @@
     width: 50%;
 }
 */
+
+.app-mg-abajo-0 {
+  margin-bottom: 0 !important;
+}
+
 .app-ancho-60 {
   width: 60%;
 }
