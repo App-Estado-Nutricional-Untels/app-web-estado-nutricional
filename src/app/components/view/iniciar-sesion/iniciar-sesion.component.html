@@ -1,8 +1,8 @@
 <div class="app-mg-arr-7p">
   <div class="card app-ajustar-tamaño card-centrado">
     <div class="card-content app-alinear-texto">
-      <span class="card-title">Nombre App</span>
-      <div class="app-centrar app-ancho-50p">
+      <span class="card-title">Estado Nutricional</span>
+      <div class="app-centrar">
         <form (submit)="iniciarSesion($event)">
           <div class="input-field">
             <input
@@ -16,7 +16,6 @@
             <span
               class="helper-text"
               data-error="Ingrese un email válido"
-              data-success="right"
             ></span>
           </div>
 
@@ -32,19 +31,34 @@
             <span
               class="helper-text"
               data-error="Ingrese un email válido"
-              data-success="right"
             ></span>
           </div>
 
           <div class="app-mg-ver-10">
             <button
+              *ngIf="estado == Estados.INICIAL"
               class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p"
             >
               Ingresar
             </button>
+            <div
+              *ngIf="estado == Estados.CARGANDO"
+              class="preloader-wrapper small active"
+            >
+              <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                  <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
-
         <div class="card-action app-mg-der-dentro-24">
           <a routerLink="/registro" routerLinkActive="active"> Registrarse </a>
         </div>

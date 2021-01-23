@@ -8,12 +8,22 @@ import { ToastrService } from 'ngx-toastr';
 import { ComboService } from '../../../services/api/combo/combo.service';
 import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response-message-factory';
 
+enum IniciarSesionEstado {
+  INICIAL,
+  CARGANDO
+}
+
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
   styleUrls: ['./iniciar-sesion.component.css'],
 })
 export class IniciarSesionComponent implements OnInit {
+  
+  public Estados = IniciarSesionEstado;
+
+  estado: IniciarSesionEstado = IniciarSesionEstado.INICIAL;
+
   formulario: IniciarSesionBody = {
     correoElectronico: '',
     clave: '',
@@ -24,32 +34,23 @@ export class IniciarSesionComponent implements OnInit {
     private _appUsuarioService: AppUsuarioService,
     private _router: Router,
     private _toastr: ToastrService,
-    private _test: ComboService
   ) {}
 
   ngOnInit(): void {}
 
   iniciarSesion(e: Event) {
     e.preventDefault();
+    this.estado = IniciarSesionEstado.CARGANDO;
     this._autenticacionService.iniciarSesion(this.formulario).subscribe(
       (resp) => {
+        this.estado = IniciarSesionEstado.INICIAL;
         const persona: Persona = resp.datos.persona;
 
         this._appUsuarioService.guardarPersonaAutenticada(persona);
         this._appUsuarioService.guardarToken(resp.token);
         this._appUsuarioService.guardarTipoToken(resp.tipoToken);
 
-        // Aqui test------------------------
-        this._test.obtenerComboCategoriaICC().subscribe(
-          (resp) => {
-            console.log(resp);
-          },
-          (resp) => {
-            console.log(resp);
-          }
-        );
-        // Fin-----------------------------------
-        /*if (persona.usuario.rol.rolNombre === 'ROLE_ALUMNO') {
+        if (persona.usuario.rol.rolNombre === 'ROLE_ALUMNO') {
           this._router.navigate(['/principal/alumno'], { replaceUrl: true });
         }
 
@@ -61,9 +62,10 @@ export class IniciarSesionComponent implements OnInit {
 
         if (persona.usuario.rol.rolNombre === 'ROLE_MEDICO') {
           this._router.navigate(['/principal/medico'], { replaceUrl: true });
-        }*/
+        }
       },
       (resp) => {
+        this.estado = IniciarSesionEstado.INICIAL;
         const mensajes = ApiErrorResponseMessageFactory.build(resp.error);
         this._toastr.error(mensajes);
       }
