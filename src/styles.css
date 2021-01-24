@@ -223,3 +223,19 @@
 .toast-bottom-center {
   bottom: 0px;
 }
+
+.app-badge {
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #fff;
+  background-color: #f44336 !important;
+  border-radius: 2px;
+  min-width: 3rem;
+  padding: 0 6px;
+  margin-left: 14px;
+  text-align: center;
+  line-height: 22px;
+  height: 22px;
+  box-sizing: border-box;
+  padding: 2px 4px;
+}

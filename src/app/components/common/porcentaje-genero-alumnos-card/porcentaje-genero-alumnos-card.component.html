@@ -7,21 +7,21 @@
         <p class="app-mg-arr-0">No se encontraron datos</p>
       </div>
       <div *ngIf="estado === Estados.CON_DATOS">
-        <canvas baseChart 
-          [data]="pieChartData" 
+        <canvas
+          baseChart
+          [data]="pieChartData"
           [colors]="colores"
-          width="400"
           height="100"
-          [labels]="pieChartLabels" 
+          [labels]="pieChartLabels"
           [chartType]="pieChartType"
           [options]="pieChartOptions"
           [plugins]="pieChartPlugins"
-          [legend]="pieChartLegend">
-          
+          [legend]="pieChartLegend"
+        >
         </canvas>
       </div>
-      <div class="center-align">
-        <app-spinner *ngIf="estado === Estados.CARGANDO"></app-spinner>
+      <div *ngIf="estado === Estados.CARGANDO" class="center-align">
+        <app-spinner></app-spinner>
       </div>
     </div>
   </div>

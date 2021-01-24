@@ -1,4 +1,4 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { ImcMensualGrupal } from 'src/app/models/imc-mensual-grupal.interface';
@@ -15,13 +15,7 @@ enum ImcGrupalCardEstado {
   templateUrl: './imc-grupal-card.component.html',
   styleUrls: ['./imc-grupal-card.component.css']
 })
-
-
-
-
 export class ImcGrupalCardComponent implements OnInit {
-
-  @Input() idPersona: any;
 
   public Estados = ImcGrupalCardEstado;
 

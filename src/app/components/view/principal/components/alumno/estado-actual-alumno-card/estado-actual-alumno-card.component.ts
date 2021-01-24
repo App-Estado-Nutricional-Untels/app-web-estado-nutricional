@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DatosAntropometricosService } from 'src/app/services/api/datos-antropometricos/datos-antropometricos.service';
+import { StringUtils } from 'src/app/utils/string.util';
 
 enum EstadoActualEstado {
   VACIO,
@@ -20,8 +21,8 @@ export class EstadoActualAlumnoCardComponent implements OnInit {
 
   public estado = EstadoActualEstado.VACIO;
 
-  public categoriaIMC: string = '';
-  public categoriaICC: string = '';
+  public categoriaIMC: string | undefined;
+  public categoriaICC: string | undefined;
 
   constructor(
     private _datosAntropometricosService: DatosAntropometricosService,
@@ -35,8 +36,8 @@ export class EstadoActualAlumnoCardComponent implements OnInit {
       .obtenerDatosAntropometricosActualesPorIdPersona(this.idPersona)
       .subscribe(
         (resp) => {
-          this.categoriaIMC = resp.datos.categoriaimc;
-          this.categoriaICC = resp.datos.categoriaicc;
+          this.categoriaIMC = StringUtils.upperSnakeCaseToCapitalizedSpaced(resp.datos.categoriaimc);
+          this.categoriaICC = StringUtils.upperSnakeCaseToCapitalizedSpaced(resp.datos.categoriaicc);
           this.estado = EstadoActualEstado.CON_DATOS;
         },
         (respError) => {

@@ -3,6 +3,7 @@ import { DatoAntropometrico } from 'src/app/models/dato-antropomentrico.interfac
 import { Persona } from 'src/app/models/persona.interface';
 import { DatosAntropometricosService } from 'src/app/services/api/datos-antropometricos/datos-antropometricos.service';
 import { AppUsuarioService } from 'src/app/services/data/app-usuario.service';
+import { StringUtils } from 'src/app/utils/string.util';
 
 enum DatosActualesAlumnoCardEstados {
   VACIO,
@@ -27,6 +28,25 @@ export class DatosActualesAlumnoCardComponent implements OnInit {
     private _datosAntropometricosService: DatosAntropometricosService
   ) { 
     this.persona = _appUsuarioService.obtenerPersonaAutenticada();
+  }
+
+  get fechaRegistro(): string | undefined {
+    if (this.datosActuales) {
+      return this.datosActuales.fechaRegistro.split("T")[0];
+    }
+    return undefined;
+  }
+
+  get categoriaIMC(): string | undefined {
+    return StringUtils
+      .upperSnakeCaseToCapitalizedSpaced(
+        this.datosActuales?.categoriaimc);
+  }
+
+  get categoriaICC(): string | undefined {
+    return StringUtils
+      .upperSnakeCaseToCapitalizedSpaced(
+        this.datosActuales?.categoriaicc);
   }
 
   ngOnInit(): void {

@@ -1,15 +1,26 @@
 <div class="card">
-  <div class="card-content valign-wrapper app-distanciamiento">
-    <h6>Estado actual</h6>
-    <div *ngIf="estado === Estado.VACIO" class="app-flex">
+  <div class="card-content">
+    <div class="row app-mg-abajo-0">
+      <div class="col s12 m6">
+        <h6>Estado actual</h6>
+      </div>
+      <div *ngIf="estado === Estado.CON_DATOS" class="col s12 m6 right-align">
+        <div>
+          <b>IMC:</b>
+          <span class="app-badge">{{ categoriaIMC }}</span>
+        </div>
+        <div>
+          <b>ICC:</b>
+          <span class="app-badge">{{ categoriaICC }}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="estado === Estado.VACIO" class="center-align">
       <i class="material-icons">info</i>
       <p class="app-mg-arr-0">No se encontraron datos</p>
     </div>
-    <app-spinner *ngIf="estado === Estado.CARGANDO"></app-spinner>
-    <div *ngIf="estado === Estado.CON_DATOS" class="app-flex">
-      <p class="app-mg-arr-0">
-        IMC: {{ categoriaIMC }} | ICC: {{ categoriaICC }}
-      </p>
+    <div *ngIf="estado === Estado.CARGANDO" class="center-align">
+      <app-spinner></app-spinner>
     </div>
   </div>
 </div>

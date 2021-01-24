@@ -18,23 +18,27 @@
         <div class="app-ancho-100p">
           <div class="app-flex app-distanciamiento app-mg-ver-5">
             <b>Fecha de registro:</b>
-            <span>{{ datosActuales?.fechaRegistro }}</span>
+            <span>{{ fechaRegistro }}</span>
           </div>
 
           <div class="app-flex app-distanciamiento app-mg-ver-5">
             <b>IMC:</b>
-            <span
-              >{{ datosActuales?.categoriaimc }}
-              {{ datosActuales?.valorIMC }}</span
-            >
+            <div>
+              <span class="new badge red" data-badge-caption="">
+                {{ categoriaIMC }}
+              </span>
+              <span>{{ datosActuales?.valorIMC }}</span>
+            </div>
           </div>
 
           <div class="app-flex app-distanciamiento app-mg-ver-5">
             <b>ICC:</b>
-            <span
-              >{{ datosActuales?.categoriaicc }}
-              {{ datosActuales?.valorICC }}</span
-            >
+            <div>
+              <span class="new badge red" data-badge-caption="">
+                {{ categoriaICC }}
+              </span>
+              <span> {{ datosActuales?.valorICC }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -59,7 +63,9 @@
         >
       </div>
     </div>
-    <app-spinner *ngIf="estado === Estados.CARGANDO"></app-spinner>
+    <div *ngIf="estado === Estados.CARGANDO" class="center-align">
+      <app-spinner></app-spinner>
+    </div>
   </div>
 </div>
 

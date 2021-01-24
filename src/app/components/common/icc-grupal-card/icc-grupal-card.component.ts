@@ -17,9 +17,6 @@ enum IccGrupalCardEstado {
 })
 export class IccGrupalCardComponent implements OnInit {
 
-
-  
-
   public Estados = IccGrupalCardEstado;
 
   public estado: IccGrupalCardEstado = IccGrupalCardEstado.VACIO;
@@ -49,9 +46,11 @@ export class IccGrupalCardComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType: ChartType = 'line';
   public lineChartPlugins = [];
+
   constructor(
     private _iccService: IccService
   ) { }
+  
   actualizarChart(): void {
     this.chartDataSets.forEach(dataSet => {
       if (dataSet.data) {
