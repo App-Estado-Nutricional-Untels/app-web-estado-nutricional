@@ -40,86 +40,59 @@
     <div class="row">
       <div class="col s12 m6">
         <div class="input-field">
-          <input
-            id="m_antro_estatura"
-            type="text"
-            readonly
-            [value]="datoAntropometrico?.estatura"
-          />
-          <label class="active" for="m_antro_estatura">
-            Estatura (metros)
-          </label>
+          <input type="text" readonly [value]="datoAntropometrico?.estatura" />
+          <label class="active"> Estatura (metros) </label>
         </div>
 
         <div class="input-field">
           <input
-            id="m_antro_contorno_cintura"
             type="text"
             readonly
             [value]="datoAntropometrico?.contornoCintura"
           />
-          <label class="active" for="m_antro_contorno_cintura">
-            Contorno cintura (metros)
-          </label>
+          <label class="active"> Contorno cintura (metros) </label>
         </div>
 
         <div class="input-field">
           <input
-            id="m_antro_actividad_fisica"
             type="text"
             readonly
             [value]="datoAntropometrico?.actividadFisica"
           />
-          <label class="active" for="m_antro_actividad_fisica">
-            Actividad Física (horas)
-          </label>
+          <label class="active"> Actividad Física (horas) </label>
         </div>
 
         <div class="input-field">
           <input
-            id="m_antro_nivel_estres"
             type="text"
             readonly
             [value]="datoAntropometrico?.nivelEstres"
           />
-          <label class="active" for="m_antro_nivel_estres">
-            Nivel de estrés
-          </label>
+          <label class="active"> Nivel de estrés </label>
         </div>
       </div>
       <div class="col s12 m6">
         <div class="input-field">
-          <input
-            id="m_antro_peso"
-            type="text"
-            readonly
-            [value]="datoAntropometrico?.peso"
-          />
-          <label class="active" for="m_antro_peso"> Peso (kilogramos) </label>
+          <input type="text" readonly [value]="datoAntropometrico?.peso" />
+          <label class="active"> Peso (kilogramos) </label>
         </div>
 
         <div class="input-field">
           <input
-            id="m_antro_contorno_cadera"
             type="text"
             readonly
             [value]="datoAntropometrico?.contornoCadera"
           />
-          <label class="active" for="m_antro_contorno_cadera">
-            Contorno cadera (metros)
-          </label>
+          <label class="active"> Contorno cadera (metros) </label>
         </div>
 
         <div class="input-field">
           <input
-            id="m_antro_rendim_acad"
             type="text"
             readonly
             [value]="datoAntropometrico?.rendimientoAcademico"
           />
-          <label class="active" for="m_antro_rendim_acad">
-            Rendimiento académico
-          </label>
+          <label class="active"> Rendimiento académico </label>
         </div>
         <div *ngIf="datoAntropometrico?.recomendacion" class="input-field">
           <a
