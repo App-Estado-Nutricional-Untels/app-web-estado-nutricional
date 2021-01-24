@@ -1,0 +1,80 @@
+<div class="card">
+  <div class="card-content">
+    <div class="left-align">
+      <h6>Datos actuales</h6>
+    </div>
+    <div *ngIf="estado === Estados.VACIO" class="center-align">
+      <i class="material-icons">info</i>
+      <p class="app-mg-arr-0">No se encontraron datos</p>
+      <button
+        data-target="datos-actuales-alumno-actualizar-datos-modal"
+        class="waves-effect waves-light btn-small amber darken-3 modal-trigger"
+      >
+        Ingresar mis datos
+      </button>
+    </div>
+    <div *ngIf="estado === Estados.CON_DATOS" class="row">
+      <div class="col s12 l6">
+        <div class="app-ancho-100p">
+          <div class="app-flex app-distanciamiento app-mg-ver-5">
+            <b>Fecha de registro:</b>
+            <span>{{ datosActuales?.fechaRegistro }}</span>
+          </div>
+
+          <div class="app-flex app-distanciamiento app-mg-ver-5">
+            <b>IMC:</b>
+            <span
+              >{{ datosActuales?.categoriaimc }}
+              {{ datosActuales?.valorIMC }}</span
+            >
+          </div>
+
+          <div class="app-flex app-distanciamiento app-mg-ver-5">
+            <b>ICC:</b>
+            <span
+              >{{ datosActuales?.categoriaicc }}
+              {{ datosActuales?.valorICC }}</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 l6">
+        <a
+          href="#datos-actuales-alumno-modal"
+          class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p app-mg-ver-5 modal-trigger"
+          >Detalles</a
+        >
+        <a
+          *ngIf="datosActuales?.recomendacion"
+          href="#datos-actuales-alumno-sugerencias-modal"
+          class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p app-mg-ver-5 modal-trigger"
+          >Sugerencias del especialista</a
+        >
+        <!-- TODO: No mostrar si no es la primera semana de cada mes (consultar a api) -->
+        <a
+          href="#datos-actuales-alumno-actualizar-datos-modal"
+          class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p app-mg-ver-5 modal-trigger"
+          >Actualizar</a
+        >
+      </div>
+    </div>
+    <app-spinner *ngIf="estado === Estados.CARGANDO"></app-spinner>
+  </div>
+</div>
+
+<app-datos-antropometricos-alumno-detalles-modal
+  [modalId]="'datos-actuales-alumno-modal'"
+  [datoAntropometrico]="datosActuales"
+></app-datos-antropometricos-alumno-detalles-modal>
+
+<app-sugerencia-modal
+  [modalId]="'datos-actuales-alumno-sugerencias-modal'"
+  [sugerencia]="datosActuales?.recomendacion?.mensaje"
+>
+</app-sugerencia-modal>
+
+<app-datos-actuales-alumno-form-modal
+  [modalId]="'datos-actuales-alumno-actualizar-datos-modal'"
+  [inicial]="!datosActuales"
+></app-datos-actuales-alumno-form-modal>

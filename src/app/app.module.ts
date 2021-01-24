@@ -15,13 +15,13 @@ import { TableroMedicoComponent } from './components/view/principal/components/m
 import { TableroAdministradorComponent } from './components/view/principal/components/administrador/tablero-administrador/tablero-administrador.component';
 import { AutenticacionService } from './services/api/autenticacion/autenticacion.service';
 import { AppUsuarioService } from './services/data/app-usuario.service';
-import { DatosActualesAlumnoComponent } from './components/view/principal/components/alumno/datos-actuales-alumno/datos-actuales-alumno.component';
+import { DatosActualesAlumnoComponent } from './components/view/principal/components/alumno/datos-actuales/datos-actuales-alumno/datos-actuales-alumno.component';
 import { EstadoActualAlumnoCardComponent } from './components/view/principal/components/alumno/estado-actual-alumno-card/estado-actual-alumno-card.component';
-import { DatosActualesAlumnoCardComponent } from './components/view/principal/components/alumno/datos-actuales-alumno-card/datos-actuales-alumno-card.component';
+import { DatosActualesAlumnoCardComponent } from './components/view/principal/components/alumno/datos-actuales/datos-actuales-alumno-card/datos-actuales-alumno-card.component';
 import { HistorialDatosAlumnoCardComponent } from './components/common/historial-datos-alumno-card/historial-datos-alumno-card.component';
 import { ImcAlumnoCardComponent } from './components/view/principal/components/alumno/imc-alumno-card/imc-alumno-card.component';
 import { IccAlumnoCardComponent } from './components/view/principal/components/alumno/icc-alumno-card/icc-alumno-card.component';
-import { DatosActualesAlumnoFormModalComponent } from './components/view/principal/components/alumno/datos-actuales-alumno-form-modal/datos-actuales-alumno-form-modal.component';
+import { DatosActualesAlumnoFormModalComponent } from './components/view/principal/components/alumno/datos-actuales/datos-actuales-alumno-form-modal/datos-actuales-alumno-form-modal.component';
 import { DatosPersonalesFormModalComponent } from './components/common/datos-personales-form-modal/datos-personales-form-modal.component';
 import { MenuLateralComponent } from './components/layout/menu-lateral/menu-lateral.component';
 import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';

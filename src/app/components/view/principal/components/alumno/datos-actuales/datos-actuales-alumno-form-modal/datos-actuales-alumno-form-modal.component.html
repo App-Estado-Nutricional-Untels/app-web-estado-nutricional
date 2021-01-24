@@ -1,0 +1,124 @@
+<div [id]="modalId" class="modal modal-max">
+  <div class="modal-content">
+    <h5>Datos actuales</h5>
+    <form>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="input-field">
+            <input
+              id="{{ modalId + '-estatura' }}"
+              type="number"
+              class="validate"
+              step="any"
+            />
+            <label for="{{ modalId + '-estatura' }}">Estatura (metros)</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              id="{{ modalId + '-contorno-cintura' }}"
+              type="number"
+              class="validate"
+              step="any"
+            />
+            <label for="{{ modalId + '-contorno-cintura' }}"
+              >Contorno cintura (metros)</label
+            >
+          </div>
+
+          <div class="input-field">
+            <input
+              id="{{ modalId + '-actividad-fisica' }}"
+              type="number"
+              class="validate"
+              step="any"
+            />
+            <label for="{{ modalId + '-actividad-fisica' }}"
+              >Actividad Física (horas)</label
+            >
+          </div>
+
+          <div class="input-field">
+            <select id="{{ modalId + '-nivel-estres' }}">
+              <option value="1">Leve</option>
+              <option value="2">Moderado</option>
+              <option value="3">Severo</option>
+            </select>
+            <label for="{{ modalId + '-nivel-estres' }}">Nivel de estrés</label>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="input-field">
+            <input
+              id="{{ modalId + '-peso' }}"
+              type="number"
+              class="validate"
+              step="any"
+            />
+            <label for="{{ modalId + 'peso' }}">Peso (kilogramos)</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              id="{{ modalId + '-contorno-cadera' }}"
+              type="number"
+              class="validate"
+              step="any"
+            />
+            <label for="{{ modalId + '-contorno-cadera' }}"
+              >Contorno cadera (metros)</label
+            >
+          </div>
+
+          <div *ngIf="inicial" class="input-field">
+            <input
+              id="{{ modalId + '-fecha-nacimiento' }}"
+              type="date"
+              class="validate"
+            />
+            <label for="{{ modalId + '-fecha-nacimiento' }}"
+              >Fecha Nacimiento</label
+            >
+          </div>
+
+          <div class="input-field">
+            <select
+              [(ngModel)]="formulario.rendimientoAcademico"
+              name="rendimientoAcademico"
+              id="{{ modalId + '-rendimiento-academico' }}"
+            >
+              <option
+                *ngFor="let rendAcademico of comboRendimientoAcademico"
+                [value]="rendAcademico.valor"
+              >
+                {{ rendAcademico.nombre }}
+              </option>
+            </select>
+            <label for="{{ modalId + '-rendimiento-academico' }}">
+              Rendimiento académico
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row center-align">
+        <div class="col s12 m6">
+          <button
+            type="submit"
+            class="waves-effect waves-light btn-small amber darken-3"
+          >
+            Guardar
+          </button>
+        </div>
+        <div class="col s12 m6">
+          <button
+            type="button"
+            class="waves-effect waves-light btn-small red darken-3"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
