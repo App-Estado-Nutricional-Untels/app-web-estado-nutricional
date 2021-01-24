@@ -3,7 +3,6 @@ import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { ImcMensual } from 'src/app/models/imc-mensual.interface';
 import { ImcService } from 'src/app/services/api/imc/imc.service';
-import { AppUsuarioService } from 'src/app/services/data/app-usuario.service';
 
 enum ImcAlumnoCardEstado {
   VACIO,
