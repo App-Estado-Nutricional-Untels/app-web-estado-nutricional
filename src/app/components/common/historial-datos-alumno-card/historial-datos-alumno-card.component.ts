@@ -18,7 +18,7 @@ enum HistorialDatosAlumnoCardEstados {
 export class HistorialDatosAlumnoCardComponent implements OnInit {
 
   @Input()
-  idPersona!: number;
+  idPersona!: number | undefined;
 
   public Estados = HistorialDatosAlumnoCardEstados;
 
@@ -36,8 +36,9 @@ export class HistorialDatosAlumnoCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.estado = HistorialDatosAlumnoCardEstados.CARGANDO;
-    this._historialDatosAntropometricos
+    if (this.idPersona) {
+      this.estado = HistorialDatosAlumnoCardEstados.CARGANDO;
+      this._historialDatosAntropometricos
       .obtenerHistorialDatosAntropometricosPorIdPersona(this.idPersona)
       .subscribe(
         (resp) => {
@@ -49,6 +50,7 @@ export class HistorialDatosAlumnoCardComponent implements OnInit {
           this.estado = HistorialDatosAlumnoCardEstados.VACIO;
         }
       );
+    }
   }
 
 }
