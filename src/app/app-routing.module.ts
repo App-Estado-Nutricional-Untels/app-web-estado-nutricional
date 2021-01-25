@@ -4,7 +4,7 @@ import { TableroAdministradorComponent } from './components/view/principal/compo
 import { TableroAlumnoComponent } from './components/view/principal/components/alumno/tablero-alumno/tablero-alumno.component';
 import { IniciarSesionComponent } from './components/view/iniciar-sesion/iniciar-sesion.component';
 import { InicioComponent } from './components/view/inicio/inicio.component';
-import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
+import { ListaAlumnosComponent } from './components/common/tablero-lista-alumnos/lista-alumnos/lista-alumnos.component';
 import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
 import { TableroMedicoComponent } from './components/view/principal/components/medico/tablero-medico/tablero-medico.component';
 import { PrincipalComponent } from './components/view/principal/principal.component';

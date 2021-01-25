@@ -25,9 +25,9 @@ import { DatosActualesAlumnoFormModalComponent } from './components/view/princip
 import { DatosPersonalesFormModalComponent } from './components/common/datos-personales-form-modal/datos-personales-form-modal.component';
 import { MenuLateralComponent } from './components/layout/menu-lateral/menu-lateral.component';
 import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
-import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
-import { FiltroListaAlumnosCardComponent } from './components/filtro-lista-alumnos-card/filtro-lista-alumnos-card.component';
-import { NuevoAlumnoFormModalComponent } from './components/nuevo-alumno-form-modal/nuevo-alumno-form-modal.component';
+import { ListaAlumnosComponent } from './components/common/tablero-lista-alumnos/lista-alumnos/lista-alumnos.component';
+import { FiltroListaAlumnosCardComponent } from './components/common/tablero-lista-alumnos/filtro-lista-alumnos-card/filtro-lista-alumnos-card.component';
+import { NuevoAlumnoFormModalComponent } from './components/common/tablero-lista-alumnos/nuevo-alumno-form-modal/nuevo-alumno-form-modal.component';
 import { DetallesActualesAlumnoModalComponent } from './components/detalles-actuales-alumno-modal/detalles-actuales-alumno-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
