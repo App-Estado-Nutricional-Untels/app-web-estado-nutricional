@@ -40,6 +40,9 @@ import { InformeImcGrupalCardComponent } from './components/common/informe-grupa
 import { InformeImcGrupalModalComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-modal/informe-imc-grupal-modal.component';
 import { HistorialDatosAlumnoModalComponent } from './components/common/datos-antropometricos-alumno-detalles-modal/datos-antropometricos-alumno-detalles-modal.component';
 import { SugerenciaModalComponent } from './components/common/sugerencia-modal/sugerencia-modal.component';
+import { InformeImcGrupalPorcentajeGeneroAlumnosCardComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-porcentaje-genero-alumnos-card/informe-imc-grupal-porcentaje-genero-alumnos-card.component';
+import { InformeImcGrupalPorcentajeRendimientoAcademicoCardComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-porcentaje-rendimiento-academico-card/informe-imc-grupal-porcentaje-rendimiento-academico-card.component';
+import { InformeImcGrupalPorcentajeNivelEstresCardComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-porcentaje-nivel-estres-card/informe-imc-grupal-porcentaje-nivel-estres-card.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +77,9 @@ import { SugerenciaModalComponent } from './components/common/sugerencia-modal/s
     InformeImcGrupalModalComponent,
     HistorialDatosAlumnoModalComponent,
     SugerenciaModalComponent,
+    InformeImcGrupalPorcentajeGeneroAlumnosCardComponent,
+    InformeImcGrupalPorcentajeRendimientoAcademicoCardComponent,
+    InformeImcGrupalPorcentajeNivelEstresCardComponent,
   ],
   imports: [
     BrowserModule,

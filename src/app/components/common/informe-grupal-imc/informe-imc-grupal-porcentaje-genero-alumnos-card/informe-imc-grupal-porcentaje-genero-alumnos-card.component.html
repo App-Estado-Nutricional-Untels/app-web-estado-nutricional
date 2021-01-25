@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-content">
+    <div class="left-align">
+      <h6>Porcentaje de género</h6>
+      <div *ngIf="estado === Estados.VACIO" class="center-align">
+        <i class="material-icons">info</i>
+        <p class="app-mg-arr-0">No se encontraron datos</p>
+      </div>
+      <div *ngIf="estado === Estados.CON_DATOS">
+        <canvas
+          baseChart
+          [data]="pieChartData"
+          [colors]="colores"
+          height="150"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [legend]="pieChartLegend"
+        >
+        </canvas>
+      </div>
+      <div *ngIf="estado === Estados.CARGANDO" class="center-align">
+        <app-spinner></app-spinner>
+      </div>
+    </div>
+  </div>
+</div>

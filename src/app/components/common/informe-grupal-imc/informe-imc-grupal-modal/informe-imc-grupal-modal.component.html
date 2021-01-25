@@ -1,1 +1,53 @@
-<p>informe-imc-grupal-modal works!</p>
+<div [id]="modalId" class="modal modal-max modal-max-width">
+  <div class="modal-content">
+    <h5>Datos personales</h5>
+    <div class="row app-mg-abajo-0">
+      <div class="col s12 m6 l3">
+        <div class="card">
+          <div class="card-content">
+            <h6>Datos Generales</h6>
+            <div>
+              <div>
+                <b>Total Alumnos: </b
+                ><span>{{ reporteIMC?.totalAlumnos }}</span>
+              </div>
+              <div>
+                <b>Porcentaje Alumnos: </b
+                ><span>{{ reporteIMC?.porcentajeAlumnos }}</span>
+              </div>
+              <div>
+                <b>Edad Promedio: </b
+                ><span>{{ reporteIMC?.edadPromedio }}</span>
+              </div>
+              <div>
+                <b>Actividad Física Promedio: </b
+                ><span>{{ reporteIMC?.actividadFisicaPromedio }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l3">
+        <app-informe-imc-grupal-porcentaje-genero-alumnos-card
+          [reporteSexo]="reporteIMC?.sexo"
+        ></app-informe-imc-grupal-porcentaje-genero-alumnos-card>
+      </div>
+      <div class="col s12 m6 l3">
+        <app-informe-imc-grupal-porcentaje-nivel-estres-card
+          [reporteNivelEstres]="reporteIMC?.estres"
+        ></app-informe-imc-grupal-porcentaje-nivel-estres-card>
+      </div>
+      <div class="col s12 m6 l3">
+        <app-informe-imc-grupal-porcentaje-rendimiento-academico-card
+          [reporteRendimientoAcademico]="reporteIMC?.rendimientoAcademico"
+        ></app-informe-imc-grupal-porcentaje-rendimiento-academico-card>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <h6>Resumen</h6>
+        <p>{{ reporteIMC?.mensajeClasificacion }}</p>
+      </div>
+    </div>
+  </div>
+</div>

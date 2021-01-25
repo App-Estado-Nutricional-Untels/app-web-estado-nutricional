@@ -2,40 +2,100 @@
   <div class="card-content">
     <div class="left-align">
       <h6>Informe por grupos IMC</h6>
-      <div class="row">
-        <div class="col m6 s12">
-          <div class="input-field">
-            <select>
-              <option value="1">Delgadez Grado III</option>
-            </select>
-            <label>Categoría IMC</label>
+      <form (ngSubmit)="buscarInforme($event)">
+        <div class="row app-mg-abajo-0">
+          <div class="col l5 m12 s12">
+            <div class="input-field">
+              <select
+                [(ngModel)]="formulario.categoriaIMC"
+                name="categoria-imc"
+              >
+                <option
+                  *ngFor="let cat of comboCategoriaIMC"
+                  [value]="cat.valor"
+                >
+                  {{ cat.nombre }}
+                </option>
+              </select>
+              <label>Categoría IMC</label>
+            </div>
+          </div>
+          <div class="col l4 m6 s12">
+            <div class="input-field">
+              <select [(ngModel)]="formulario.mes" name="categoria-imc">
+                <option *ngFor="let mes of comboMes" [value]="mes.valor">
+                  {{ mes.nombre }}
+                </option>
+              </select>
+              <label>Mes</label>
+            </div>
+          </div>
+          <div class="col l3 m6 s12">
+            <div class="input-field">
+              <input
+                [(ngModel)]="formulario.anio"
+                name="anio"
+                [value]="formulario.anio"
+                id="informe-imc-grupal-anio"
+                type="number"
+                class="validate"
+              />
+              <label for="informe-imc-grupal-anio" class="active">Año</label>
+            </div>
           </div>
         </div>
-
-        <div class="col s12 m12">
-          <div class="row app-mg-abajo-0">
-            <div class="col s12 m6">
-              <div class="app-flex app-distanciamiento">
-                <p>Total Alumnos</p>
-                <p>10</p>
-              </div>
-
-              <div class="app-flex app-distanciamiento">
-                <p>Porcentaje Alumnos</p>
-                <p>2%</p>
-              </div>
-            </div>
-            <div class="col s12 m6">
-              <a
-                href="#modal-informe-grupo-imc"
-                class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p modal-trigger"
-              >
-                Ver más
-              </a>
-            </div>
+        <div class="input-field">
+          <button
+            type="submit"
+            [disabled]="estado === Estados.CARGANDO"
+            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p"
+          >
+            Buscar
+          </button>
+        </div>
+      </form>
+      <div *ngIf="estado === Estados.CARGANDO" class="center-align">
+        <app-spinner></app-spinner>
+      </div>
+      <div
+        *ngIf="reporteIMC && estado === Estados.CON_DATOS"
+        class="row app-mg-abajo-0"
+      >
+        <div class="col s12 m8">
+          <div>
+            <span class="app-badge" style="margin-left: 0">{{
+              categoriaIMC
+            }}</span>
           </div>
+
+          <div class="app-flex app-distanciamiento">
+            <b>Mes y Año</b>
+            <p>{{ reporteIMC?.mes }}/{{ reporteIMC?.anio }}</p>
+          </div>
+
+          <div class="app-flex app-distanciamiento">
+            <b>Total Alumnos</b>
+            <p>{{ reporteIMC?.totalAlumnos }}</p>
+          </div>
+
+          <div class="app-flex app-distanciamiento">
+            <b>Porcentaje Alumnos</b>
+            <p>{{ reporteIMC?.porcentajeAlumnos }}</p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <a
+            href="#informe-imc-grupal-modal"
+            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p modal-trigger"
+          >
+            Ver más
+          </a>
         </div>
       </div>
     </div>
   </div>
 </div>
+<app-informe-imc-grupal-modal
+  [modalId]="'informe-imc-grupal-modal'"
+  [reporteIMC]="reporteIMC"
+></app-informe-imc-grupal-modal>
