@@ -2,94 +2,110 @@
 <div [id]="modalId" class="modal modal-max">
   <div class="modal-content">
     <h5>Datos personales</h5>
-    <span>
-      <i class="material-icons selector-icono">person</i>
-      <i class="material-icons selector-icono">school</i>
-    </span>
-    <div class="row">
-      <div class="col s12 m6">
-        <div class="input-field">
-          <input id="first_name" type="text" class="validate" />
-          <label for="first_name">Nombres</label>
-        </div>
-
-        <div class="input-field">
-          <input id="ap_pat" type="text" class="validate" />
-          <label for="ap_pat">Apellido Paterno</label>
-        </div>
-
-        <div class="input-field">
-          <input id="ap_mat" type="text" class="validate" />
-          <label for="ap_mat">Apellido Materno</label>
-        </div>
-      </div>
-      <div class="col s12 m6">
-        <div class="input-field">
-          <input
-            disabled
-            value="123456789@untels.edu.pe"
-            id="correo-deshabilitado"
-            type="text"
-            class="validate"
-          />
-          <label for="disabled">Correo electrónico</label>
-        </div>
-
-        <div class="input-field">
-          <input
-            disabled
-            value="12345678"
-            id="dni-deshabilitado"
-            type="text"
-            class="validate"
-          />
-          <label for="disabled">DNI</label>
-        </div>
-
-        <div class="input-field">
-          <input
-            disabled
-            value="123456789"
-            id="codigo-deshabilitado"
-            type="text"
-            class="validate"
-          />
-          <label for="disabled">Código(Universitario o CMP)</label>
-        </div>
-      </div>
-
+    <div class="right-align">
+      <span *ngIf="personaActual?.usuario?.rol?.rolNombre === 'ROLE_ALUMNO'">
+        <i class="material-icons">person</i>
+      </span>
+      <span *ngIf="personaActual?.usuario?.rol?.rolNombre === 'ROLE_MEDICO'">
+        <i class="material-icons">school</i>
+      </span>
+      <span
+        *ngIf="personaActual?.usuario?.rol?.rolNombre === 'ROLE_ADMINISTRADOR'"
+      >
+        <b>Administrador</b>
+      </span>
+    </div>
+    <form (ngSubmit)="actualizarUsuario($event)">
       <div class="row">
         <div class="col s12 m6">
           <div class="input-field">
             <input
-              disabled
-              value="27/07/1992"
-              id="fecha-nac-deshabilitado"
+              [(ngModel)]="formulario.nombres"
+              name="nombres"
+              [id]="modalId + '-nombres'"
               type="text"
               class="validate"
             />
-            <label for="disabled">Fecha Nacimiento</label>
+            <label for="{{ modalId + '-nombres' }}">Nombres</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.apePaterno"
+              name="ape-paterno"
+              [id]="modalId + '-ape-paterno'"
+              type="text"
+              class="validate"
+            />
+            <label for="{{ modalId + '-ape-paterno' }}">Apellido Paterno</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.apeMaterno"
+              name="ape-materno"
+              [id]="modalId + '-ape-materno'"
+              type="text"
+              class="validate"
+            />
+            <label for="{{ modalId + '-ape-materno' }}">Apellido Materno</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              disabled
+              [value]="personaActual?.edad"
+              [id]="modalId + '-edad'"
+              type="text"
+              class="validate"
+            />
+            <label for="{{ modalId + '-edad' }}">Edad</label>
           </div>
         </div>
-
         <div class="col s12 m6">
           <div class="input-field">
             <input
               disabled
-              value="27"
-              id="edad-deshabilitado"
+              [value]="personaActual?.usuario?.correoElectronico"
+              [id]="modalId + '-correo-electronico'"
               type="text"
               class="validate"
             />
-            <label for="disabled">Edad</label>
+            <label for="{{ modalId + '-correo-electronico' }}"
+              >Correo electrónico</label
+            >
+          </div>
+
+          <div class="input-field">
+            <input
+              disabled
+              [value]="personaActual?.dni"
+              [id]="modalId + '-dni'"
+              type="text"
+              class="validate"
+            />
+            <label for="{{ modalId + '-dni' }}">DNI</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              disabled
+              [value]="fechaNacimiento"
+              [id]="modalId + '-fecha-nacimiento'"
+              type="text"
+              class="validate"
+            />
+            <label for="{{ modalId + '-fecha-nacimiento' }}"
+              >Fecha Nacimiento</label
+            >
           </div>
         </div>
       </div>
-
       <div class="row center-align">
         <div class="col s12 m6">
           <button
             type="submit"
+            [disabled]="!haCambiado"
             class="waves-effect waves-light btn-small amber darken-3"
           >
             Guardar
@@ -98,12 +114,12 @@
         <div class="col s12 m6">
           <button
             type="button"
-            class="waves-effect waves-light btn-small red darken-3"
+            class="modal-close waves-effect waves-light btn-small red darken-3"
           >
             Cancelar
           </button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>

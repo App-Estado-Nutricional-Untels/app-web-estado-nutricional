@@ -72,7 +72,7 @@ export class UsuarioService {
 
     const headers = HeaderFactory.build(token, tipoToken);
 
-    return this._http.post<ApiResponse<Persona>>(url, body, { headers: headers });
+    return this._http.put<ApiResponse<Persona>>(url, body, { headers: headers });
   }
 
   eliminarUsuarioAlumnoPorId(id: number): Observable<ApiResponse<Usuario>> {
