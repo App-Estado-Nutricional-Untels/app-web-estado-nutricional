@@ -5,33 +5,59 @@
         <div [hidden]="parteRegistro !== 1">
           <span class="card-title">Nombre App</span>
 
-          <div class="input-field">
-            <input id="reg_nombres" type="text" class="validate" />
+          <div class="input-field"
+          >
+            <input  [(ngModel)]="formulario.nombres"
+            name="nombre"
+            id="ingre_nombres"
+            type="text"
+            class="validate"/>
             <label for="reg_nombres">Nombres</label>
           </div>
 
           <div class="input-field">
-            <input id="reg_ap_pat" type="text" class="validate" />
+            <input id="reg_ap_pat"  
+            [(ngModel)]="formulario.apePaterno"
+                name="apePaterno"
+                id="ingre_apePaterno"
+                type="text"
+                class="validate"/>
             <label for="reg_ap_pat">Apellido Paterno</label>
           </div>
 
           <div class="input-field">
-            <input id="reg_ap_mat" type="text" class="validate" />
+            <input id="reg_ap_mat" 
+            [(ngModel)]="formulario.apeMaterno"
+            name="apeMaterno"
+            id="ingre_apeMaterno"
+            type="text"
+            class="validate"/>
             <label for="reg_ap_mat">Apellido Materno</label>
           </div>
 
           <div class="input-field">
-            <input id="reg_correo" type="email" class="validate" />
+            <input id="reg_correo" type="email" class="validate" 
+            [(ngModel)]="formulario.correoElectronico"
+                name="correoElectronico"
+                id="ingre_correoElectronico"
+                />
             <label for="reg_correo">Correo electrónico</label>
           </div>
 
           <div class="input-field">
-            <input id="reg_dni" type="text" class="validate" />
+            <input i type="number" class="validate" 
+            [(ngModel)]="formulario.dni"
+                name="dni"
+                id="ingre_dni"/>
             <label for="reg_dni">DNI</label>
           </div>
 
           <div class="input-field">
-            <input id="reg_contra" type="password" class="validate" />
+            <input  type="password" class="validate" 
+            [(ngModel)]="formulario.clave"
+            name="clave"
+            id="ingre_clave"
+            class="validate"/>
             <label for="reg_contra">Contraseña</label>
             <span
               class="helper-text"
@@ -47,6 +73,7 @@
           >
             Continuar
           </button>
+          <app-spinner *ngIf="estado == Estados.CARGANDO"></app-spinner>
         </div>
         <div [hidden]="parteRegistro !== 2">
           <div>
@@ -59,10 +86,18 @@
               <span class="card-title">Registro</span>
             </div>
           </div>
-          <div>
-            <input name="group1" type="radio" />
+          <div class="input-field">
+            <input  type="radio" 
+            [(ngModel)]="formulario.sexo"
+              name="sexo"
+              id="ingre_sexo"
+              class="validate"/>
             <span>Masculino</span>
-            <input name="group1" type="radio" />
+            <input type="radio" 
+            [(ngModel)]="formulario.sexo"
+              name="sexo"
+              id="ingre_sexo"
+              class="validate"/>
             <span>Femenino</span>
           </div>
 
@@ -70,9 +105,9 @@
             <div class="col s12">
               <h6 class="left-align">Seleccione:</h6>
 
-              <div class="row">
+              <div >
                 <div class="col s6">
-                  <a>
+                  <a (click)="selecionarRol('Alumno')" >
                     <div
                       class="selector card valign-wrapper app-centrar-contenido"
                       style="height: 20vh; display: grid"
@@ -83,7 +118,7 @@
                   </a>
                 </div>
                 <div class="col s6">
-                  <a href="">
+                  <a href="" (click)="selecionarRol('Especialista')">
                     <div
                       class="selector card valign-wrapper app-centrar-contenido"
                       style="height: 20vh; display: grid"
@@ -98,7 +133,12 @@
               </div>
 
               <div class="input-field">
-                <input id="cmp" type="text" class="validate" />
+                <input id="cmp"
+                [(ngModel)]="formulario.codigo"
+                name="codigo"
+                id="ingre_codigo"
+                type="number"
+                class="validate"/>
                 <label for="cmp">CMP</label>
               </div>
 
