@@ -1,11 +1,13 @@
 <div [id]="modalId" class="modal modal-max">
   <div class="modal-content">
     <h5>Datos actuales</h5>
-    <form>
+    <form (ngSubmit)="registrarDatosActuales($event)">
       <div class="row">
         <div class="col s12 m6">
           <div class="input-field">
             <input
+              [(ngModel)]="formulario.estatura"
+              name="estatura"
               id="{{ modalId + '-estatura' }}"
               type="number"
               class="validate"
@@ -16,6 +18,8 @@
 
           <div class="input-field">
             <input
+              [(ngModel)]="formulario.contornoCintura"
+              name="contorno-cintura"
               id="{{ modalId + '-contorno-cintura' }}"
               type="number"
               class="validate"
@@ -28,6 +32,8 @@
 
           <div class="input-field">
             <input
+              [(ngModel)]="formulario.actividadFisica"
+              name="actividad-fisica"
               id="{{ modalId + '-actividad-fisica' }}"
               type="number"
               class="validate"
@@ -39,10 +45,17 @@
           </div>
 
           <div class="input-field">
-            <select id="{{ modalId + '-nivel-estres' }}">
-              <option value="1">Leve</option>
-              <option value="2">Moderado</option>
-              <option value="3">Severo</option>
+            <select
+              [(ngModel)]="formulario.nivelEstres"
+              name="nivel-estres"
+              id="{{ modalId + '-nivel-estres' }}"
+            >
+              <option
+                *ngFor="let nivelEstres of comboNivelEstres"
+                [value]="nivelEstres.valor"
+              >
+                {{ nivelEstres.nombre }}
+              </option>
             </select>
             <label for="{{ modalId + '-nivel-estres' }}">Nivel de estrés</label>
           </div>
@@ -51,6 +64,8 @@
         <div class="col s12 m6">
           <div class="input-field">
             <input
+              [(ngModel)]="formulario.peso"
+              name="peso"
               id="{{ modalId + '-peso' }}"
               type="number"
               class="validate"
@@ -61,6 +76,8 @@
 
           <div class="input-field">
             <input
+              [(ngModel)]="formulario.contornoCadera"
+              name="contorno-cadera"
               id="{{ modalId + '-contorno-cadera' }}"
               type="number"
               class="validate"
@@ -73,6 +90,8 @@
 
           <div *ngIf="inicial" class="input-field">
             <input
+              [(ngModel)]="formulario.fechaNacimiento"
+              name="fecha-nacimiento"
               id="{{ modalId + '-fecha-nacimiento' }}"
               type="date"
               class="validate"
@@ -87,6 +106,7 @@
               [(ngModel)]="formulario.rendimientoAcademico"
               name="rendimientoAcademico"
               id="{{ modalId + '-rendimiento-academico' }}"
+              #selectRendimiento
             >
               <option
                 *ngFor="let rendAcademico of comboRendimientoAcademico"
@@ -103,17 +123,14 @@
       </div>
       <div class="row center-align">
         <div class="col s12 m6">
-          <button
-            type="submit"
-            class="waves-effect waves-light btn-small amber darken-3"
-          >
+          <button class="waves-effect waves-light btn-small amber darken-3">
             Guardar
           </button>
         </div>
         <div class="col s12 m6">
           <button
             type="button"
-            class="waves-effect waves-light btn-small red darken-3"
+            class="modal-close waves-effect waves-light btn-small red darken-3"
           >
             Cancelar
           </button>
