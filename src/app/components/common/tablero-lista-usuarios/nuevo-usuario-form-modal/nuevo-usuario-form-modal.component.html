@@ -1,0 +1,154 @@
+<div [id]="modalId" class="modal modal-max">
+  <div class="modal-content">
+    <h5>Nuevo Usuario</h5>
+    <form (ngSubmit)="registrarUsuario($event)">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.nombres"
+              name="nombres"
+              id="nuevo-usuario-form-modal-nombres"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-usuario-form-modal-nombrese">Nombres</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.apePaterno"
+              name="ape-paterno"
+              id="nuevo-usuario-form-modal-ape-paterno"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-usuario-form-modal-ape-paterno"
+              >Apellido Paterno</label
+            >
+          </div>
+
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.apeMaterno"
+              name="ape-materno"
+              id="nuevo-usuario-form-modal-ape-materno"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-usuario-form-modal-ape-materno"
+              >Apellido Materno</label
+            >
+          </div>
+
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.correoElectronico"
+              name="correo-electronico"
+              id="nuevo-usuario-form-modal-correo-electronico"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-usuario-form-modal-correo-electronico"
+              >Correo electrónico</label
+            >
+          </div>
+
+          <div>
+            <label>
+              <input
+                [(ngModel)]="formulario.sexo"
+                name="nuevo-usuario-form-modal-sexo"
+                type="radio"
+                value="M"
+              />
+              <span>Masculino</span>
+            </label>
+
+            <label>
+              <input
+                [(ngModel)]="formulario.sexo"
+                name="nuevo-usuario-form-modal-sexo"
+                type="radio"
+                value="F"
+                checked
+              />
+              <span>Femenino</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.dni"
+              name="dni"
+              id="nuevo-usuario-form-modal-dni"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-usuario-form-modal-dni">DNI</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.clave"
+              name="clave"
+              id="nuevo-usuario-form-modal-clave"
+              type="password"
+              class="validate"
+            />
+            <label for="nuevo-usuario-form-modal-clave">Clave</label>
+          </div>
+
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.fechaNacimiento"
+              name="decha-nacimiento"
+              id="nuevo-usuario-form-modal-fecha-nacimiento"
+              type="date"
+              class="validate"
+            />
+            <label for="nuevo-usuario-form-modal-fecha-nacimiento">
+              Fecha Nacimiento
+            </label>
+          </div>
+
+          <div class="input-field" style="margin-bottom: 21px">
+            <select [(ngModel)]="formulario.rol" name="rol">
+              <option value="ADMINISTRADOR" selected>Administrador</option>
+              <option value="MEDICO">Médico</option>
+              <option value="ALUMNO">Alumno</option>
+            </select>
+            <label> Rol </label>
+          </div>
+
+          <div *ngIf="formulario.rol !== 'ADMINISTRADOR'" class="input-field">
+            <input
+              [(ngModel)]="formulario.codigo"
+              name="codigo"
+              id="nuevo-usuario-form-modal-codigo"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-usuario-form-modal-codigo">Código</label>
+          </div>
+        </div>
+      </div>
+      <div class="right-align">
+        <button
+          type="submit"
+          class="waves-effect waves-light btn-small amber darken-3"
+        >
+          Crear
+        </button>
+        <button
+          type="button"
+          class="waves-effect waves-light btn-small red darken-3"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

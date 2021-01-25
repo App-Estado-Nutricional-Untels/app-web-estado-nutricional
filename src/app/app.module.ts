@@ -25,7 +25,7 @@ import { IccAlumnoCardComponent } from './components/view/principal/components/a
 import { DatosActualesAlumnoFormModalComponent } from './components/view/principal/components/alumno/datos-actuales/datos-actuales-alumno-form-modal/datos-actuales-alumno-form-modal.component';
 import { DatosPersonalesFormModalComponent } from './components/common/datos-personales-form-modal/datos-personales-form-modal.component';
 import { MenuLateralComponent } from './components/layout/menu-lateral/menu-lateral.component';
-import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
+import { ListaUsuariosComponent } from './components/common/tablero-lista-usuarios/lista-usuarios/lista-usuarios.component';
 import { ListaAlumnosComponent } from './components/common/tablero-lista-alumnos/lista-alumnos/lista-alumnos.component';
 import { FiltroListaAlumnosCardComponent } from './components/common/tablero-lista-alumnos/filtro-lista-alumnos-card/filtro-lista-alumnos-card.component';
 import { NuevoAlumnoFormModalComponent } from './components/common/tablero-lista-alumnos/nuevo-alumno-form-modal/nuevo-alumno-form-modal.component';
@@ -44,6 +44,8 @@ import { SugerenciaModalComponent } from './components/common/sugerencia-modal/s
 import { InformeImcGrupalPorcentajeGeneroAlumnosCardComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-porcentaje-genero-alumnos-card/informe-imc-grupal-porcentaje-genero-alumnos-card.component';
 import { InformeImcGrupalPorcentajeRendimientoAcademicoCardComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-porcentaje-rendimiento-academico-card/informe-imc-grupal-porcentaje-rendimiento-academico-card.component';
 import { InformeImcGrupalPorcentajeNivelEstresCardComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-porcentaje-nivel-estres-card/informe-imc-grupal-porcentaje-nivel-estres-card.component';
+import { FiltroListaUsuariosCardComponent } from './components/common/tablero-lista-usuarios/filtro-lista-usuarios-card/filtro-lista-usuarios-card.component';
+import { NuevoUsuarioFormModalComponent } from './components/common/tablero-lista-usuarios/nuevo-usuario-form-modal/nuevo-usuario-form-modal.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { InformeImcGrupalPorcentajeNivelEstresCardComponent } from './components
     InformeImcGrupalPorcentajeGeneroAlumnosCardComponent,
     InformeImcGrupalPorcentajeRendimientoAcademicoCardComponent,
     InformeImcGrupalPorcentajeNivelEstresCardComponent,
+    FiltroListaUsuariosCardComponent,
+    NuevoUsuarioFormModalComponent,
   ],
   imports: [
     BrowserModule,

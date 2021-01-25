@@ -1,7 +1,7 @@
 export interface RegistroUsuarioBody {
     nombres: string;
-    apellidoPaterno: string;
-    apellidoMaterno: string;
+    apePaterno: string;
+    apeMaterno: string;
     correoElectronico: string;
     dni: string;
     sexo: string;
