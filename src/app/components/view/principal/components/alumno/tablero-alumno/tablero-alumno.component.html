@@ -4,7 +4,9 @@
       [idPersona]="personaAutenticada?.id"
     ></app-estado-actual-alumno-card>
     <app-datos-actuales-alumno-card></app-datos-actuales-alumno-card>
-    <app-historial-datos-alumno-card></app-historial-datos-alumno-card>
+    <app-historial-datos-alumno-card
+      [idPersona]="personaAutenticada?.id"
+    ></app-historial-datos-alumno-card>
   </div>
   <div class="col s12 m6">
     <app-imc-alumno-card

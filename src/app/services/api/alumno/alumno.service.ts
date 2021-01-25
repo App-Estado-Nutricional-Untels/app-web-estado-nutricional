@@ -21,7 +21,7 @@ export class AlumnoService {
     private _appUsuarioService: AppUsuarioService
   ) {}
 
-  obtenerListadoAlumnos(param: ListadoAlumnosParam): Observable<ApiResponse<Alumno>> {
+  obtenerListadoAlumnos(param: ListadoAlumnosParam): Observable<ApiResponse<Alumno[]>> {
     const url = `${environment.baseUri}${ApiPaths.obtenerListadoAlumnos}`;
     const token = this._appUsuarioService.obtenerToken();
     const tipoToken = this._appUsuarioService.obtenerTipoToken();
@@ -29,7 +29,7 @@ export class AlumnoService {
     const headers = HeaderFactory.build(token, tipoToken);
     const params = ParamFactory.build<ListadoAlumnosParam>(param);
 
-    return this._http.get<ApiResponse<Alumno>>(url, {
+    return this._http.get<ApiResponse<Alumno[]>>(url, {
       headers: headers,
       params: params
     });

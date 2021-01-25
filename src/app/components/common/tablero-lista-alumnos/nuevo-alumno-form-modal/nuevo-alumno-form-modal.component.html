@@ -1,79 +1,131 @@
-<div [id]="modalId" class="modal">
+<div [id]="modalId" class="modal modal-max">
   <div class="modal-content">
-    <div class="row">
-      <h4>Nuevo Alumno</h4>
-      <div class="col s6">
-        <div class="input-field">
-          <input id="m_nal_first_name" type="text" class="validate" />
-          <label for="m_nal_first_name">Nombres</label>
-        </div>
-
-        <div class="input-field">
-          <input id="m_nal_ap_pat" type="text" class="validate" />
-          <label for="m_nal_ap_pat">Apellido Paterno</label>
-        </div>
-
-        <div class="input-field">
-          <input id="m_nal_ap_mat" type="text" class="validate" />
-          <label for="m_nal_ap_mat">Apellido Materno</label>
-        </div>
-
-        <div class="input-field">
-          <input id="m_nal_correo" type="text" class="validate" />
-          <label for="m_nal_correo">Correo electrónico</label>
-        </div>
-      </div>
-
-      <div class="col s6">
-        <div class="app-altura">
-          <div class="col s6">
-            <p class="left-align app-pos-relativa app-top-27">Género</p>
+    <h5>Nuevo Alumno</h5>
+    <form (ngSubmit)="registrarAlumno($event)">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.nombres"
+              name="nombres"
+              id="nuevo-alumno-form-modal-nombres"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-alumno-form-modal-nombrese">Nombres</label>
           </div>
 
-          <div
-            class="col s6 app-aliner-texto-final app-pos-relativa app-top-33"
-          >
-            <i
-              class="fas fa-male selector-icono tamaño-icono-24 app-pos-relativa app-mover-derecha-25"
-            ></i>
-            <i class="fas fa-female selector-icono tamaño-icono-24"></i>
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.apePaterno"
+              name="ape-paterno"
+              id="nuevo-alumno-form-modal-ape-paterno"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-alumno-form-modal-ape-paterno"
+              >Apellido Paterno</label
+            >
+          </div>
+
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.apeMaterno"
+              name="ape-materno"
+              id="nuevo-alumno-form-modal-ape-materno"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-alumno-form-modal-ape-materno"
+              >Apellido Materno</label
+            >
+          </div>
+
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.correoElectronico"
+              name="correo-electronico"
+              id="nuevo-alumno-form-modal-correo-electronico"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-alumno-form-modal-correo-electronico"
+              >Correo electrónico</label
+            >
           </div>
         </div>
 
-        <div class="input-field">
-          <input id="m_nal_dni" type="text" class="validate" />
-          <label for="m_nal_dni">DNI</label>
-        </div>
+        <div class="col s12 m6">
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.dni"
+              name="dni"
+              id="nuevo-alumno-form-modal-dni"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-alumno-form-modal-dni">DNI</label>
+          </div>
 
-        <div class="input-field">
-          <input id="m_nal_fech_nac" type="text" class="validate datepicker" />
-          <label for="m_nal_fech_nac">Fecha Nacimiento</label>
-        </div>
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.clave"
+              name="clave"
+              id="nuevo-alumno-form-modal-clave"
+              type="password"
+              class="validate"
+            />
+            <label for="nuevo-alumno-form-modal-clave">Clave</label>
+          </div>
 
-        <div class="input-field">
-          <input id="m_nal_codigo" type="text" class="validate" />
-          <label for="m_nal_codigo">Cód. Universitario</label>
-        </div>
-      </div>
-      <div class="app-mg-ver-30">
-        <div class="row">
-          <div class="col m12 s12">
-            <div class="col m6 s12 app-alinear-texto app-mg-ver-10">
-              <a
-                href="#modal-alumno-creado"
-                class="waves-effect waves-light btn-small amber darken-3 app-ancho-50 modal-trigger"
-                >Crear</a
-              >
-            </div>
-            <div class="col m6 s12 app-alinear-texto app-mg-ver-10">
-              <a
-                class="waves-effect waves-light btn-small amber darken-3 app-ancho-50"
-                >Cancelar</a
-              >
-            </div>
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.codigo"
+              name="codigo-universitario"
+              id="nuevo-alumno-form-modal-codigo-universitario"
+              type="text"
+              class="validate"
+            />
+            <label for="nuevo-alumno-form-modal-codigo-universitario"
+              >Cód. Universitario</label
+            >
+          </div>
+
+          <div>
+            <label>
+              <input
+                [(ngModel)]="formulario.sexo"
+                name="nuevo-alumno-form-modal-sexo"
+                type="radio"
+                value="M"
+              />
+              <span>Masculino</span>
+            </label>
+
+            <label>
+              <input
+                [(ngModel)]="formulario.sexo"
+                name="nuevo-alumno-form-modal-sexo"
+                type="radio"
+                value="F"
+                checked
+              />
+              <span>Femenino</span>
+            </label>
           </div>
         </div>
       </div>
-    </div>
+      <div class="right-align">
+        <button
+          type="submit"
+          class="waves-effect waves-light btn-small amber darken-3"
+        >
+          Crear
+        </button>
+        <button class="waves-effect waves-light btn-small red darken-3">
+          Cancelar
+        </button>
+      </div>
+    </form>
   </div>
 </div>

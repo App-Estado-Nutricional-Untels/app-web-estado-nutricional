@@ -243,3 +243,10 @@
   box-sizing: border-box;
   padding: 2px 4px;
 }
+
+/* Dropdown */
+.app-dropdown-content {
+  padding: 15px;
+  -webkit-box-shadow: 4px 3px 15px -7px rgba(0, 0, 0, 0.76);
+  box-shadow: 4px 3px 15px -7px rgba(0, 0, 0, 0.76);
+}

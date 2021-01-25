@@ -3,69 +3,112 @@
     <div class="left-align">
       <h6>Filtros</h6>
     </div>
-    <div class="row">
-      <div class="col s6 l3">
-        <div class="input-field">
-          <input id="first_name" type="text" class="validate" />
-          <label for="first_name">Nombres</label>
-        </div>
-      </div>
-
-      <div class="col s6 l3">
-        <div class="input-field">
-          <input id="ap_pat" type="text" class="validate" />
-          <label for="ap_pat">Apellido Paterno</label>
-        </div>
-      </div>
-
-      <div class="col s6 l3">
-        <div class="input-field">
-          <input id="ap_mat" type="text" class="validate" />
-          <label for="ap_mat">Apellido Materno</label>
-        </div>
-      </div>
-
-      <div class="col s6 l3">
-        <div class="input-field">
-          <input id="dni" type="text" class="validate" />
-          <label for="dni">DNI</label>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12 m12 l3">
-        <div class="col l6 s6">
+    <form (ngSubmit)="enviarFiltros($event)">
+      <div class="row app-mg-abajo-0">
+        <div class="col s12 m3">
           <div class="input-field">
-            <input id="edad_min" type="text" class="validate" />
-            <label for="edad_min">Edad Mínima</label>
+            <input
+              [(ngModel)]="formulario.nombres"
+              name="nombres"
+              id="filtro-lista-alumnos-card-nombres"
+              type="text"
+            />
+            <label for="filtro-lista-alumnos-card-nombres"> Nombres </label>
           </div>
         </div>
 
-        <div class="col l6 s6">
+        <div class="col s12 m3">
           <div class="input-field">
-            <input id="edad_max" type="text" class="validate" />
-            <label for="edad_max">Edad Máxima</label>
+            <input
+              [(ngModel)]="formulario.apePaterno"
+              name="ape-paterno"
+              id="filtro-lista-alumnos-card-ape-paterno"
+              type="text"
+            />
+            <label for="filtro-lista-alumnos-card-ape-paterno">
+              Apellido Paterno
+            </label>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.apeMaterno"
+              name="ape-materno"
+              id="filtro-lista-alumnos-card-ape-materno"
+              type="text"
+            />
+            <label for="filtro-lista-alumnos-card-ape-materno">
+              Apellido Materno
+            </label>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.dni"
+              name="dni"
+              id="filtro-lista-alumnos-card-dni"
+              type="text"
+            />
+            <label for="filtro-lista-alumnos-card-dni"> DNI </label>
           </div>
         </div>
       </div>
 
-      <div class="col s6 m6 l3">
-        <div class="input-field">
-          <input id="cod_univ" type="text" class="validate" />
-          <label for="cod_univ">Codigo Universitario</label>
+      <div class="row app-mg-abajo-0">
+        <div class="col s12 m3 row app-mg-abajo-0">
+          <div class="col s6">
+            <div class="input-field">
+              <input
+                [(ngModel)]="formulario.edadMin"
+                name="edad-min"
+                id="filtro-lista-alumnos-edad-min"
+                type="number"
+              />
+              <label for="filtro-lista-alumnos-edad-min">Edad Mínima</label>
+            </div>
+          </div>
+          <div class="col s6">
+            <div class="input-field">
+              <input
+                [(ngModel)]="formulario.edadMax"
+                name="edad-max"
+                id="filtro-lista-alumnos-edad-max"
+                type="number"
+              />
+              <label for="filtro-lista-alumnos-edad-max">Edad Máxima</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.codigoUniversitario"
+              name="codigo-universitario"
+              id="filtro-lista-alumnos-codigo-universitario"
+              type="text"
+            />
+            <label for="filtro-lista-alumnos-codigo-universitario">
+              Codigo Universitario
+            </label>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col s3" style="float: right">
-        <a
-          class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p"
-        >
-          Filtrar
-        </a>
+      <div class="row app-mg-abajo-0">
+        <div class="col s12 m3 offset-m9">
+          <button
+            type="submit"
+            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p"
+          >
+            Filtrar
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>

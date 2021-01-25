@@ -5,7 +5,9 @@ export class ParamFactory {
         let params = new HttpParams();
 
         Object.entries(data).forEach(item => {
-            params = params.append(item[0], item[1]);
+            if (item[1]) {
+                params = params.append(item[0], item[1]);
+            }
         });
         return params;
     }

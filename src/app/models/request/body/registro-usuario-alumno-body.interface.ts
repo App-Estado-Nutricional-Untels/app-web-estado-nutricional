@@ -1,10 +1,10 @@
 export interface RegistroUsuarioAlumnoBody {
     nombres: string;
-    apellidoPaterno: string;
-    apellidoMaterno: string;
+    apePaterno: string;
+    apeMaterno: string;
     correoElectronico: string;
     dni: string;
     sexo: string;
-    codigoUniversitario: string;
+    codigo: string;
     clave: string;
 }

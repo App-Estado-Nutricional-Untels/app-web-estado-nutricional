@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DatoAntropometrico } from 'src/app/models/dato-antropomentrico.interface';
 import { DatosAntropometricosService } from 'src/app/services/api/datos-antropometricos/datos-antropometricos.service';
 
@@ -16,6 +16,9 @@ enum HistorialDatosAlumnoCardEstados {
   styleUrls: ['./historial-datos-alumno-card.component.css']
 })
 export class HistorialDatosAlumnoCardComponent implements OnInit {
+
+  @Input()
+  idPersona!: number;
 
   public Estados = HistorialDatosAlumnoCardEstados;
 
@@ -35,7 +38,7 @@ export class HistorialDatosAlumnoCardComponent implements OnInit {
   ngOnInit(): void {
     this.estado = HistorialDatosAlumnoCardEstados.CARGANDO;
     this._historialDatosAntropometricos
-      .obtenerHistorialDatosAntropometricosPorIdPersona(6)
+      .obtenerHistorialDatosAntropometricosPorIdPersona(this.idPersona)
       .subscribe(
         (resp) => {
           this.datosAntropometricos = resp.datos;
