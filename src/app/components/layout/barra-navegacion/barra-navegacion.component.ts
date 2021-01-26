@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MaterializeAction } from 'angular2-materialize';
 import { Persona } from 'src/app/models/persona.interface';
 import { AppUsuarioService } from 'src/app/services/data/app-usuario.service';
-
-declare const M: any;
 
 @Component({
   selector: 'app-barra-navegacion',
@@ -14,6 +13,8 @@ export class BarraNavegacionComponent implements OnInit {
 
   persona: Persona | null;
 
+  datosPersonalesFormModalActions = new EventEmitter<string|MaterializeAction>();
+  
   constructor(
     private _appUsuarioService: AppUsuarioService,
     private _router: Router
@@ -30,16 +31,20 @@ export class BarraNavegacionComponent implements OnInit {
     this._router.navigate(["/principal"]);
   }
 
-  get noEsAlumno(): boolean {
+  get esAlumno(): boolean {
     return this._appUsuarioService.obtenerRolNombre() === "ROLE_ALUMNO";
   }
+
+  abrirDatosPersonalesFormModal(): void {
+    this.datosPersonalesFormModalActions.emit({action:"modal",params:['open']});
+  }
+
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-    M.AutoInit();
-    M.updateTextFields();
+
   }
 
 }

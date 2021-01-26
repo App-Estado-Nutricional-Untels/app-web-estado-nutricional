@@ -2,11 +2,13 @@ import { Component, Input, OnInit,SimpleChanges } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
 import { ReporteRendimientoAcademico } from 'src/app/models/reporte-imc/reporte-rendimiento-academico.interface';
+
 enum InformeImcGrupalPorcentajeRendimientoAcademicoCardEstados {
   VACIO,
   CARGANDO,
   CON_DATOS
 }
+
 @Component({
   selector: 'app-informe-imc-grupal-porcentaje-rendimiento-academico-card',
   templateUrl: './informe-imc-grupal-porcentaje-rendimiento-academico-card.component.html',
@@ -49,12 +51,14 @@ export class InformeImcGrupalPorcentajeRendimientoAcademicoCardComponent impleme
   ngOnChanges(changes: SimpleChanges): void {
     this.estado = InformeImcGrupalPorcentajeRendimientoAcademicoCardEstados.CARGANDO;
     if (this.reporteRendimientoAcademico) {
-      this.pieChartData.push(this.reporteRendimientoAcademico.Bueno.porcentaje);
-      this.pieChartData.push(this.reporteRendimientoAcademico.Excelente.porcentaje);
-      this.pieChartData.push(this.reporteRendimientoAcademico.Malo.porcentaje);
-      this.pieChartData.push(this.reporteRendimientoAcademico.Normal.porcentaje);
-      this.pieChartData.push(this.reporteRendimientoAcademico.Pesimo.porcentaje);
+      this.pieChartData = [];
+      this.pieChartData.push(this.reporteRendimientoAcademico.Bueno.totalAlumnos);
+      this.pieChartData.push(this.reporteRendimientoAcademico.Excelente.totalAlumnos);
+      this.pieChartData.push(this.reporteRendimientoAcademico.Malo.totalAlumnos);
+      this.pieChartData.push(this.reporteRendimientoAcademico.Normal.totalAlumnos);
+      this.pieChartData.push(this.reporteRendimientoAcademico.Pesimo.totalAlumnos);
 
+      this.pieChartLabels = [];
       this.pieChartLabels.push('Bueno');
       this.pieChartLabels.push('Excelente');
       this.pieChartLabels.push('Malo');
@@ -63,7 +67,6 @@ export class InformeImcGrupalPorcentajeRendimientoAcademicoCardComponent impleme
 
       this.estado = InformeImcGrupalPorcentajeRendimientoAcademicoCardEstados.CON_DATOS;
 
-      console.log('aja');
     } else {
       this.estado = InformeImcGrupalPorcentajeRendimientoAcademicoCardEstados.VACIO;
     }

@@ -8,8 +8,6 @@ enum RegistroEstado {
   CARGANDO
 }
 
-declare const M: any;
-
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -53,10 +51,5 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log()
-  }
-
-  ngAfterViewInit(): void {
-    M.AutoInit();
   }
 }

@@ -8,7 +8,7 @@
       <p class="app-mg-arr-0">No se encontraron datos</p>
       <button
         data-target="datos-actuales-alumno-actualizar-datos-modal"
-        class="waves-effect waves-light btn-small amber darken-3 modal-trigger"
+        class="waves-effect waves-light btn btn-small amber darken-3 modal-trigger"
       >
         Ingresar mis datos
       </button>
@@ -44,21 +44,23 @@
       </div>
 
       <div class="col s12 l6">
-        <a
-          href="#datos-actuales-alumno-modal"
-          class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p app-mg-ver-5 modal-trigger"
-          >Detalles</a
+        <button
+          (click)="abrirDatosAntropometricosAlumnoDetallesModal()"
+          class="waves-effect waves-light btn amber darken-3 app-ancho-100p app-mg-ver-5"
         >
-        <a
-          *ngIf="datosActuales?.recomendacion"
-          href="#datos-actuales-alumno-sugerencias-modal"
-          class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p app-mg-ver-5 modal-trigger"
-          >Sugerencias del especialista</a
+          Detalles
+        </button>
+        <button
+          *ngIf="!datosActuales?.recomendacion"
+          class="waves-effect waves-light btn amber darken-3 app-ancho-100p app-mg-ver-5"
+          (click)="abrirSugerenciaModal()"
         >
+          Sugerencias del especialista
+        </button>
         <!-- TODO: No mostrar si no es la primera semana de cada mes (consultar a api) -->
         <a
           href="#datos-actuales-alumno-actualizar-datos-modal"
-          class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p app-mg-ver-5 modal-trigger"
+          class="waves-effect waves-light btn amber darken-3 app-ancho-100p app-mg-ver-5 modal-trigger"
           >Actualizar</a
         >
       </div>
@@ -71,11 +73,13 @@
 
 <app-datos-antropometricos-alumno-detalles-modal
   [modalId]="'datos-actuales-alumno-modal'"
+  [modalActions]="datosAntropometricosAlumnoDetallesModalActions"
   [datoAntropometrico]="datosActuales"
 ></app-datos-antropometricos-alumno-detalles-modal>
 
 <app-sugerencia-modal
   [modalId]="'datos-actuales-alumno-sugerencias-modal'"
+  [modalActions]="sugerenciaModalActions"
   [sugerencia]="datosActuales?.recomendacion?.mensaje"
 >
 </app-sugerencia-modal>

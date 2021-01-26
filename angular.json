@@ -36,6 +36,8 @@
               "node_modules/angular-dropdown/styles.scss"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/hammerjs/hammer.js",
               "node_modules/materialize-css/dist/js/materialize.min.js",
               "node_modules/@fortawesome/fontawesome-free/js/all.min.js"
             ],

@@ -5,76 +5,92 @@
         <div [hidden]="parteRegistro !== 1">
           <span class="card-title">Nombre App</span>
 
-          <div class="input-field"
-          >
-            <input  [(ngModel)]="formulario.nombres"
-            name="nombre"
-            id="ingre_nombres"
-            type="text"
-            class="validate"/>
-            <label for="reg_nombres">Nombres</label>
-          </div>
-
           <div class="input-field">
-            <input id="reg_ap_pat"  
+            <input
+              [(ngModel)]="formulario.nombres"
+              name="nombre"
+              id="ingre_nombres"
+              type="text"
+              class="validate"
+            />
+            <label for="ingre_nombres">Nombres</label>
+          </div>
+        </div>
+
+        <div class="input-field">
+          <input
+            id="reg_ap_pat"
             [(ngModel)]="formulario.apePaterno"
-                name="apePaterno"
-                id="ingre_apePaterno"
-                type="text"
-                class="validate"/>
-            <label for="reg_ap_pat">Apellido Paterno</label>
-          </div>
+            name="apePaterno"
+            id="ingre_apePaterno"
+            type="text"
+            class="validate"
+          />
+          <label for="reg_ap_pat">Apellido Paterno</label>
+        </div>
 
-          <div class="input-field">
-            <input id="reg_ap_mat" 
+        <div class="input-field">
+          <input
+            id="reg_ap_mat"
             [(ngModel)]="formulario.apeMaterno"
             name="apeMaterno"
             id="ingre_apeMaterno"
             type="text"
-            class="validate"/>
-            <label for="reg_ap_mat">Apellido Materno</label>
-          </div>
+            class="validate"
+          />
+          <label for="reg_ap_mat">Apellido Materno</label>
+        </div>
 
-          <div class="input-field">
-            <input id="reg_correo" type="email" class="validate" 
+        <div class="input-field">
+          <input
+            id="reg_correo"
+            type="email"
+            class="validate"
             [(ngModel)]="formulario.correoElectronico"
-                name="correoElectronico"
-                id="ingre_correoElectronico"
-                />
-            <label for="reg_correo">Correo electrónico</label>
-          </div>
+            name="correoElectronico"
+            id="ingre_correoElectronico"
+          />
+          <label for="reg_correo">Correo electrónico</label>
+        </div>
 
-          <div class="input-field">
-            <input i type="number" class="validate" 
+        <div class="input-field">
+          <input
+            i
+            type="number"
+            class="validate"
             [(ngModel)]="formulario.dni"
-                name="dni"
-                id="ingre_dni"/>
-            <label for="reg_dni">DNI</label>
-          </div>
+            name="dni"
+            id="ingre_dni"
+          />
+          <label for="reg_dni">DNI</label>
+        </div>
 
-          <div class="input-field">
-            <input  type="password" class="validate" 
+        <div class="input-field">
+          <input
+            type="password"
+            class="validate"
             [(ngModel)]="formulario.clave"
             name="clave"
             id="ingre_clave"
-            class="validate"/>
-            <label for="reg_contra">Contraseña</label>
-            <span
-              class="helper-text"
-              data-error="Ingrese un email válido"
-              data-success="right"
-            ></span>
-          </div>
-
-          <button
-            type="button"
-            (click)="siguienteParte(2)"
-            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p"
-          >
-            Continuar
-          </button>
-          <app-spinner *ngIf="estado == Estados.CARGANDO"></app-spinner>
+            class="validate"
+          />
+          <label for="reg_contra">Contraseña</label>
+          <span
+            class="helper-text"
+            data-error="Ingrese un email válido"
+            data-success="right"
+          ></span>
         </div>
+
+        <button
+          type="button"
+          (click)="siguienteParte(2)"
+          class="waves-effect waves-light btn btn-small amber darken-3 app-ancho-100p"
+        >
+          Continuar
+        </button>
+        <app-spinner *ngIf="estado == Estados.CARGANDO"></app-spinner>
+
         <div [hidden]="parteRegistro !== 2">
           <div>
             <div class="left-align">
@@ -87,17 +103,21 @@
             </div>
           </div>
           <div class="input-field">
-            <input  type="radio" 
-            [(ngModel)]="formulario.sexo"
+            <input
+              type="radio"
+              [(ngModel)]="formulario.sexo"
               name="sexo"
               id="ingre_sexo"
-              class="validate"/>
+              class="validate"
+            />
             <span>Masculino</span>
-            <input type="radio" 
-            [(ngModel)]="formulario.sexo"
+            <input
+              type="radio"
+              [(ngModel)]="formulario.sexo"
               name="sexo"
               id="ingre_sexo"
-              class="validate"/>
+              class="validate"
+            />
             <span>Femenino</span>
           </div>
 
@@ -105,9 +125,9 @@
             <div class="col s12">
               <h6 class="left-align">Seleccione:</h6>
 
-              <div >
+              <div>
                 <div class="col s6">
-                  <a (click)="selecionarRol('Alumno')" >
+                  <a (click)="selecionarRol('Alumno')">
                     <div
                       class="selector card valign-wrapper app-centrar-contenido"
                       style="height: 20vh; display: grid"
@@ -133,18 +153,20 @@
               </div>
 
               <div class="input-field">
-                <input id="cmp"
-                [(ngModel)]="formulario.codigo"
-                name="codigo"
-                id="ingre_codigo"
-                type="number"
-                class="validate"/>
+                <input
+                  id="cmp"
+                  [(ngModel)]="formulario.codigo"
+                  name="codigo"
+                  id="ingre_codigo"
+                  type="number"
+                  class="validate"
+                />
                 <label for="cmp">CMP</label>
               </div>
 
               <button
                 type="submit"
-                class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p btn"
+                class="waves-effect waves-light btn btn-small amber darken-3 app-ancho-100p btn"
               >
                 Finalizar Registro
               </button>
@@ -157,7 +179,7 @@
 
                   <div class="center-align">
                     <a
-                      class="waves-effect waves-light btn-small amber darken-3 app-ancho-50p"
+                      class="waves-effect waves-light btn btn-small amber darken-3 app-ancho-50p"
                       >Aceptar</a
                     >
                   </div>

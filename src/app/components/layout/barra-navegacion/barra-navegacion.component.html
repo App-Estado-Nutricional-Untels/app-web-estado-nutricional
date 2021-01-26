@@ -5,11 +5,12 @@
         <i class="fas fa-bars app-cursor app-top-17"></i>
       </a>-->
       <a
-        *ngIf="!noEsAlumno"
+        materialize="sideNav"
+        *ngIf="!esAlumno"
+        data-activates="app-menu"
+        [materializeParams]="[{ edge: 'left' }]"
+        class="button-collapse"
         href="#"
-        data-target="app-menu"
-        class="sidenav-trigger"
-        style="display: block"
         ><i class="material-icons">menu</i></a
       >
       <a href="javascript:void(0)" (click)="aPrincipal()">
@@ -17,16 +18,24 @@
       </a>
       <ul id="navbar-items" class="right">
         <li>
-          <a class="dropdown-trigger" data-target="dropdown-menu" href="#">
+          <a
+            materialize="dropdown"
+            class="dropdown-button"
+            href="#"
+            data-activates="persona"
+          >
             {{ persona?.nombre }}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
         </li>
       </ul>
 
-      <ul id="dropdown-menu" class="dropdown-content app-ancho-20p">
+      <ul id="persona" class="dropdown-content app-ancho-20p">
         <li>
-          <a href="#modal-datos-personales" class="modal-trigger">
+          <a
+            href="javascript:void(0)"
+            (click)="abrirDatosPersonalesFormModal()"
+          >
             Datos personales<i class="material-icons">person</i>
           </a>
         </li>
@@ -43,6 +52,7 @@
 
 <app-datos-personales-form-modal
   [modalId]="'modal-datos-personales'"
+  [modalActions]="datosPersonalesFormModalActions"
 ></app-datos-personales-form-modal>
 
 <app-menu-lateral [menuId]="'app-menu'"></app-menu-lateral>

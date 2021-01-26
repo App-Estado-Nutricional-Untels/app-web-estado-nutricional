@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 import { Alumno } from 'src/app/models/alumno.interface';
 import { ListadoAlumnosParam } from 'src/app/models/request/params/listado-alumnos-param.interface';
 import { AlumnoService } from 'src/app/services/api/alumno/alumno.service';
-
-declare const M:any;
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -14,12 +13,13 @@ export class ListaAlumnosComponent implements OnInit {
 
   listaAlumnos :Alumno[] = [];
 
+  nuevoAlumnoFormModalActions = new EventEmitter<string|MaterializeAction>();
+
   constructor(
     private _alumnoService: AlumnoService
   ) { }
 
   ngOnInit(): void { 
-    M.AutoInit();
   }
 
   filtrarAlumnos(datos: ListadoAlumnosParam): void {
@@ -34,5 +34,9 @@ export class ListaAlumnosComponent implements OnInit {
           console.warn(respError);
         }
       );
+  }
+
+  abrirNuevoAlumnoFormModal(): void {
+    this.nuevoAlumnoFormModalActions.emit({action:"modal",params:['open']});
   }
 }

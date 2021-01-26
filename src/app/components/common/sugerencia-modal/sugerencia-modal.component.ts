@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-sugerencia-modal',
@@ -9,6 +10,9 @@ export class SugerenciaModalComponent implements OnInit {
 
   @Input()
   modalId!: string;
+
+  @Input()
+  modalActions!: EventEmitter<string | MaterializeAction>;
 
   @Input() sugerencia: string | undefined;
   

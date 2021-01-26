@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 import { ReporteImc } from 'src/app/models/reporte-imc/reporte-imc.interface';
 
 @Component({
@@ -10,6 +11,10 @@ export class InformeImcGrupalModalComponent implements OnInit {
 
   @Input()
   modalId!: string;
+
+  @Input()
+  modalActions!: EventEmitter<string | MaterializeAction>;
+  
 
   @Input() reporteIMC: ReporteImc | undefined;
 

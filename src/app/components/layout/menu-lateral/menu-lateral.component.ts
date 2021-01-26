@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'app-menu-lateral',
@@ -10,6 +11,9 @@ export class MenuLateralComponent implements OnInit {
 
   @Input()
   menuId!: string;
+
+  @Input()
+  sideNavActions!: EventEmitter<any | MaterializeAction>;
 
   constructor(private _router: Router) { }
 

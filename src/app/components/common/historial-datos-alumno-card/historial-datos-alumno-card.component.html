@@ -31,12 +31,7 @@
             <td>{{ datoAntropometrico.valorICC }}</td>
             <td>{{ datoAntropometrico.fechaRegistro.split("T")[0] }}</td>
             <td>
-              <a
-                href="#historial-datos-alumno-modal"
-                class="modal-trigger"
-                (click)="abrirModal(i)"
-                >Ver más</a
-              >
+              <a href="javascript:void(0)" (click)="abrirModal(i)">Ver más</a>
             </td>
           </tr>
         </tbody>
@@ -49,5 +44,6 @@
 </div>
 <app-datos-antropometricos-alumno-detalles-modal
   [modalId]="'historial-datos-alumno-modal'"
+  [modalActions]="datosAntropometricosAlumnoDetallesModalActions"
   [datoAntropometrico]="datoAntropometricoSeleccionado"
 ></app-datos-antropometricos-alumno-detalles-modal>

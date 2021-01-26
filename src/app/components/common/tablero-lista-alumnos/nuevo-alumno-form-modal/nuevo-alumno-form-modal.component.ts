@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 import { ToastrService } from 'ngx-toastr';
 import { RegistroUsuarioAlumnoBody } from 'src/app/models/request/body/registro-usuario-alumno-body.interface';
 import { AlumnoService } from 'src/app/services/api/alumno/alumno.service';
@@ -14,6 +15,9 @@ export class NuevoAlumnoFormModalComponent implements OnInit {
 
   @Input()
   modalId!: string;
+
+  @Input()
+  modalActions!: EventEmitter<string | MaterializeAction>;
 
   formulario: RegistroUsuarioAlumnoBody = {
     nombres: '',
@@ -41,13 +45,7 @@ export class NuevoAlumnoFormModalComponent implements OnInit {
       .registroUsuarioAlumno(this.formulario)
       .subscribe(
         (resp) => {
-          this.formulario.nombres = '';
-          this.formulario.apePaterno = '';
-          this.formulario.apeMaterno = '';
-          this.formulario.clave = '';
-          this.formulario.codigo = '';
-          this.formulario.correoElectronico = '';
-          this.formulario.dni = '';
+          this.limpiarFormulario();
 
           this._toastrService.success(resp.mensaje);
         },
@@ -57,6 +55,21 @@ export class NuevoAlumnoFormModalComponent implements OnInit {
           this._toastrService.error(msg);
         }
       );
+  }
+
+  limpiarFormulario(): void {
+    this.formulario.nombres = '';
+    this.formulario.apePaterno = '';
+    this.formulario.apeMaterno = '';
+    this.formulario.clave = '';
+    this.formulario.codigo = '';
+    this.formulario.correoElectronico = '';
+    this.formulario.dni = '';
+  }
+
+  cerrarModal(): void {
+    this.limpiarFormulario();
+    this.modalActions.emit({action:"modal",params:['close']});
   }
 
 }

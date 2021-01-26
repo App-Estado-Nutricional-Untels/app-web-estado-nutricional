@@ -50,15 +50,16 @@ export class InformeImcGrupalPorcentajeNivelEstresCardComponent implements OnIni
   ngOnChanges(changes: SimpleChanges): void {
     this.estado = InformeImcGrupalPorcentajeNivelEstresCardEstados.CARGANDO;
     if (this.reporteEstres) {
-      this.pieChartData.push(this.reporteEstres.Severo.porcentaje);
-      this.pieChartData.push(this.reporteEstres.Moderado.porcentaje);
-      this.pieChartData.push(this.reporteEstres.Leve.porcentaje);
+      this.pieChartData = [];
+      this.pieChartData.push(this.reporteEstres.Severo.totalAlumnos);
+      this.pieChartData.push(this.reporteEstres.Moderado.totalAlumnos);
+      this.pieChartData.push(this.reporteEstres.Leve.totalAlumnos);
 
-      this.pieChartLabels.push('Severo');
-      this.pieChartLabels.push('Moderado');
-      this.pieChartLabels.push('Leve');
+      this.pieChartLabels = [];
+      this.pieChartLabels.push(`Severo (${this.reporteEstres.Severo.porcentaje * 10.0})%`);
+      this.pieChartLabels.push(`Moderado (${this.reporteEstres.Moderado.porcentaje * 10.0})%`);
+      this.pieChartLabels.push(`Leve (${this.reporteEstres.Leve.porcentaje * 10.0})%`);
       this.estado = InformeImcGrupalPorcentajeNivelEstresCardEstados.CON_DATOS;
-      console.log('aja');
     } else {
       this.estado = InformeImcGrupalPorcentajeNivelEstresCardEstados.VACIO;
     }

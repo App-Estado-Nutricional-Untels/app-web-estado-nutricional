@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 import { DatoAntropometrico } from 'src/app/models/dato-antropomentrico.interface';
 import { DatosAntropometricosService } from 'src/app/services/api/datos-antropometricos/datos-antropometricos.service';
-
-declare const M: any;
 
 enum HistorialDatosAlumnoCardEstados {
   VACIO,
@@ -27,12 +26,15 @@ export class HistorialDatosAlumnoCardComponent implements OnInit {
   datoAntropometricoSeleccionado: DatoAntropometrico | undefined;
   datosAntropometricos: DatoAntropometrico[] = [];
 
+  datosAntropometricosAlumnoDetallesModalActions = new EventEmitter<string|MaterializeAction>();
+
   constructor(
     private _historialDatosAntropometricos: DatosAntropometricosService
   ) { }
 
   abrirModal(indice: number): void {
     this.datoAntropometricoSeleccionado = this.datosAntropometricos[indice];
+    this.datosAntropometricosAlumnoDetallesModalActions.emit({action:"modal",params:['open']});
   }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 import { DatoAntropometrico } from 'src/app/models/dato-antropomentrico.interface';
 import { Persona } from 'src/app/models/persona.interface';
 import { DatosAntropometricosService } from 'src/app/services/api/datos-antropometricos/datos-antropometricos.service';
@@ -22,6 +23,9 @@ export class DatosActualesAlumnoCardComponent implements OnInit {
   public estado = DatosActualesAlumnoCardEstados.VACIO;
   public persona: Persona | null = null;
   public datosActuales: DatoAntropometrico | undefined;
+
+  datosAntropometricosAlumnoDetallesModalActions = new EventEmitter<string|MaterializeAction>();
+  sugerenciaModalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor(
     private _appUsuarioService: AppUsuarioService,
@@ -65,6 +69,14 @@ export class DatosActualesAlumnoCardComponent implements OnInit {
           }
         );
     }
+  }
+
+  abrirDatosAntropometricosAlumnoDetallesModal(): void {
+    this.datosAntropometricosAlumnoDetallesModalActions.emit({action:"modal",params:['open']});
+  }
+
+  abrirSugerenciaModal(): void {
+    this.sugerenciaModalActions.emit({action:"modal",params:['open']});
   }
 
 }

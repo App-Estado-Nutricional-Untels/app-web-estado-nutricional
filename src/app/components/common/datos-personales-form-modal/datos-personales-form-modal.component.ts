@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 import { ToastrService } from 'ngx-toastr';
 import { Persona } from 'src/app/models/persona.interface';
 import { ActualizarUsuarioBody } from 'src/app/models/request/body/actualizar-usuario-body.interface';
@@ -23,6 +24,9 @@ export class DatosPersonalesFormModalComponent implements OnInit {
 
   @Input()
   modalId!: string;
+
+  @Input()
+  modalActions!: EventEmitter<string | MaterializeAction>;
   
   constructor(
     private _appUsuarioService: AppUsuarioService,

@@ -1,7 +1,12 @@
-<div [id]="modalId" class="modal modal-max">
+<div
+  materialize="modal"
+  [id]="modalId"
+  class="modal modal-max"
+  [materializeActions]="modalActions"
+>
   <div class="modal-content">
     <h5>Nuevo Alumno</h5>
-    <form (ngSubmit)="registrarAlumno($event)">
+    <form materialize (ngSubmit)="registrarAlumno($event)">
       <div class="row">
         <div class="col s12 m6">
           <div class="input-field">
@@ -91,38 +96,44 @@
             >
           </div>
 
-          <div>
-            <label>
+          <div style="margin-top: 15px">
+            <span>
               <input
                 [(ngModel)]="formulario.sexo"
                 name="nuevo-alumno-form-modal-sexo"
+                id="nuevo-alumno-form-modal-sexo-1"
                 type="radio"
                 value="M"
               />
-              <span>Masculino</span>
-            </label>
+              <label for="nuevo-alumno-form-modal-sexo-1">Masculino</label>
+            </span>
 
-            <label>
+            <span>
               <input
                 [(ngModel)]="formulario.sexo"
                 name="nuevo-alumno-form-modal-sexo"
+                id="nuevo-alumno-form-modal-sexo-2"
                 type="radio"
                 value="F"
                 checked
               />
-              <span>Femenino</span>
-            </label>
+              <label for="nuevo-alumno-form-modal-sexo-2">Femenino</label>
+            </span>
           </div>
         </div>
       </div>
       <div class="right-align">
         <button
           type="submit"
-          class="waves-effect waves-light btn-small amber darken-3"
+          class="waves-effect waves-light btn amber darken-3"
         >
           Crear
         </button>
-        <button class="waves-effect waves-light btn-small red darken-3">
+        <button
+          type="button"
+          (click)="cerrarModal()"
+          class="waves-effect waves-light btn red darken-3"
+        >
           Cancelar
         </button>
       </div>

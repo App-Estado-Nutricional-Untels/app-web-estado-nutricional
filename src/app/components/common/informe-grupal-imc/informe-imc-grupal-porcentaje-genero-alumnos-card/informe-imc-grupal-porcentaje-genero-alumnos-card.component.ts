@@ -2,6 +2,7 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
 import { ReporteSexo } from 'src/app/models/reporte-imc/reporte-sexo.interface';
+import { PorcentajeUtils } from 'src/app/utils/porcentaje.util';
 
 enum InformeImcGrupalPorcentajeGeneroAlumnosCardEstados {
   VACIO,
@@ -48,14 +49,20 @@ export class InformeImcGrupalPorcentajeGeneroAlumnosCardComponent implements OnI
   ngOnChanges(changes: SimpleChanges): void {
     this.estado = InformeImcGrupalPorcentajeGeneroAlumnosCardEstados.CARGANDO;
     if (this.reporteSexo) {
-      this.pieChartData.push(this.reporteSexo.masculino.porcentaje);
-      this.pieChartData.push(this.reporteSexo.femenino.porcentaje);
+      this.pieChartData = [];
+      this.pieChartData.push(this.reporteSexo.masculino.totalAlumnos);
+      this.pieChartData.push(this.reporteSexo.femenino.totalAlumnos);
 
-      this.pieChartLabels.push('Masculino');
-      this.pieChartLabels.push('Femenino');
+      let sumaTotalAlumnos = 0;
+
+      sumaTotalAlumnos += this.reporteSexo.masculino.totalAlumnos;
+      sumaTotalAlumnos += this.reporteSexo.femenino.totalAlumnos;
+
+      
+      this.pieChartLabels = [];
+      this.pieChartLabels.push(`Masulino (${PorcentajeUtils.generarPorcentaje(this.reporteSexo.masculino.totalAlumnos, sumaTotalAlumnos)}%)`);
+      this.pieChartLabels.push(`Femenino (${PorcentajeUtils.generarPorcentaje(this.reporteSexo.femenino.totalAlumnos, sumaTotalAlumnos)}%)`);
       this.estado = InformeImcGrupalPorcentajeGeneroAlumnosCardEstados.CON_DATOS;
-
-      console.log('aja');
     } else {
       this.estado = InformeImcGrupalPorcentajeGeneroAlumnosCardEstados.VACIO;
     }

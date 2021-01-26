@@ -1,8 +1,7 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, SimpleChanges } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 import { DatoAntropometrico } from 'src/app/models/dato-antropomentrico.interface';
 import { StringUtils } from 'src/app/utils/string.util';
-
-declare const M: any;
 
 @Component({
   selector: 'app-datos-antropometricos-alumno-detalles-modal',
@@ -15,7 +14,12 @@ export class HistorialDatosAlumnoModalComponent implements OnInit {
   modalId!: string;
 
   @Input()
+  modalActions!: EventEmitter<string | MaterializeAction>;
+
+  @Input()
   datoAntropometrico: DatoAntropometrico | undefined;
+
+  sugerenciaModalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor() { }
 
@@ -50,12 +54,15 @@ export class HistorialDatosAlumnoModalComponent implements OnInit {
         this.datoAntropometrico?.rendimientoAcademico);
   }
 
+  abrirSugerenciaModal(): void {
+    this.sugerenciaModalActions.emit({action:"modal",params:['open'],});
+  }
+
   ngOnInit(): void {
-    M.updateTextFields();
+    console.log("init detalles");
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    M.updateTextFields();
     console.log('update');
   }
 

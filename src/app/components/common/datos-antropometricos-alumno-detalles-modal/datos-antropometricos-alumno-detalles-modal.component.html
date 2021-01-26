@@ -1,4 +1,9 @@
-<div id="{{ modalId }}" class="modal modal-max">
+<div
+  materialize="modal"
+  id="{{ modalId }}"
+  class="modal modal-max"
+  [materializeActions]="modalActions"
+>
   <div class="modal-content">
     <h5>Detalles de los datos antropométricos</h5>
 
@@ -64,18 +69,18 @@
       </table>
     </div>
     <div
-      *ngIf="datoAntropometrico?.recomendacion"
+      *ngIf="!datoAntropometrico?.recomendacion"
       class="center-align app-mg-ver-30"
     >
-      <a
-        href="#historial-datos-alumno-sugerencia-modal"
-        class="waves-effect waves-light btn-small amber darken-3 modal-trigger"
+      <button
+        (click)="abrirSugerenciaModal()"
+        class="waves-effect waves-light btn amber darken-3"
       >
         Sugerencia
-      </a>
+      </button>
     </div>
     <div class="app-alinear-texto">
-      <a class="waves-effect modal-close waves-light btn-small amber darken-3"
+      <a class="waves-effect modal-close waves-light btn amber darken-3"
         >Aceptar</a
       >
     </div>
@@ -84,5 +89,6 @@
 
 <app-sugerencia-modal
   [modalId]="'historial-datos-alumno-sugerencia-modal'"
+  [modalActions]="sugerenciaModalActions"
   [sugerencia]="datoAntropometrico?.recomendacion?.mensaje"
 ></app-sugerencia-modal>

@@ -1,5 +1,10 @@
 <!--Inicio modal-datos-personales-->
-<div [id]="modalId" class="modal modal-max">
+<div
+  materialize="modal"
+  [id]="modalId"
+  class="modal modal-max"
+  [materializeActions]="modalActions"
+>
   <div class="modal-content">
     <h5>Datos personales</h5>
     <div class="right-align">
@@ -15,7 +20,7 @@
         <b>Administrador</b>
       </span>
     </div>
-    <form (ngSubmit)="actualizarUsuario($event)">
+    <form materialize (ngSubmit)="actualizarUsuario($event)">
       <div class="row">
         <div class="col s12 m6">
           <div class="input-field">
@@ -23,15 +28,19 @@
               [(ngModel)]="formulario.nombres"
               name="nombres"
               [id]="modalId + '-nombres'"
+              [value]="formulario.nombres"
               type="text"
               class="validate"
             />
-            <label for="{{ modalId + '-nombres' }}">Nombres</label>
+            <label for="{{ modalId + '-nombres' }}" class="active"
+              >Nombres</label
+            >
           </div>
 
           <div class="input-field">
             <input
               [(ngModel)]="formulario.apePaterno"
+              [value]="formulario.apePaterno"
               name="ape-paterno"
               [id]="modalId + '-ape-paterno'"
               type="text"
@@ -45,6 +54,7 @@
               [(ngModel)]="formulario.apeMaterno"
               name="ape-materno"
               [id]="modalId + '-ape-materno'"
+              [value]="formulario.apeMaterno"
               type="text"
               class="validate"
             />
@@ -106,7 +116,7 @@
           <button
             type="submit"
             [disabled]="!haCambiado"
-            class="waves-effect waves-light btn-small amber darken-3"
+            class="waves-effect waves-light btn amber darken-3"
           >
             Guardar
           </button>
@@ -114,7 +124,7 @@
         <div class="col s12 m6">
           <button
             type="button"
-            class="modal-close waves-effect waves-light btn-small red darken-3"
+            class="modal-close waves-effect waves-light btn red darken-3"
           >
             Cancelar
           </button>

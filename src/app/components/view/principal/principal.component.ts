@@ -17,7 +17,8 @@ export class PrincipalComponent implements OnInit {
   ) {
     this.persona = _appUsuarioService.obtenerPersonaAutenticada();
 
-    if (this.persona !== null) {
+    console.log(this._router.url);
+    if (this.persona !== null && this._router.url === '/principal') {
       if (this.persona.usuario.rol.rolNombre === 'ROLE_ALUMNO') {
         this._router.navigate(["/principal/alumno"], {replaceUrl: true});
       }

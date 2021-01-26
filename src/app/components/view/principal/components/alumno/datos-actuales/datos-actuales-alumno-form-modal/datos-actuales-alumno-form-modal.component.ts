@@ -6,8 +6,6 @@ import { DatosAntropometricosService } from 'src/app/services/api/datos-antropom
 import { ToastrService } from 'ngx-toastr';
 import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response-message-factory';
 
-declare const M: any;
-
 @Component({
   selector: 'app-datos-actuales-alumno-form-modal',
   templateUrl: './datos-actuales-alumno-form-modal.component.html',

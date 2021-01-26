@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { MaterializeAction } from 'angular2-materialize';
 import { ToastrService } from 'ngx-toastr';
 import { Combo } from 'src/app/models/combo/combo.interface';
 import { ReporteImc } from 'src/app/models/reporte-imc/reporte-imc.interface';
@@ -6,8 +7,6 @@ import { ReporteGrupalIMCParam } from 'src/app/models/request/params/reporte-gru
 import { ImcService } from 'src/app/services/api/imc/imc.service';
 import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response-message-factory';
 import { StringUtils } from 'src/app/utils/string.util';
-
-declare const M: any;
 
 enum InformeImcGrupalCardEstados {
   VACIO,
@@ -24,6 +23,8 @@ export class InformeImcGrupalCardComponent implements OnInit {
 
   public Estados = InformeImcGrupalCardEstados;
   public estado = InformeImcGrupalCardEstados.VACIO;
+
+  informeImcGrupalModalActions = new EventEmitter<string|MaterializeAction>();
 
   comboCategoriaIMC: Combo[] = [
     {
@@ -121,8 +122,6 @@ export class InformeImcGrupalCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    M.AutoInit();
-    M.updateTextFields();
   }
 
   buscarInforme(e: Event): void {
@@ -150,6 +149,10 @@ export class InformeImcGrupalCardComponent implements OnInit {
     return StringUtils
       .upperSnakeCaseToCapitalizedSpaced(
           this.reporteIMC?.categoriaIMC);
+  }
+
+  abrirInformeImcGrupalModal(): void {
+    this.informeImcGrupalModalActions.emit({action:"modal",params:['open']});
   }
 
 }

@@ -9,6 +9,7 @@
               <select
                 [(ngModel)]="formulario.categoriaIMC"
                 name="categoria-imc"
+                materialize="material_select"
               >
                 <option
                   *ngFor="let cat of comboCategoriaIMC"
@@ -22,7 +23,11 @@
           </div>
           <div class="col l4 m6 s12">
             <div class="input-field">
-              <select [(ngModel)]="formulario.mes" name="categoria-imc">
+              <select
+                [(ngModel)]="formulario.mes"
+                name="categoria-imc"
+                materialize="material_select"
+              >
                 <option *ngFor="let mes of comboMes" [value]="mes.valor">
                   {{ mes.nombre }}
                 </option>
@@ -48,7 +53,7 @@
           <button
             type="submit"
             [disabled]="estado === Estados.CARGANDO"
-            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p"
+            class="waves-effect waves-light btn amber darken-3 app-ancho-100p"
           >
             Buscar
           </button>
@@ -60,6 +65,7 @@
       <div
         *ngIf="reporteIMC && estado === Estados.CON_DATOS"
         class="row app-mg-abajo-0"
+        style="margin-top: 10px"
       >
         <div class="col s12 m8">
           <div>
@@ -84,12 +90,13 @@
           </div>
         </div>
         <div class="col s12 m4">
-          <a
-            href="#informe-imc-grupal-modal"
-            class="waves-effect waves-light btn-small amber darken-3 app-ancho-100p modal-trigger"
+          <button
+            (click)="abrirInformeImcGrupalModal()"
+            type="button"
+            class="waves-effect waves-light btn amber darken-3 app-ancho-100p"
           >
             Ver más
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -97,5 +104,6 @@
 </div>
 <app-informe-imc-grupal-modal
   [modalId]="'informe-imc-grupal-modal'"
+  [modalActions]="informeImcGrupalModalActions"
   [reporteIMC]="reporteIMC"
 ></app-informe-imc-grupal-modal>
