@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, SimpleChange } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
 import { DatoAntropometrico } from 'src/app/models/dato-antropomentrico.interface';
 import { DatosAntropometricosService } from 'src/app/services/api/datos-antropometricos/datos-antropometricos.service';
@@ -37,7 +37,7 @@ export class HistorialDatosAlumnoCardComponent implements OnInit {
     this.datosAntropometricosAlumnoDetallesModalActions.emit({action:"modal",params:['open']});
   }
 
-  ngOnInit(): void {
+  cargarDatos(): void {
     if (this.idPersona) {
       this.estado = HistorialDatosAlumnoCardEstados.CARGANDO;
       this._historialDatosAntropometricos
@@ -55,4 +55,11 @@ export class HistorialDatosAlumnoCardComponent implements OnInit {
     }
   }
 
+  ngOnInit(): void {
+    this.cargarDatos();
+  }
+
+  ngOnChanges(changes: SimpleChange): void {
+    this.cargarDatos();
+  }
 }

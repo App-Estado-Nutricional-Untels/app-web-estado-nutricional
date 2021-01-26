@@ -68,16 +68,10 @@
         </tbody>
       </table>
     </div>
-    <div
-      *ngIf="!datoAntropometrico?.recomendacion"
-      class="center-align app-mg-ver-30"
-    >
-      <button
-        (click)="abrirSugerenciaModal()"
-        class="waves-effect waves-light btn amber darken-3"
-      >
-        Sugerencia
-      </button>
+    <div *ngIf="datoAntropometrico?.recomendacion" class="card-panel">
+      <b>
+        {{ datoAntropometrico?.recomendacion?.mensaje }}
+      </b>
     </div>
     <div class="app-alinear-texto">
       <a class="waves-effect modal-close waves-light btn amber darken-3"
@@ -86,9 +80,3 @@
     </div>
   </div>
 </div>
-
-<app-sugerencia-modal
-  [modalId]="'historial-datos-alumno-sugerencia-modal'"
-  [modalActions]="sugerenciaModalActions"
-  [sugerencia]="datoAntropometrico?.recomendacion?.mensaje"
-></app-sugerencia-modal>

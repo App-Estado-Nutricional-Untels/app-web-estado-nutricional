@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { ImcMensual } from 'src/app/models/imc-mensual.interface';
@@ -71,7 +71,7 @@ export class ImcAlumnoCardComponent implements OnInit {
           .forEach(fecha => this.chartLabels.push(fecha));
   }
 
-  ngOnInit(): void {
+  cargarInformacion(): void {
     this.estado = ImcAlumnoCardEstado.CARGANDO;
     this._imcService
       .obtenerEvolucionIMCPorIdPersona(this.idPersona)
@@ -86,6 +86,14 @@ export class ImcAlumnoCardComponent implements OnInit {
           this.estado = ImcAlumnoCardEstado.VACIO;
         }
     );
+  }
+
+  ngOnInit(): void {
+    
+  }
+
+  ngOnChanges(changes: SimpleChange): void {
+    this.cargarInformacion();
   }
 
 }

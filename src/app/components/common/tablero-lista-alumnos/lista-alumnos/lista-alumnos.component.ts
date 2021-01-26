@@ -23,7 +23,12 @@ export class ListaAlumnosComponent implements OnInit {
 
   listaAlumnos :Alumno[] = [];
 
+  alumnoSeleccionado: Alumno | undefined;
+
   nuevoAlumnoFormModalActions = new EventEmitter<string|MaterializeAction>();
+  datosAntropometricosActualesModalActions = new EventEmitter<string|MaterializeAction>();
+  detallesRegistrosModalActions = new EventEmitter<string|MaterializeAction>();
+  eliminarUsuarioModalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor(
     private _alumnoService: AlumnoService
@@ -48,7 +53,38 @@ export class ListaAlumnosComponent implements OnInit {
       );
   }
 
+  filtrarTodo(): void {
+    this.estado = ListaAlumnosEstados.CARGANDO;
+    this._alumnoService
+      .obtenerListadoAlumnos()
+      .subscribe(
+        (resp) => {
+          this.listaAlumnos = resp.datos;
+          this.estado = ListaAlumnosEstados.CON_DATOS;
+        },
+        (respError) => {
+          console.warn(respError);
+          this.estado = ListaAlumnosEstados.VACIO;
+        }
+      );
+  }
+
   abrirNuevoAlumnoFormModal(): void {
     this.nuevoAlumnoFormModalActions.emit({action:"modal",params:['open']});
+  }
+
+  abrirDatosAntropometricosActualesModal(indice: number): void {
+    this.alumnoSeleccionado = this.listaAlumnos[indice];
+    this.datosAntropometricosActualesModalActions.emit({action:"modal",params:['open']});
+  }
+
+  abrirDetallesRegistrosModal(indice: number): void {
+    this.alumnoSeleccionado = this.listaAlumnos[indice];
+    this.detallesRegistrosModalActions.emit({action:"modal",params:['open']});
+  }
+
+  abrirEliminarUsuarioModal(indice: number): void {
+    this.alumnoSeleccionado = this.listaAlumnos[indice];
+    this.eliminarUsuarioModalActions.emit({action:"modal",params:['open']});
   }
 }

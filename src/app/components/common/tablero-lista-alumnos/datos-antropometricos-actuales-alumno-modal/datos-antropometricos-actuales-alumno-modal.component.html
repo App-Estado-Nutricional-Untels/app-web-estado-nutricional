@@ -1,0 +1,113 @@
+<div
+  materialize="modal"
+  id="{{ modalId }}"
+  class="modal modal-max"
+  [materializeActions]="modalActions"
+>
+  <div class="modal-content">
+    <h5>Detalles de los datos antropométricos</h5>
+    <div *ngIf="estado === Estados.VACIO" class="center-align">
+      <i class="material-icons">info</i>
+      <p class="app-mg-arr-0">No se encontraron datos</p>
+    </div>
+    <div *ngIf="estado === Estados.CARGANDO" class="center-align">
+      <app-spinner></app-spinner>
+    </div>
+    <div *ngIf="estado === Estados.CON_DATOS">
+      <div class="row app-mg-abajo-0">
+        <div class="col s12 m6">
+          <b>Fecha de registro:</b>
+        </div>
+        <div class="col s12 m6 right-align">
+          <span>{{ fechaRegistro }}</span>
+        </div>
+      </div>
+      <div class="row app-mg-abajo-0">
+        <div class="col s12 m6">
+          <b>IMC:</b>
+        </div>
+        <div class="col s12 m6 right-align">
+          <span class="new badge red" data-badge-caption="">
+            {{ categoriaIMC }}
+          </span>
+          <span>
+            {{ datoAntropometrico?.valorIMC }}
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <b>ICC:</b>
+        </div>
+        <div class="col s12 m6 right-align">
+          <span class="new badge red" data-badge-caption="">
+            {{ categoriaICC }}
+          </span>
+          <span>
+            {{ datoAntropometrico?.valorICC }}
+          </span>
+        </div>
+      </div>
+      <hr />
+      <div style="overflow-x: visible; overflow-y: hidden">
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Estatura</th>
+              <th>Contorno Cintura</th>
+              <th>Actividad Física</th>
+              <th>Nivel de estrés</th>
+              <th>Peso</th>
+              <th>Contorno Cadera</th>
+              <th>Rendimiento académico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ datoAntropometrico?.estatura }} metros</td>
+              <td>{{ datoAntropometrico?.contornoCintura }} metros</td>
+              <td>{{ datoAntropometrico?.actividadFisica }} horas</td>
+              <td>{{ nivelEstres }}</td>
+              <td>{{ datoAntropometrico?.peso }} kilos</td>
+              <td>{{ datoAntropometrico?.contornoCadera }} metros</td>
+              <td>{{ rendimientoAcademico }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="datoAntropometrico?.recomendacion" class="card-panel">
+        <b>
+          {{ datoAntropometrico?.recomendacion?.mensaje }}
+        </b>
+      </div>
+      <div
+        *ngIf="!datoAntropometrico?.recomendacion && daRecomendacion"
+        class="card-panel center-align app-mg-ver-30"
+      >
+        <form (ngSubmit)="registrarRecomendacion($event)">
+          <div class="input-field">
+            <textarea
+              [(ngModel)]="recomendacion"
+              name="datos-recomendacion"
+              id="datos-recomendacion"
+              class="materialize-textarea"
+            ></textarea>
+            <label for="datos-recomendacion">Recomendación</label>
+          </div>
+          <button
+            type="submit"
+            class="waves-effect waves-light btn amber darken-3"
+            [disabled]="recomendacionVacia"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="app-alinear-texto">
+      <a class="waves-effect modal-close waves-light btn amber darken-3"
+        >Aceptar</a
+      >
+    </div>
+  </div>
+</div>

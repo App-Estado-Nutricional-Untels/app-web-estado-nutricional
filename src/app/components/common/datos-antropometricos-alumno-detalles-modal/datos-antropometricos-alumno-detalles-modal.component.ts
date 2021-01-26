@@ -19,7 +19,6 @@ export class HistorialDatosAlumnoModalComponent implements OnInit {
   @Input()
   datoAntropometrico: DatoAntropometrico | undefined;
 
-  sugerenciaModalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor() { }
 
@@ -52,10 +51,6 @@ export class HistorialDatosAlumnoModalComponent implements OnInit {
     return StringUtils
       .upperSnakeCaseToCapitalizedSpaced(
         this.datoAntropometrico?.rendimientoAcademico);
-  }
-
-  abrirSugerenciaModal(): void {
-    this.sugerenciaModalActions.emit({action:"modal",params:['open'],});
   }
 
   ngOnInit(): void {

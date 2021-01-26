@@ -30,7 +30,6 @@ import { ListaUsuariosComponent } from './components/common/tablero-lista-usuari
 import { ListaAlumnosComponent } from './components/common/tablero-lista-alumnos/lista-alumnos/lista-alumnos.component';
 import { FiltroListaAlumnosCardComponent } from './components/common/tablero-lista-alumnos/filtro-lista-alumnos-card/filtro-lista-alumnos-card.component';
 import { NuevoAlumnoFormModalComponent } from './components/common/tablero-lista-alumnos/nuevo-alumno-form-modal/nuevo-alumno-form-modal.component';
-import { DetallesActualesAlumnoModalComponent } from './components/detalles-actuales-alumno-modal/detalles-actuales-alumno-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './components/common/spinner/spinner.component';
@@ -47,6 +46,10 @@ import { InformeImcGrupalPorcentajeRendimientoAcademicoCardComponent } from './c
 import { InformeImcGrupalPorcentajeNivelEstresCardComponent } from './components/common/informe-grupal-imc/informe-imc-grupal-porcentaje-nivel-estres-card/informe-imc-grupal-porcentaje-nivel-estres-card.component';
 import { FiltroListaUsuariosCardComponent } from './components/common/tablero-lista-usuarios/filtro-lista-usuarios-card/filtro-lista-usuarios-card.component';
 import { NuevoUsuarioFormModalComponent } from './components/common/tablero-lista-usuarios/nuevo-usuario-form-modal/nuevo-usuario-form-modal.component';
+import { DatosAntropometricosActualesAlumnoModalComponent } from './components/common/tablero-lista-alumnos/datos-antropometricos-actuales-alumno-modal/datos-antropometricos-actuales-alumno-modal.component';
+import { DetallesRegistrosAlumnoModalComponent } from './components/common/tablero-lista-alumnos/detalles-registros-alumno-modal/detalles-registros-alumno-modal.component';
+import { EliminarUsuarioModalComponent } from './components/common/eliminar-usuario-modal/eliminar-usuario-modal.component';
+import { DatosPersonalesDetallesModalComponent } from './components/common/datos-personales-detalles-modal/datos-personales-detalles-modal.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,6 @@ import { NuevoUsuarioFormModalComponent } from './components/common/tablero-list
     ListaAlumnosComponent,
     FiltroListaAlumnosCardComponent,
     NuevoAlumnoFormModalComponent,
-    DetallesActualesAlumnoModalComponent,
     SpinnerComponent,
     ImcGrupalCardComponent,
     IccGrupalCardComponent,
@@ -86,6 +88,10 @@ import { NuevoUsuarioFormModalComponent } from './components/common/tablero-list
     InformeImcGrupalPorcentajeNivelEstresCardComponent,
     FiltroListaUsuariosCardComponent,
     NuevoUsuarioFormModalComponent,
+    DatosAntropometricosActualesAlumnoModalComponent,
+    DetallesRegistrosAlumnoModalComponent,
+    EliminarUsuarioModalComponent,
+    DatosPersonalesDetallesModalComponent,
   ],
   imports: [
     BrowserModule,

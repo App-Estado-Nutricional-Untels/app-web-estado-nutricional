@@ -1,0 +1,23 @@
+<div
+  materialize="modal"
+  [id]="modalId"
+  class="modal modal-max modal-max-width"
+  [materializeActions]="modalActions"
+>
+  <div class="modal-content">
+    <h5>Detalles de registros</h5>
+    <div *ngIf="persona" class="row">
+      <div class="col m6 s12">
+        <app-icc-alumno-card [idPersona]="persona.id"></app-icc-alumno-card>
+      </div>
+      <div class="col m6 s12">
+        <app-imc-alumno-card [idPersona]="persona.id"></app-imc-alumno-card>
+      </div>
+      <div class="col s12">
+        <app-historial-datos-alumno-card
+          [idPersona]="persona.id"
+        ></app-historial-datos-alumno-card>
+      </div>
+    </div>
+  </div>
+</div>

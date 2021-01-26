@@ -1,9 +1,8 @@
-import { Component,Input , OnInit } from '@angular/core';
+import { Component,Input , OnInit, SimpleChange } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { IccMensual } from 'src/app/models/icc-mensual.interface';
 import { IccService } from 'src/app/services/api/icc/icc.service';
-import { AppUsuarioService } from 'src/app/services/data/app-usuario.service';
 
 enum IccAlumnoCardEstado {
   VACIO,
@@ -72,8 +71,7 @@ export class IccAlumnoCardComponent implements OnInit {
           .forEach(fecha => this.chartLabels.push(fecha));
   }
   
-  
-  ngOnInit(): void {
+  cargarInformacion(): void {
     this.estado = IccAlumnoCardEstado.CARGANDO;
     this._iccService
       .obtenerEvolucionICCPorIdPersona(this.idPersona)
@@ -89,5 +87,12 @@ export class IccAlumnoCardComponent implements OnInit {
         }
     );
   }
+  
+  ngOnInit(): void {
+    this.cargarInformacion();
+  }
 
+  ngOnChanges(changes: SimpleChange): void {
+    this.cargarInformacion();
+  }
 }

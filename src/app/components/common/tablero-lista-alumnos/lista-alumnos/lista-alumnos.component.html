@@ -40,7 +40,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let alumno of listaAlumnos">
+            <tr *ngFor="let alumno of listaAlumnos; let i = index">
               <td>{{ alumno.id }}</td>
               <td>{{ alumno?.persona?.dni }}</td>
               <td>{{ alumno?.persona?.nombre }}</td>
@@ -66,22 +66,28 @@
                     <ul>
                       <li>
                         <a
-                          href="#modal-detalles-actuales"
-                          class="modal-trigger"
+                          href="javascript:void(0)"
+                          (click)="abrirDatosAntropometricosActualesModal(i)"
                         >
-                          Detalles actuales
+                          Datos actuales
                         </a>
                       </li>
                       <li>
-                        <a href="#modal-historial-alumno" class="modal-trigger"
-                          >Detalles de registro</a
+                        <a
+                          href="javascript:void(0)"
+                          (click)="abrirDetallesRegistrosModal(i)"
                         >
+                          Historial Registros
+                        </a>
                       </li>
                       <li class="divider"></li>
                       <li>
-                        <a href="#modal-eliminar" class="modal-trigger"
-                          >Eliminar</a
+                        <a
+                          href="javascript:void(0)"
+                          (click)="abrirEliminarUsuarioModal(i)"
                         >
+                          Eliminar
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -100,6 +106,21 @@
   [modalActions]="nuevoAlumnoFormModalActions"
 ></app-nuevo-alumno-form-modal>
 
-<app-detalles-actuales-alumno-modal></app-detalles-actuales-alumno-modal>
+<app-datos-antropometricos-actuales-alumno-modal
+  [modalId]="'app-datos-antropometricos-actuales-alumno-modal'"
+  [modalActions]="datosAntropometricosActualesModalActions"
+  [idAlumno]="alumnoSeleccionado?.id"
+></app-datos-antropometricos-actuales-alumno-modal>
 
-<!-- Aqui va detalles-actuales-alumno-modal -->
+<app-detalles-registros-alumno-modal
+  [modalId]="'app-detalles-registros-alumno-modal'"
+  [modalActions]="detallesRegistrosModalActions"
+  [persona]="alumnoSeleccionado?.persona"
+></app-detalles-registros-alumno-modal>
+
+<app-eliminar-usuario-modal
+  [modalId]="'app-eliminar-usuario-modal'"
+  [modalActions]="eliminarUsuarioModalActions"
+  [persona]="alumnoSeleccionado?.persona"
+  (eliminado)="filtrarTodo()"
+></app-eliminar-usuario-modal>
