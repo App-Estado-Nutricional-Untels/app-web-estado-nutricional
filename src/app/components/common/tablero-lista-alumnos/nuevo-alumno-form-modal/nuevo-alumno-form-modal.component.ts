@@ -6,6 +6,11 @@ import { AlumnoService } from 'src/app/services/api/alumno/alumno.service';
 import { UsuarioService } from 'src/app/services/api/usuario/usuario.service';
 import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response-message-factory';
 
+enum NuevoUsuarioFormModalEstados {
+  CARGANDO,
+  INICIAL
+}
+
 @Component({
   selector: 'app-nuevo-alumno-form-modal',
   templateUrl: './nuevo-alumno-form-modal.component.html',
@@ -13,11 +18,15 @@ import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response
 })
 export class NuevoAlumnoFormModalComponent implements OnInit {
 
+  public Estados = NuevoUsuarioFormModalEstados;
+
   @Input()
   modalId!: string;
 
   @Input()
   modalActions!: EventEmitter<string | MaterializeAction>;
+
+  estado = NuevoUsuarioFormModalEstados.INICIAL;
 
   formulario: RegistroUsuarioAlumnoBody = {
     nombres: '',
@@ -40,19 +49,20 @@ export class NuevoAlumnoFormModalComponent implements OnInit {
 
   registrarAlumno(e: Event): void {
     e.preventDefault();
-
+    this.estado = NuevoUsuarioFormModalEstados.CARGANDO;
     this._usuarioService
       .registroUsuarioAlumno(this.formulario)
       .subscribe(
         (resp) => {
           this.limpiarFormulario();
-
           this._toastrService.success(resp.mensaje);
+          this.estado = NuevoUsuarioFormModalEstados.INICIAL;
         },
         (respError) => {
           console.warn(respError);
           const msg = ApiErrorResponseMessageFactory.build(respError.error);
           this._toastrService.error(msg);
+          this.estado = NuevoUsuarioFormModalEstados.INICIAL;
         }
       );
   }

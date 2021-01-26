@@ -111,7 +111,7 @@
 
           <div class="input-field">
             <input
-              [(ngModel)]="formulario.fechaNacimiento"
+              [(ngModel)]="formularioFecha"
               name="fecha-nacimiento"
               id="nuevo-usuario-form-modal-fecha-nacimiento"
               type="date"
@@ -137,7 +137,7 @@
             <label> Rol </label>
           </div>
 
-          <div *ngIf="formulario.rol !== 'ADMINISTRADOR'" class="input-field">
+          <div *ngIf="!esAdministrador" class="input-field">
             <input
               [(ngModel)]="formulario.codigo"
               name="codigo"

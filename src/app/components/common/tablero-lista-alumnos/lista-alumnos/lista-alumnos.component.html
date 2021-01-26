@@ -15,7 +15,17 @@
           Nuevo alumno
         </button>
       </div>
-      <div style="overflow-x: visible; overflow-y: hidden">
+      <div *ngIf="estado === Estados.VACIO" class="center-align">
+        <i class="material-icons">info</i>
+        <p class="app-mg-arr-0">No se encontraron datos</p>
+      </div>
+      <div *ngIf="estado === Estados.CARGANDO" class="center-align">
+        <app-spinner></app-spinner>
+      </div>
+      <div
+        *ngIf="estado === Estados.CON_DATOS"
+        style="overflow-x: visible; overflow-y: hidden"
+      >
         <table class="striped">
           <thead>
             <tr>

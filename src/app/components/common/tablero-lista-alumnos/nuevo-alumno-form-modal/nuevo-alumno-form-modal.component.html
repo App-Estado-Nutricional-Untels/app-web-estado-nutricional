@@ -122,10 +122,14 @@
           </div>
         </div>
       </div>
-      <div class="right-align">
+      <div *ngIf="estado === Estados.CARGANDO" class="center-align">
+        <app-spinner></app-spinner>
+      </div>
+      <div *ngIf="estado === Estados.INICIAL" class="right-align">
         <button
           type="submit"
           class="waves-effect waves-light btn amber darken-3"
+          style="margin-right: 10px"
         >
           Crear
         </button>

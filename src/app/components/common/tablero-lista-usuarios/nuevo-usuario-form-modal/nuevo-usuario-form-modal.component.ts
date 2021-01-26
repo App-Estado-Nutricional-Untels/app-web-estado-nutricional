@@ -42,12 +42,18 @@ export class NuevoUsuarioFormModalComponent implements OnInit {
     fechaNacimiento: ''
   };
 
+  formularioFecha = '';
+
   constructor(
     private _usuarioService: UsuarioService,
     private _toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
+  }
+
+  get esAdministrador(): boolean {
+    return this.formulario.rol === 'ADMINISTRADOR';
   }
 
   registrarUsuario(e: Event): void {
@@ -57,8 +63,8 @@ export class NuevoUsuarioFormModalComponent implements OnInit {
       return;
     }
 
-    this.formulario.fechaNacimiento = format(Date.parse(this.formulario.fechaNacimiento), 'dd/MM/yyyy');
-
+    this.formulario.fechaNacimiento = format(Date.parse(this.formularioFecha), 'dd/MM/yyyy');
+    this.formulario.codigo = (this.esAdministrador ? undefined : this.formulario.clave);
     this.estado = NuevoUsuarioFormModalEstados.CARGANDO;
 
     this._usuarioService
@@ -81,7 +87,7 @@ export class NuevoUsuarioFormModalComponent implements OnInit {
 
   esValido(): boolean {
     const errores = [];
-    if (this.formulario.fechaNacimiento === '') {
+    if (this.formularioFecha === '') {
       errores.push({
         campo: 'fechaNacimiento',
         mensaje: 'no debe estar vacío'
