@@ -99,6 +99,7 @@ import { NuevoUsuarioFormModalComponent } from './components/common/tablero-list
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
       preventDuplicates: true,
+      enableHtml: true
     }),
   ],
   providers: [AutenticacionService, AppUsuarioService],

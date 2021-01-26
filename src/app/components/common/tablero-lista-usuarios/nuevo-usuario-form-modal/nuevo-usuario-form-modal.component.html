@@ -1,7 +1,12 @@
-<div [id]="modalId" class="modal modal-max">
+<div
+  materialize="modal"
+  [id]="modalId"
+  class="modal modal-max"
+  [materializeActions]="modalActions"
+>
   <div class="modal-content">
     <h5>Nuevo Usuario</h5>
-    <form (ngSubmit)="registrarUsuario($event)">
+    <form materialize (ngSubmit)="registrarUsuario($event)">
       <div class="row">
         <div class="col s12 m6">
           <div class="input-field">
@@ -46,7 +51,7 @@
               [(ngModel)]="formulario.correoElectronico"
               name="correo-electronico"
               id="nuevo-usuario-form-modal-correo-electronico"
-              type="text"
+              type="email"
               class="validate"
             />
             <label for="nuevo-usuario-form-modal-correo-electronico"
@@ -54,27 +59,29 @@
             >
           </div>
 
-          <div>
-            <label>
+          <div style="margin-top: 15px">
+            <span>
               <input
                 [(ngModel)]="formulario.sexo"
                 name="nuevo-usuario-form-modal-sexo"
+                id="nuevo-usuario-form-modal-sexo-1"
                 type="radio"
                 value="M"
               />
-              <span>Masculino</span>
-            </label>
+              <label for="nuevo-usuario-form-modal-sexo-1">Masculino</label>
+            </span>
 
-            <label>
+            <span>
               <input
                 [(ngModel)]="formulario.sexo"
                 name="nuevo-usuario-form-modal-sexo"
+                id="nuevo-usuario-form-modal-sexo-2"
                 type="radio"
                 value="F"
                 checked
               />
-              <span>Femenino</span>
-            </label>
+              <label for="nuevo-usuario-form-modal-sexo-2">Femenino</label>
+            </span>
           </div>
         </div>
 
@@ -86,6 +93,7 @@
               id="nuevo-usuario-form-modal-dni"
               type="text"
               class="validate"
+              data-length="8"
             />
             <label for="nuevo-usuario-form-modal-dni">DNI</label>
           </div>
@@ -104,18 +112,24 @@
           <div class="input-field">
             <input
               [(ngModel)]="formulario.fechaNacimiento"
-              name="decha-nacimiento"
+              name="fecha-nacimiento"
               id="nuevo-usuario-form-modal-fecha-nacimiento"
               type="date"
-              class="validate"
             />
-            <label for="nuevo-usuario-form-modal-fecha-nacimiento">
+            <label
+              for="nuevo-usuario-form-modal-fecha-nacimiento"
+              class="active"
+            >
               Fecha Nacimiento
             </label>
           </div>
 
           <div class="input-field" style="margin-bottom: 21px">
-            <select [(ngModel)]="formulario.rol" name="rol">
+            <select
+              [(ngModel)]="formulario.rol"
+              name="rol"
+              materialize="material_select"
+            >
               <option value="ADMINISTRADOR" selected>Administrador</option>
               <option value="MEDICO">Médico</option>
               <option value="ALUMNO">Alumno</option>
@@ -135,16 +149,21 @@
           </div>
         </div>
       </div>
-      <div class="right-align">
+      <div *ngIf="estado === Estados.CARGANDO" class="center-align">
+        <app-spinner></app-spinner>
+      </div>
+      <div *ngIf="estado === Estados.INICIAL" class="right-align">
         <button
           type="submit"
-          class="waves-effect waves-light btn-small amber darken-3"
+          class="waves-effect waves-light btn amber darken-3"
+          style="margin-right: 10px"
         >
           Crear
         </button>
         <button
           type="button"
-          class="waves-effect waves-light btn-small red darken-3"
+          (click)="cerrarModal()"
+          class="waves-effect waves-light btn red darken-3"
         >
           Cancelar
         </button>
