@@ -20,6 +20,7 @@ export enum ApiPaths {
   registroRecomendacion = '/api/datos-antropometricos/recomendacion',
 
   obtenerListadoUsuarios = '/api/usuarios',
+  obtenerListadoPersonas = '/api/personas',
 
   obtenerListadoICCGrupal = '/api/datos-antropometricos/icc-grupal',
   obtenerListadoIMCGrupal = '/api/datos-antropometricos/imc-grupal',
