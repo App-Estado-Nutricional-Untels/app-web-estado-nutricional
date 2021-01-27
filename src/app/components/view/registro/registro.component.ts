@@ -45,6 +45,12 @@ export class RegistroComponent implements OnInit {
     this.parteRegistro = parte;
   }
 
+  mostrarParte2(): void {
+    if (this.esValidoParte1()) {
+      this.mostrarParte(2);
+    }
+  }
+
   selecionarRol(rol:string):void{
     this.formulario.rol= rol;
   }
@@ -68,6 +74,51 @@ export class RegistroComponent implements OnInit {
           this.estado = RegistroEstado.INICIAL;
         }
       );
+  }
+
+  esValidoParte1(): boolean {
+    const errores = [];
+    if (this.formulario.nombres === '') {
+      errores.push({
+        campo: 'nombres',
+        mensaje: 'no debe estar vacío'
+      });
+    }
+
+    if (this.formulario.apePaterno === '') {
+      errores.push({
+        campo: 'apePaterno',
+        mensaje: 'no debe estar vacío'
+      });
+    }
+
+    if (this.formulario.apeMaterno === '') {
+      errores.push({
+        campo: 'apeMaterno',
+        mensaje: 'no debe estar vacío'
+      });
+    }
+
+    if (this.formulario.correoElectronico === '') {
+      errores.push({
+        campo: 'correoElectronico',
+        mensaje: 'no debe estar vacío'
+      });
+    }
+
+    if (this.formulario.dni === '') {
+      errores.push({
+        campo: 'dni',
+        mensaje: 'no debe estar vacío'
+      });
+    }
+
+    if (errores.length > 0){
+      this._toastr.error(ApiErrorResponseMessageFactory.buildFromErrores(errores));
+      return false;
+    }
+
+    return true;
   }
 
   ngOnInit(): void {
