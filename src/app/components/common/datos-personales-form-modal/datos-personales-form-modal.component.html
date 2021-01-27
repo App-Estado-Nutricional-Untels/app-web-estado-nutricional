@@ -68,7 +68,7 @@
             <label for="{{ modalId + '-ape-materno' }}">Apellido Materno</label>
           </div>
 
-          <div class="input-field">
+          <div *ngIf="fechaNacimiento" class="input-field">
             <input
               disabled
               [value]="personaActual?.edad"
@@ -104,7 +104,7 @@
             <label for="{{ modalId + '-dni' }}">DNI</label>
           </div>
 
-          <div class="input-field">
+          <div *ngIf="fechaNacimiento" class="input-field">
             <input
               disabled
               [value]="fechaNacimiento"
