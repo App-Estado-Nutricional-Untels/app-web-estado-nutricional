@@ -49,8 +49,8 @@ export class PorcentajeGeneroAlumnosCardComponent implements OnInit {
         (resp) => {
           this.pieChartData.push(resp.datos.totalAlumnosMasculinos)
           this.pieChartData.push(resp.datos.totalAlumnosFemeninos)
-          this.pieChartLabels.push("Masculino")
-          this.pieChartLabels.push("Femenino")
+          this.pieChartLabels.push(`Masculino: (${resp.datos.porcentajeMasculino * 100}%)`)
+          this.pieChartLabels.push(`Femenino: (${resp.datos.porcentajeFemenino * 100}%)`)
           this.estado = PorcentajeSexoEstado.CON_DATOS;
         },
         (respError) => {
