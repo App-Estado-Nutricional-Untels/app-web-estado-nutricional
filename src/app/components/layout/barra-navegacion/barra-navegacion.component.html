@@ -1,18 +1,14 @@
 <div class="navbar-fixed">
   <nav class="app-padding-left amber darken-3">
     <div class="nav-wrapper">
-      <!--<a href="#" data-target="slide-out" class="sidenav-trigger">
-        <i class="fas fa-bars app-cursor app-top-17"></i>
-      </a>-->
       <a
-        materialize="sideNav"
         *ngIf="!esAlumno"
         data-activates="app-menu"
-        [materializeParams]="[{ edge: 'left' }]"
         class="button-collapse"
         href="#"
-        ><i class="material-icons">menu</i></a
       >
+        <i class="fas fa-bars"></i>
+      </a>
       <a href="javascript:void(0)" (click)="aPrincipal()">
         <span>Estado Nutricional</span>
       </a>
@@ -25,24 +21,24 @@
             data-activates="persona"
           >
             {{ persona?.nombre }}
-            <i class="material-icons right">arrow_drop_down</i>
+            <i class="fas fa-caret-down"></i>
           </a>
         </li>
       </ul>
 
-      <ul id="persona" class="dropdown-content app-ancho-20p">
+      <ul id="persona" class="dropdown-content app-dropdown-menu">
         <li>
           <a
             href="javascript:void(0)"
             (click)="abrirDatosPersonalesFormModal()"
           >
-            Datos personales<i class="material-icons">person</i>
+            <i class="fas fa-user"></i> Datos Personales
           </a>
         </li>
         <li class="divider"></li>
         <li>
           <a (click)="cerrarSesion()">
-            Salir<i class="material-icons">exit_to_app</i>
+            <i class="fas fa-sign-out-alt"></i> Salir
           </a>
         </li>
       </ul>

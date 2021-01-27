@@ -1,21 +1,36 @@
-<ul [id]="menuId" class="side-nav">
+<ul [id]="menuId" class="side-nav side-nav-close">
+  <div class="app-header-menu background amber darken-2">
+    <h4 style="margin: 0">Estado Nutricional</h4>
+    <b>Ignacio Raul Rueda Boada</b>
+  </div>
   <li>
-    <div class="user-view">
-      <div class="background amber darken-2"></div>
-      <h4 class="white-text">Estado Nutricional</h4>
-      <a href="#user">
-        <span class="white-text name">Ignacio Raul Rueda Boada</span>
-      </a>
-    </div>
+    <a href="#!" (click)="abrirDatosPersonalesFormModal($event)">
+      <span class="app-li-menu-span">Datos Personales</span>
+      <i class="fas fa-user"></i>
+    </a>
   </li>
   <li>
     <a href="#!" (click)="aRuta('/principal/lista-alumnos', $event)">
-      <i class="fas fa-users"></i> Listado Alumnos
+      <span class="app-li-menu-span">Listado Alumnos</span>
+      <i class="fas fa-graduation-cap"></i>
     </a>
   </li>
   <li>
     <a href="#!" (click)="aRuta('/principal/lista-usuarios', $event)">
-      <i class="fas fa-users"></i> Listado Usuarios
+      <span class="app-li-menu-span">Listado Usuarios</span>
+      <i class="fas fa-users"></i>
+    </a>
+  </li>
+  <li class="divider"></li>
+  <li>
+    <a href="#!" (click)="cerrarSesion($event)">
+      <span class="app-li-menu-span">Cerrar Sesión</span>
+      <i class="fas fa-sign-out-alt"></i>
     </a>
   </li>
 </ul>
+
+<app-datos-personales-form-modal
+  [modalId]="'modal-datos-personales-menu-lateral'"
+  [modalActions]="datosPersonalesFormModalActions"
+></app-datos-personales-form-modal>

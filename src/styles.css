@@ -262,6 +262,24 @@
   text-transform: uppercase;
 }
 
+/* Dropdown menu */
+.app-dropdown-menu {
+  width: 200px !important;
+  top: 1px !important;
+  right: 0px !important;
+  margin-right: 1px !important;
+}
+
+/* Menu lateral */
+.app-header-menu {
+  padding: 20px;
+  color: white;
+}
+
+.app-li-menu-span {
+  display: inline-block;
+  width: 90%;
+}
 /* Dropdown */
 .app-dropdown-content {
   padding: 15px;

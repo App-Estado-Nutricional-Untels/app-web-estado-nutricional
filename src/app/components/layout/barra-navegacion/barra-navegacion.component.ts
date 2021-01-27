@@ -1,8 +1,10 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterializeAction } from 'angular2-materialize';
 import { Persona } from 'src/app/models/persona.interface';
 import { AppUsuarioService } from 'src/app/services/data/app-usuario.service';
+
+declare const $:any;
 
 @Component({
   selector: 'app-barra-navegacion',
@@ -17,7 +19,8 @@ export class BarraNavegacionComponent implements OnInit {
   
   constructor(
     private _appUsuarioService: AppUsuarioService,
-    private _router: Router
+    private _router: Router,
+    private el: ElementRef
   ) { 
     this.persona = _appUsuarioService.obtenerPersonaAutenticada();
   }
@@ -39,12 +42,11 @@ export class BarraNavegacionComponent implements OnInit {
     this.datosPersonalesFormModalActions.emit({action:"modal",params:['open']});
   }
 
-
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-
+    $(".button-collapse").sideNav();
   }
 
 }
