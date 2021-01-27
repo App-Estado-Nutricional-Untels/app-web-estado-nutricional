@@ -244,6 +244,24 @@
   padding: 2px 4px;
 }
 
+/* Registro Botones Card */
+
+.app-radio-card {
+  cursor: pointer;
+}
+
+.app-radio-card-selected {
+  background-color: #ff8f00 !important;
+  color: white;
+}
+
+/* Links */
+.app-link {
+  color: #ffab40 !important;
+  transition: color 0.3s ease !important;
+  text-transform: uppercase;
+}
+
 /* Dropdown */
 .app-dropdown-content {
   padding: 15px;

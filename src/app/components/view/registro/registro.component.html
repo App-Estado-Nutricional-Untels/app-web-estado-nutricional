@@ -1,197 +1,184 @@
 <div class="app-mg-arr-3p">
   <div class="card app-ajustar-tamaño card-centrado">
     <div class="card-content app-alinear-texto">
-      <form (submit)="registrar($event)">
+      <form materialize (submit)="registrar($event)">
+        <!-- Parte 1 -->
         <div [hidden]="parteRegistro !== 1">
-          <span class="card-title">Nombre App</span>
+          <span class="card-title">Estado Nutricional</span>
 
           <div class="input-field">
             <input
               [(ngModel)]="formulario.nombres"
               name="nombre"
-              id="ingre_nombres"
+              id="nombres"
               type="text"
               class="validate"
             />
-            <label for="ingre_nombres">Nombres</label>
+            <label for="nombres">Nombres</label>
           </div>
-        </div>
 
-        <div class="input-field">
-          <input
-            id="reg_ap_pat"
-            [(ngModel)]="formulario.apePaterno"
-            name="apePaterno"
-            id="ingre_apePaterno"
-            type="text"
-            class="validate"
-          />
-          <label for="reg_ap_pat">Apellido Paterno</label>
-        </div>
-
-        <div class="input-field">
-          <input
-            id="reg_ap_mat"
-            [(ngModel)]="formulario.apeMaterno"
-            name="apeMaterno"
-            id="ingre_apeMaterno"
-            type="text"
-            class="validate"
-          />
-          <label for="reg_ap_mat">Apellido Materno</label>
-        </div>
-
-        <div class="input-field">
-          <input
-            id="reg_correo"
-            type="email"
-            class="validate"
-            [(ngModel)]="formulario.correoElectronico"
-            name="correoElectronico"
-            id="ingre_correoElectronico"
-          />
-          <label for="reg_correo">Correo electrónico</label>
-        </div>
-
-        <div class="input-field">
-          <input
-            i
-            type="number"
-            class="validate"
-            [(ngModel)]="formulario.dni"
-            name="dni"
-            id="ingre_dni"
-          />
-          <label for="reg_dni">DNI</label>
-        </div>
-
-        <div class="input-field">
-          <input
-            type="password"
-            class="validate"
-            [(ngModel)]="formulario.clave"
-            name="clave"
-            id="ingre_clave"
-            class="validate"
-          />
-          <label for="reg_contra">Contraseña</label>
-          <span
-            class="helper-text"
-            data-error="Ingrese un email válido"
-            data-success="right"
-          ></span>
-        </div>
-
-        <button
-          type="button"
-          (click)="siguienteParte(2)"
-          class="waves-effect waves-light btn btn-small amber darken-3 app-ancho-100p"
-        >
-          Continuar
-        </button>
-        <app-spinner *ngIf="estado == Estados.CARGANDO"></app-spinner>
-
-        <div [hidden]="parteRegistro !== 2">
-          <div>
-            <div class="left-align">
-              <a (click)="siguienteParte(1)"
-                ><i class="material-icons selector-icono">chevron_left</i></a
-              >
-            </div>
-            <div class="center-align">
-              <span class="card-title">Registro</span>
-            </div>
-          </div>
           <div class="input-field">
             <input
-              type="radio"
-              [(ngModel)]="formulario.sexo"
-              name="sexo"
-              id="ingre_sexo"
+              id="ape-paterno"
+              [(ngModel)]="formulario.apePaterno"
+              name="ape-paterno"
+              type="text"
               class="validate"
             />
-            <span>Masculino</span>
-            <input
-              type="radio"
-              [(ngModel)]="formulario.sexo"
-              name="sexo"
-              id="ingre_sexo"
-              class="validate"
-            />
-            <span>Femenino</span>
+            <label for="ape-paterno">Apellido Paterno</label>
           </div>
 
-          <div class="app-centrar app-ancho-60">
-            <div class="col s12">
-              <h6 class="left-align">Seleccione:</h6>
+          <div class="input-field">
+            <input
+              [(ngModel)]="formulario.apeMaterno"
+              name="ape-paterno"
+              id="ape-materno"
+              type="text"
+              class="validate"
+            />
+            <label for="ape-paterno">Apellido Materno</label>
+          </div>
 
-              <div>
-                <div class="col s6">
-                  <a (click)="selecionarRol('Alumno')">
-                    <div
-                      class="selector card valign-wrapper app-centrar-contenido"
-                      style="height: 20vh; display: grid"
-                    >
-                      <i class="material-icons app-color-negro large">school</i>
-                      <p class="app-color-negro">Alumno</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="col s6">
-                  <a href="" (click)="selecionarRol('Especialista')">
-                    <div
-                      class="selector card valign-wrapper app-centrar-contenido"
-                      style="height: 20vh; display: grid"
-                    >
-                      <i
-                        class="fas fa-user-md app-color-negro tamaño-icono-6r"
-                      ></i>
-                      <p class="app-color-negro">Especialista</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
+          <div class="input-field">
+            <input
+              type="email"
+              class="validate"
+              [(ngModel)]="formulario.correoElectronico"
+              name="correo-electronico"
+              id="correo-electronico"
+            />
+            <label for="correo-electronico">Correo electrónico</label>
+          </div>
 
-              <div class="input-field">
-                <input
-                  id="cmp"
-                  [(ngModel)]="formulario.codigo"
-                  name="codigo"
-                  id="ingre_codigo"
-                  type="number"
-                  class="validate"
-                />
-                <label for="cmp">CMP</label>
-              </div>
+          <div class="input-field">
+            <input
+              type="text"
+              class="validate"
+              [(ngModel)]="formulario.dni"
+              name="dni"
+              id="dni"
+            />
+            <label for="dni">DNI</label>
+          </div>
 
-              <button
-                type="submit"
-                class="waves-effect waves-light btn btn-small amber darken-3 app-ancho-100p btn"
+          <div class="input-field">
+            <input
+              type="password"
+              class="validate"
+              [(ngModel)]="formulario.clave"
+              name="clave"
+              id="clave"
+              class="validate"
+            />
+            <label for="clave">Contraseña</label>
+          </div>
+
+          <button
+            type="button"
+            (click)="mostrarParte(2)"
+            class="waves-effect waves-light btn btn-small amber darken-3 app-ancho-100p"
+          >
+            Continuar
+          </button>
+        </div>
+        <!-- Parte 2 -->
+        <div [hidden]="parteRegistro !== 2">
+          <div class="row">
+            <div class="col s6">
+              <div
+                class="card app-radio-card"
+                [class.app-radio-card-selected]="formulario.rol === 'ALUMNO'"
+                (click)="selecionarRol('ALUMNO')"
               >
-                Finalizar Registro
-              </button>
-              <div id="registro-exitoso" class="modal modal-pequeño">
-                <div class="modal-content">
-                  <h4 class="center-align">Registro exitoso</h4>
-                  <div class="app-mg-ver-30">
-                    <p class="center-align">Inicie sesión para empezar</p>
+                <div class="card-content center-align">
+                  <div>
+                    <i class="fas fa-user-graduate" style="font-size: 2rem"></i>
                   </div>
-
-                  <div class="center-align">
-                    <a
-                      class="waves-effect waves-light btn btn-small amber darken-3 app-ancho-50p"
-                      >Aceptar</a
-                    >
-                  </div>
+                  <span>Alumno</span>
                 </div>
               </div>
             </div>
+            <div class="col s6">
+              <div
+                class="card app-radio-card"
+                [class.app-radio-card-selected]="formulario.rol === 'MEDICO'"
+                (click)="selecionarRol('MEDICO')"
+              >
+                <div class="card-content center-align">
+                  <div>
+                    <i class="fas fa-user-md" style="font-size: 2rem"></i>
+                  </div>
+                  <span>Médico</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="formulario.rol !== ''" class="input-field">
+            <input
+              [(ngModel)]="formulario.codigo"
+              name="codigo"
+              id="codigo"
+              type="text"
+              class="validate"
+            />
+            <label for="codigo"
+              >{{
+                formulario.rol === "MEDICO" ? "CMP" : "Código Universitario"
+              }}
+            </label>
+          </div>
+
+          <div style="margin-bottom: 10px">
+            <input
+              type="radio"
+              [(ngModel)]="formulario.sexo"
+              name="sexo-m"
+              id="sexo-m"
+              class="validate"
+              value="M"
+            />
+            <label for="sexo-m">Masculino</label>
+            <input
+              type="radio"
+              [(ngModel)]="formulario.sexo"
+              name="sexo-f"
+              id="sexo-f"
+              class="validate"
+              value="F"
+            />
+            <label for="sexo-f">Femenino</label>
+          </div>
+
+          <button
+            *ngIf="estado == Estados.INICIAL"
+            type="submit"
+            class="waves-effect waves-light btn btn-small amber darken-3 app-ancho-100p"
+          >
+            Finalizar Registro
+          </button>
+          <div *ngIf="estado == Estados.CARGANDO" class="center-align">
+            <app-spinner></app-spinner>
+          </div>
+          <div class="center-align app-link" style="margin-top: 10px">
+            <a
+              class="app-link"
+              href="javascript:void(0)"
+              (click)="mostrarParte(1)"
+            >
+              Retroceder
+            </a>
           </div>
         </div>
       </form>
 
-      <div class="card-action app-mg-der-dentro-24">
-        <a routerLink="/iniciar-sesion" routerLinkActive="active">Ingresar</a>
+      <div class="center-align">
+        <a
+          class="app-link"
+          routerLink="/iniciar-sesion"
+          routerLinkActive="active"
+          >Ingresar</a
+        >
       </div>
     </div>
   </div>
