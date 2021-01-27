@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterializeAction } from 'angular2-materialize';
 import { Persona } from 'src/app/models/persona.interface';
@@ -19,23 +19,43 @@ export class BarraNavegacionComponent implements OnInit {
   
   constructor(
     private _appUsuarioService: AppUsuarioService,
-    private _router: Router,
-    private el: ElementRef
+    private _router: Router
   ) { 
     this.persona = _appUsuarioService.obtenerPersonaAutenticada();
   }
 
+  get esAlumno(): boolean {
+    return this.persona?.usuario?.rol?.rolNombre === "ROLE_ALUMNO";
+  }
+
+  get esMedico(): boolean {
+    return this.persona?.usuario?.rol?.rolNombre === "ROLE_MEDICO";
+  }
+
+  get esAdministrador(): boolean {
+    return this.persona?.usuario?.rol?.rolNombre === "ROLE_ADMINISTRADOR";
+  }
+
+  get ruta(): string {
+    let subruta = '';
+    if (this.esAlumno) {
+      subruta = '/alumno';
+    } else if (this.esMedico) {
+      subruta = '/medico';
+    } else if (this.esAdministrador) {
+      subruta = '/administrador';
+    }
+
+    return subruta;
+  } 
+
   cerrarSesion(): void {
     this._appUsuarioService.eliminarStorage();
-    this._router.navigate(["/"], {replaceUrl: true});
+    window.location.replace("/");
   }
 
   aPrincipal(): void {
-    this._router.navigate(["/principal"]);
-  }
-
-  get esAlumno(): boolean {
-    return this._appUsuarioService.obtenerRolNombre() === "ROLE_ALUMNO";
+    this._router.navigate(["/principal" + this.ruta]);
   }
 
   abrirDatosPersonalesFormModal(): void {

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterializeAction } from 'angular2-materialize';
+import { Persona } from 'src/app/models/persona.interface';
 import { AppUsuarioService } from 'src/app/services/data/app-usuario.service';
 
 declare const $:any;
@@ -15,17 +16,30 @@ export class MenuLateralComponent implements OnInit {
   @Input()
   menuId!: string;
 
-  @Input()
-  sideNavActions!: EventEmitter<any | MaterializeAction>;
+  persona: Persona | null;
 
   datosPersonalesFormModalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor(
     private _appUsuarioService: AppUsuarioService,
     private _router: Router,
-  ) { }
+  ) {
+    this.persona = _appUsuarioService.obtenerPersonaAutenticada();
+  }
 
   ngOnInit(): void {
+  }
+
+  get esAlumno(): boolean {
+    return this.persona?.usuario?.rol?.rolNombre === "ROLE_ALUMNO";
+  }
+
+  get esMedico(): boolean {
+    return this.persona?.usuario?.rol?.rolNombre === "ROLE_MEDICO";
+  }
+
+  get esAdministrador(): boolean {
+    return this.persona?.usuario?.rol?.rolNombre === "ROLE_ADMINISTRADOR";
   }
 
   aRuta(ruta: string, event: Event): void {

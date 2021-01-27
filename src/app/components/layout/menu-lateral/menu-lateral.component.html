@@ -1,8 +1,29 @@
 <ul [id]="menuId" class="side-nav side-nav-close">
   <div class="app-header-menu background amber darken-2">
     <h4 style="margin: 0">Estado Nutricional</h4>
-    <b>Ignacio Raul Rueda Boada</b>
+    <b
+      >{{ persona?.nombre }} {{ persona?.apepaterno }}
+      {{ persona?.apematerno }}</b
+    >
   </div>
+  <li *ngIf="esAlumno">
+    <a href="#!" (click)="aRuta('/principal/alumno', $event)">
+      <span class="app-li-menu-span">Inicio</span>
+      <i class="fas fa-home"></i>
+    </a>
+  </li>
+  <li *ngIf="esMedico">
+    <a href="#!" (click)="aRuta('/principal/medico', $event)">
+      <span class="app-li-menu-span">Inicio</span>
+      <i class="fas fa-home"></i>
+    </a>
+  </li>
+  <li *ngIf="esAdministrador">
+    <a href="#!" (click)="aRuta('/principal/administrador', $event)">
+      <span class="app-li-menu-span">Inicio</span>
+      <i class="fas fa-home"></i>
+    </a>
+  </li>
   <li>
     <a href="#!" (click)="abrirDatosPersonalesFormModal($event)">
       <span class="app-li-menu-span">Datos Personales</span>
@@ -10,13 +31,21 @@
     </a>
   </li>
   <li>
-    <a href="#!" (click)="aRuta('/principal/lista-alumnos', $event)">
+    <a
+      *ngIf="!esAlumno"
+      href="#!"
+      (click)="aRuta('/principal/lista-alumnos', $event)"
+    >
       <span class="app-li-menu-span">Listado Alumnos</span>
       <i class="fas fa-graduation-cap"></i>
     </a>
   </li>
   <li>
-    <a href="#!" (click)="aRuta('/principal/lista-usuarios', $event)">
+    <a
+      *ngIf="esAdministrador"
+      href="#!"
+      (click)="aRuta('/principal/lista-usuarios', $event)"
+    >
       <span class="app-li-menu-span">Listado Usuarios</span>
       <i class="fas fa-users"></i>
     </a>
