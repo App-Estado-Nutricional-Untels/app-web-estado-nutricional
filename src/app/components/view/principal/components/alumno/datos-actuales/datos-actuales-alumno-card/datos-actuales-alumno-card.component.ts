@@ -25,6 +25,7 @@ export class DatosActualesAlumnoCardComponent implements OnInit {
   public datosActuales: DatoAntropometrico | undefined;
 
   datosAntropometricosAlumnoDetallesModalActions = new EventEmitter<string|MaterializeAction>();
+  datosActualesAlumnoFormModalActions = new EventEmitter<string|MaterializeAction>();
   sugerenciaModalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor(
@@ -73,6 +74,10 @@ export class DatosActualesAlumnoCardComponent implements OnInit {
 
   abrirDatosAntropometricosAlumnoDetallesModal(): void {
     this.datosAntropometricosAlumnoDetallesModalActions.emit({action:"modal",params:['open']});
+  }
+
+  abrirDatosActualesAlumnoFormModal(): void {
+    this.datosActualesAlumnoFormModalActions.emit({action: "modal", params: ["open"]});
   }
 
   abrirSugerenciaModal(): void {

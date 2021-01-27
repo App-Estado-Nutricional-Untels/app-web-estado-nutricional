@@ -1,10 +1,16 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { Combo } from 'src/app/models/combo/combo.interface';
 import { RegistroDatosAntropometricosBody } from 'src/app/models/request/body/registro-datos-antropometricos-body.interface';
 import { ComboService } from 'src/app/services/api/combo/combo.service';
 import { DatosAntropometricosService } from 'src/app/services/api/datos-antropometricos/datos-antropometricos.service';
 import { ToastrService } from 'ngx-toastr';
 import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response-message-factory';
+import { MaterializeAction } from 'angular2-materialize';
+
+enum DatosActualesAlumnoFormModalEstados {
+  INICIAL,
+  CARGANDO
+}
 
 @Component({
   selector: 'app-datos-actuales-alumno-form-modal',
@@ -12,6 +18,9 @@ import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response
   styleUrls: ['./datos-actuales-alumno-form-modal.component.css']
 })
 export class DatosActualesAlumnoFormModalComponent implements OnInit {
+  
+  public Estados = DatosActualesAlumnoFormModalEstados;
+  
   // FIXME: Cargar combos con la data de los servicios
   @Input()
   modalId!: string;
@@ -19,7 +28,10 @@ export class DatosActualesAlumnoFormModalComponent implements OnInit {
   @Input()
   inicial!: boolean;
 
-  @ViewChild('selectRendimiento') selectRendimiento: any;
+  @Input()
+  modalActions!: EventEmitter<string | MaterializeAction>;
+
+  estado = DatosActualesAlumnoFormModalEstados.INICIAL;
 
   comboNivelEstres: Combo[] = [
     {
@@ -84,16 +96,21 @@ export class DatosActualesAlumnoFormModalComponent implements OnInit {
       return;
     }
     
+    this.estado = DatosActualesAlumnoFormModalEstados.CARGANDO;
+
     if (this.inicial) {
       this._datosAntropometricosService
         .registroDatosAntropometricosInicialesAutenticado(this.formulario)
         .subscribe(
           (resp) => {
+            this.cerrarModal();
             this._toastrService.success(resp.mensaje);
+            this.estado = DatosActualesAlumnoFormModalEstados.INICIAL;
           },
           (respError) => {
             console.warn(respError.error);
-            this._toastrService.error()
+            this._toastrService.error();
+            this.estado = DatosActualesAlumnoFormModalEstados.INICIAL;
           }
         );
     } else {
@@ -101,12 +118,15 @@ export class DatosActualesAlumnoFormModalComponent implements OnInit {
         .registroDatosAntropometricosAutenticado(this.formulario)
         .subscribe(
           (resp) => {
+            this.cerrarModal();
             this._toastrService.success(resp.mensaje);
+            this.estado = DatosActualesAlumnoFormModalEstados.INICIAL;
           },
           (respError) => {
             console.warn(respError.error);
             const msg = ApiErrorResponseMessageFactory.build(respError.error);
-            this._toastrService.error(msg)
+            this._toastrService.error(msg);
+            this.estado = DatosActualesAlumnoFormModalEstados.INICIAL;
           }
         );
     }
@@ -115,20 +135,42 @@ export class DatosActualesAlumnoFormModalComponent implements OnInit {
   esValido(): boolean {
     const errores = [];
     if (this.formulario.nivelEstres === ""){
-      errores.push('El campo nivel estrés no puede estar vacío');
+      errores.push({
+        campo: 'nivelEstrés',
+        mensaje: 'no puede estar vacío'
+      });
     }
 
     if (this.formulario.rendimientoAcademico === "") {
-      errores.push('El campo rendimiento académico no puede estar vacío');
+      errores.push({
+        campo: 'rendimientoAcademico',
+        mensaje: 'no puede estar vacío'
+      });
     }
 
     if (errores.length > 0) {
-      const msg = errores.reduce((prev, curr, i) =>  prev + curr + "<br/>", "");
-      this._toastrService.error(msg, '', {enableHtml: true});
+      const msg = ApiErrorResponseMessageFactory.buildFromErrores(errores);
+      this._toastrService.error(msg);
       return false;
     }
 
     return true;
+  }
+
+  limpiarFormulario(): void {
+    this.formulario.actividadFisica = 0;
+    this.formulario.contornoCadera = 0;
+    this.formulario.contornoCintura = 0;
+    this.formulario.estatura = 0;
+    this.formulario.fechaNacimiento = '';
+    this.formulario.nivelEstres = '';
+    this.formulario.peso = 0;
+    this.formulario.rendimientoAcademico = '';
+  }
+
+  cerrarModal(): void {
+    this.limpiarFormulario();
+    this.modalActions.emit({action:"modal",params:['close']});
   }
 
   ngOnInit():void  {

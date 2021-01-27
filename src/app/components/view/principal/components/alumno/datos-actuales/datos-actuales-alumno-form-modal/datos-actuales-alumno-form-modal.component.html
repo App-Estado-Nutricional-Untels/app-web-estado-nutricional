@@ -1,25 +1,34 @@
-<div [id]="modalId" class="modal modal-max">
+<div
+  materialize="modal"
+  [id]="modalId"
+  class="modal modal-max"
+  [materializeActions]="modalActions"
+>
   <div class="modal-content">
     <h5>Datos actuales</h5>
-    <form (ngSubmit)="registrarDatosActuales($event)">
+    <form materialize (ngSubmit)="registrarDatosActuales($event)">
       <div class="row">
         <div class="col s12 m6">
           <div class="input-field">
             <input
               [(ngModel)]="formulario.estatura"
               name="estatura"
+              [value]="formulario.estatura"
               id="{{ modalId + '-estatura' }}"
               type="number"
               class="validate"
               step="any"
             />
-            <label for="{{ modalId + '-estatura' }}">Estatura (metros)</label>
+            <label for="{{ modalId + '-estatura' }}" class="active"
+              >Estatura (metros)</label
+            >
           </div>
 
           <div class="input-field">
             <input
               [(ngModel)]="formulario.contornoCintura"
               name="contorno-cintura"
+              [value]="formulario.contornoCintura"
               id="{{ modalId + '-contorno-cintura' }}"
               type="number"
               class="validate"
@@ -34,6 +43,7 @@
             <input
               [(ngModel)]="formulario.actividadFisica"
               name="actividad-fisica"
+              [value]="formulario.actividadFisica"
               id="{{ modalId + '-actividad-fisica' }}"
               type="number"
               class="validate"
@@ -49,7 +59,9 @@
               [(ngModel)]="formulario.nivelEstres"
               name="nivel-estres"
               id="{{ modalId + '-nivel-estres' }}"
+              materialize="material_select"
             >
+              <option disabled>Seleccione...</option>
               <option
                 *ngFor="let nivelEstres of comboNivelEstres"
                 [value]="nivelEstres.valor"
@@ -66,6 +78,7 @@
             <input
               [(ngModel)]="formulario.peso"
               name="peso"
+              [value]="formulario.peso"
               id="{{ modalId + '-peso' }}"
               type="number"
               class="validate"
@@ -78,6 +91,7 @@
             <input
               [(ngModel)]="formulario.contornoCadera"
               name="contorno-cadera"
+              [value]="formulario.contornoCadera"
               id="{{ modalId + '-contorno-cadera' }}"
               type="number"
               class="validate"
@@ -92,6 +106,7 @@
             <input
               [(ngModel)]="formulario.fechaNacimiento"
               name="fecha-nacimiento"
+              [value]="formulario.fechaNacimiento"
               id="{{ modalId + '-fecha-nacimiento' }}"
               type="date"
               class="validate"
@@ -106,8 +121,9 @@
               [(ngModel)]="formulario.rendimientoAcademico"
               name="rendimientoAcademico"
               id="{{ modalId + '-rendimiento-academico' }}"
-              #selectRendimiento
+              materialize="material_select"
             >
+              <option disabled>Seleccione...</option>
               <option
                 *ngFor="let rendAcademico of comboRendimientoAcademico"
                 [value]="rendAcademico.valor"
@@ -121,20 +137,18 @@
           </div>
         </div>
       </div>
-      <div class="row center-align">
-        <div class="col s12 m6">
-          <button class="waves-effect waves-light btn-small amber darken-3">
-            Guardar
-          </button>
-        </div>
-        <div class="col s12 m6">
-          <button
-            type="button"
-            class="modal-close waves-effect waves-light btn-small red darken-3"
-          >
-            Cancelar
-          </button>
-        </div>
+      <div class="row right-align">
+        <button class="waves-effect waves-light btn amber darken-3">
+          Guardar
+        </button>
+        <button
+          type="button"
+          (click)="cerrarModal()"
+          class="waves-effect waves-light btn red darken-3"
+          style="margin-left: 10px"
+        >
+          Cancelar
+        </button>
       </div>
     </form>
   </div>

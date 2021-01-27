@@ -51,18 +51,20 @@
           Detalles
         </button>
         <button
-          *ngIf="!datosActuales?.recomendacion"
+          *ngIf="datosActuales?.recomendacion"
           class="waves-effect waves-light btn amber darken-3 app-ancho-100p app-mg-ver-5"
           (click)="abrirSugerenciaModal()"
         >
-          Sugerencias del especialista
+          Sugerencias
         </button>
         <!-- TODO: No mostrar si no es la primera semana de cada mes (consultar a api) -->
-        <a
-          href="#datos-actuales-alumno-actualizar-datos-modal"
-          class="waves-effect waves-light btn amber darken-3 app-ancho-100p app-mg-ver-5 modal-trigger"
-          >Actualizar</a
+        <button
+          *ngIf="true"
+          (click)="abrirDatosActualesAlumnoFormModal()"
+          class="waves-effect waves-light btn green darken-3 app-ancho-100p app-mg-ver-5 modal-trigger"
         >
+          Actualizar
+        </button>
       </div>
     </div>
     <div *ngIf="estado === Estados.CARGANDO" class="center-align">
@@ -86,5 +88,6 @@
 
 <app-datos-actuales-alumno-form-modal
   [modalId]="'datos-actuales-alumno-actualizar-datos-modal'"
+  [modalActions]="datosActualesAlumnoFormModalActions"
   [inicial]="!datosActuales"
 ></app-datos-actuales-alumno-form-modal>
