@@ -8,14 +8,21 @@
   <div class="modal-content">
     <h5>Datos personales</h5>
     <div class="right-align">
-      <span *ngIf="personaActual?.usuario?.rol?.rolNombre === 'ROLE_ALUMNO'">
-        <i class="material-icons">person</i>
+      <span
+        *ngIf="personaActual?.usuario?.rol?.rolNombre === 'ROLE_ALUMNO'"
+        class="app-badge"
+      >
+        Alumno <i class="fas fa-user-graduate"></i>
       </span>
-      <span *ngIf="personaActual?.usuario?.rol?.rolNombre === 'ROLE_MEDICO'">
-        <i class="material-icons">school</i>
+      <span
+        *ngIf="personaActual?.usuario?.rol?.rolNombre === 'ROLE_MEDICO'"
+        class="app-badge"
+      >
+        Médico <i class="fas fa-user-md"></i>
       </span>
       <span
         *ngIf="personaActual?.usuario?.rol?.rolNombre === 'ROLE_ADMINISTRADOR'"
+        class="app-badge"
       >
         <b>Administrador</b>
       </span>
@@ -111,24 +118,25 @@
           </div>
         </div>
       </div>
-      <div class="row center-align">
-        <div class="col s12 m6">
-          <button
-            type="submit"
-            [disabled]="!haCambiado"
-            class="waves-effect waves-light btn amber darken-3"
-          >
-            Guardar
-          </button>
-        </div>
-        <div class="col s12 m6">
-          <button
-            type="button"
-            class="modal-close waves-effect waves-light btn red darken-3"
-          >
-            Cancelar
-          </button>
-        </div>
+      <div *ngIf="estado === Estados.CARGANDO" class="center-align">
+        <app-spinner></app-spinner>
+      </div>
+      <div *ngIf="estado === Estados.INICIAL" class="right-align">
+        <button
+          type="submit"
+          [disabled]="!haCambiado"
+          class="waves-effect waves-light btn amber darken-3"
+        >
+          Guardar
+        </button>
+        <button
+          type="button"
+          (click)="cerrarModal()"
+          class="waves-effect waves-light btn red darken-3"
+          style="margin-left: 10px"
+        >
+          Cancelar
+        </button>
       </div>
     </form>
   </div>

@@ -7,12 +7,21 @@ import { UsuarioService } from 'src/app/services/api/usuario/usuario.service';
 import { AppUsuarioService } from 'src/app/services/data/app-usuario.service';
 import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response-message-factory';
 
+enum DatosPersonalesFormModalEstados {
+  INICIAL,
+  CARGANDO
+}
+
 @Component({
   selector: 'app-datos-personales-form-modal',
   templateUrl: './datos-personales-form-modal.component.html',
   styleUrls: ['./datos-personales-form-modal.component.css']
 })
 export class DatosPersonalesFormModalComponent implements OnInit {
+
+  public Estados = DatosPersonalesFormModalEstados;
+
+  estado = DatosPersonalesFormModalEstados.INICIAL;
 
   personaActual: Persona | null | undefined;
 
@@ -35,27 +44,26 @@ export class DatosPersonalesFormModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.personaActual = this._appUsuarioService.obtenerPersonaAutenticada();
-    this.formulario.apePaterno = this.personaActual?.apepaterno ?? '';
-    this.formulario.apeMaterno = this.personaActual?.apematerno ?? '';
-    this.formulario.nombres = this.personaActual?.nombre ?? '';
+    this.cargarDatos();
   }
 
   actualizarUsuario(e: Event): void {
     e.preventDefault();
-
+    this.estado = DatosPersonalesFormModalEstados.CARGANDO;
     this._usuarioService
       .actualizarUsuarioAutenticado(this.formulario)
       .subscribe(
         (resp) => {
           console.log(resp);
           this._appUsuarioService.guardarPersonaAutenticada(resp.datos);
+          this.estado = DatosPersonalesFormModalEstados.INICIAL;
           window.location.reload();
         },
         (respError) => {
           console.warn(respError);
           const msg = ApiErrorResponseMessageFactory.build(respError.error);
           this._toastrService.error(msg);
+          this.estado = DatosPersonalesFormModalEstados.INICIAL;
         }
       );
   }
@@ -68,5 +76,18 @@ export class DatosPersonalesFormModalComponent implements OnInit {
     return !(this.formulario.apePaterno === this.personaActual?.apepaterno &&
       this.formulario.apeMaterno === this.personaActual?.apematerno &&
       this.formulario.nombres === this.personaActual?.nombre);
+  }
+
+  cargarDatos(): void {
+    this.personaActual = this._appUsuarioService.obtenerPersonaAutenticada();
+    this.formulario.apePaterno = this.personaActual?.apepaterno ?? '';
+    this.formulario.apeMaterno = this.personaActual?.apematerno ?? '';
+    this.formulario.nombres = this.personaActual?.nombre ?? '';
+  }
+
+  cerrarModal(): void {
+    this.cargarDatos();
+    this.modalActions.emit({action:"modal",params:['close']});
+    console.log('a');
   }
 }
