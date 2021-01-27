@@ -109,9 +109,9 @@ export class InformeImcGrupalCardComponent implements OnInit {
   ];
 
   formulario: ReporteGrupalIMCParam = {
-    categoriaIMC: "DELGADEZ_GRADO_III",
+    categoriaIMC: "",
     anio: new Date().getFullYear(),
-    mes: new Date().getMonth()
+    mes: 1
   };
 
   reporteIMC: ReporteImc | undefined;
@@ -149,6 +149,10 @@ export class InformeImcGrupalCardComponent implements OnInit {
     return StringUtils
       .upperSnakeCaseToCapitalizedSpaced(
           this.reporteIMC?.categoriaIMC);
+  }
+
+  get porcentajeAlumnos(): number | undefined {
+    return (this.reporteIMC) ? this.reporteIMC?.porcentajeAlumnos * 100 : undefined;
   }
 
   abrirInformeImcGrupalModal(): void {

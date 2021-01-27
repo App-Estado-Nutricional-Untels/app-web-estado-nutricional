@@ -52,16 +52,10 @@ export class InformeImcGrupalPorcentajeGeneroAlumnosCardComponent implements OnI
       this.pieChartData = [];
       this.pieChartData.push(this.reporteSexo.masculino.totalAlumnos);
       this.pieChartData.push(this.reporteSexo.femenino.totalAlumnos);
-
-      let sumaTotalAlumnos = 0;
-
-      sumaTotalAlumnos += this.reporteSexo.masculino.totalAlumnos;
-      sumaTotalAlumnos += this.reporteSexo.femenino.totalAlumnos;
-
       
       this.pieChartLabels = [];
-      this.pieChartLabels.push(`Masulino (${PorcentajeUtils.generarPorcentaje(this.reporteSexo.masculino.totalAlumnos, sumaTotalAlumnos)}%)`);
-      this.pieChartLabels.push(`Femenino (${PorcentajeUtils.generarPorcentaje(this.reporteSexo.femenino.totalAlumnos, sumaTotalAlumnos)}%)`);
+      this.pieChartLabels.push(`Masulino (${this.reporteSexo.masculino.porcentaje * 100}%)`);
+      this.pieChartLabels.push(`Femenino (${this.reporteSexo.femenino.porcentaje * 100}%)`);
       this.estado = InformeImcGrupalPorcentajeGeneroAlumnosCardEstados.CON_DATOS;
     } else {
       this.estado = InformeImcGrupalPorcentajeGeneroAlumnosCardEstados.VACIO;

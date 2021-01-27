@@ -59,11 +59,11 @@ export class InformeImcGrupalPorcentajeRendimientoAcademicoCardComponent impleme
       this.pieChartData.push(this.reporteRendimientoAcademico.Pesimo.totalAlumnos);
 
       this.pieChartLabels = [];
-      this.pieChartLabels.push('Bueno');
-      this.pieChartLabels.push('Excelente');
-      this.pieChartLabels.push('Malo');
-      this.pieChartLabels.push('Normal');
-      this.pieChartLabels.push('Pesimo');
+      this.pieChartLabels.push(`Bueno (${this.reporteRendimientoAcademico.Bueno.porcentaje * 100}%)`);
+      this.pieChartLabels.push(`Excelente (${this.reporteRendimientoAcademico.Excelente.porcentaje * 100}%)`);
+      this.pieChartLabels.push(`Malo (${this.reporteRendimientoAcademico.Malo.porcentaje * 100}%)`);
+      this.pieChartLabels.push(`Normal (${this.reporteRendimientoAcademico.Normal.porcentaje * 100}%)`);
+      this.pieChartLabels.push(`Pesimo (${this.reporteRendimientoAcademico.Pesimo.porcentaje * 100}%)`);
 
       this.estado = InformeImcGrupalPorcentajeRendimientoAcademicoCardEstados.CON_DATOS;
 

@@ -56,9 +56,9 @@ export class InformeImcGrupalPorcentajeNivelEstresCardComponent implements OnIni
       this.pieChartData.push(this.reporteEstres.Leve.totalAlumnos);
 
       this.pieChartLabels = [];
-      this.pieChartLabels.push(`Severo (${this.reporteEstres.Severo.porcentaje * 10.0})%`);
-      this.pieChartLabels.push(`Moderado (${this.reporteEstres.Moderado.porcentaje * 10.0})%`);
-      this.pieChartLabels.push(`Leve (${this.reporteEstres.Leve.porcentaje * 10.0})%`);
+      this.pieChartLabels.push(`Severo (${this.reporteEstres.Severo.porcentaje * 100})%`);
+      this.pieChartLabels.push(`Moderado (${this.reporteEstres.Moderado.porcentaje * 100})%`);
+      this.pieChartLabels.push(`Leve (${this.reporteEstres.Leve.porcentaje * 100})%`);
       this.estado = InformeImcGrupalPorcentajeNivelEstresCardEstados.CON_DATOS;
     } else {
       this.estado = InformeImcGrupalPorcentajeNivelEstresCardEstados.VACIO;

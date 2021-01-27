@@ -20,6 +20,10 @@ export class InformeImcGrupalModalComponent implements OnInit {
 
   constructor() { }
 
+  get porcentajeAlumnos(): number | undefined {
+    return (this.reporteIMC) ? this.reporteIMC?.porcentajeAlumnos * 100 : undefined;
+  }
+
   ngOnInit(): void {
   }
 

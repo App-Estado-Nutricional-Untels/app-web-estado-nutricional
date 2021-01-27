@@ -11,6 +11,7 @@
                 name="categoria-imc"
                 materialize="material_select"
               >
+                <option disabled>Seleccione...</option>
                 <option
                   *ngFor="let cat of comboCategoriaIMC"
                   [value]="cat.valor"
@@ -28,6 +29,7 @@
                 name="categoria-imc"
                 materialize="material_select"
               >
+                <option disabled>Seleccione...</option>
                 <option *ngFor="let mes of comboMes" [value]="mes.valor">
                   {{ mes.nombre }}
                 </option>
@@ -86,7 +88,7 @@
 
           <div class="app-flex app-distanciamiento">
             <b>Porcentaje Alumnos</b>
-            <p>{{ reporteIMC?.porcentajeAlumnos }}</p>
+            <p>{{ porcentajeAlumnos }}%</p>
           </div>
         </div>
         <div class="col s12 m4">
