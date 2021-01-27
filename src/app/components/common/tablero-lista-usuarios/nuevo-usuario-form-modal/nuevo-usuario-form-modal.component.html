@@ -130,6 +130,7 @@
               name="rol"
               materialize="material_select"
             >
+              <option disabled>Seleccione...</option>
               <option value="ADMINISTRADOR" selected>Administrador</option>
               <option value="MEDICO">Médico</option>
               <option value="ALUMNO">Alumno</option>
@@ -137,7 +138,10 @@
             <label> Rol </label>
           </div>
 
-          <div *ngIf="!esAdministrador" class="input-field">
+          <div
+            *ngIf="!esAdministrador && formulario.rol !== ''"
+            class="input-field"
+          >
             <input
               [(ngModel)]="formulario.codigo"
               name="codigo"
