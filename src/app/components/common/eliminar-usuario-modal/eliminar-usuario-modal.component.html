@@ -8,13 +8,20 @@
   <div class="modal-content">
     <h5>Eliminar usuario</h5>
     <div>
-      <p>
+      <div>
         <b>Nombres: </b><span>{{ persona?.nombre }}</span>
-      </p>
-      <p>
+      </div>
+      <div>
         <b>Apellidos: </b
         ><span>{{ persona?.apepaterno }} {{ persona?.apematerno }}</span>
-      </p>
+      </div>
+      <div>
+        <b>Edad: </b><span>{{ persona?.edad }}</span>
+      </div>
+      <div>
+        <b>Correo Electrónico: </b
+        ><span>{{ persona?.usuario?.correoElectronico }}</span>
+      </div>
     </div>
     <div *ngIf="estado === Estados.CARGANDO" class="align-center">
       <app-spinner></app-spinner>
@@ -28,7 +35,11 @@
       >
         Eliminar
       </button>
-      <button type="button" class="waves-effect waves-light btn red darken-3">
+      <button
+        type="button"
+        (click)="cerrarModal()"
+        class="waves-effect waves-light btn red darken-3"
+      >
         Cancelar
       </button>
     </div>

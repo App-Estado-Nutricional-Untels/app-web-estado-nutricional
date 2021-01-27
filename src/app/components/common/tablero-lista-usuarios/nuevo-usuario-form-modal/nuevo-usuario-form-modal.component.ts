@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { RegistroUsuarioBody } from 'src/app/models/request/body/registro-usuario-body.interface';
 import { UsuarioService } from 'src/app/services/api/usuario/usuario.service';
@@ -26,6 +26,9 @@ export class NuevoUsuarioFormModalComponent implements OnInit {
 
   @Input()
   modalActions!: EventEmitter<string | MaterializeAction>;
+
+  @Output()
+  registrado: EventEmitter<string> = new EventEmitter<string>();
 
   estado = NuevoUsuarioFormModalEstados.INICIAL;
 
@@ -64,15 +67,15 @@ export class NuevoUsuarioFormModalComponent implements OnInit {
     }
 
     this.formulario.fechaNacimiento = format(Date.parse(this.formularioFecha), 'dd/MM/yyyy');
-    this.formulario.codigo = (this.esAdministrador ? undefined : this.formulario.clave);
+    this.formulario.codigo = (this.esAdministrador ? undefined : this.formulario.codigo);
     this.estado = NuevoUsuarioFormModalEstados.CARGANDO;
 
     this._usuarioService
       .registroUsuarioGeneral(this.formulario)
       .subscribe(
         (resp) => {
-          this.limpiarFormulario();
-
+          this.registrado.emit(resp.mensaje);
+          this.cerrarModal();
           this._toastrService.success(resp.mensaje);
           this.estado = NuevoUsuarioFormModalEstados.INICIAL;
         },

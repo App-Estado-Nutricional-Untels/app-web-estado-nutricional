@@ -1,1 +1,68 @@
-<p>datos-personales-detalles-modal works!</p>
+<div
+  materialize="modal"
+  [id]="modalId"
+  class="modal modal-max"
+  [materializeActions]="modalActions"
+>
+  <div class="modal-content">
+    <h5>Datos personales</h5>
+    <div class="right-align">
+      <span *ngIf="persona?.usuario?.rol?.rolNombre === 'ROLE_ALUMNO'">
+        <i class="material-icons">person</i>
+      </span>
+      <span *ngIf="persona?.usuario?.rol?.rolNombre === 'ROLE_MEDICO'">
+        <i class="material-icons">school</i>
+      </span>
+      <span *ngIf="persona?.usuario?.rol?.rolNombre === 'ROLE_ADMINISTRADOR'">
+        <b>Administrador</b>
+      </span>
+    </div>
+    <form materialize>
+      <div class="row">
+        <div class="col s12 m6">
+          <div>
+            <b>Nombres</b>
+            <div>{{ persona?.nombre }}</div>
+          </div>
+          <div>
+            <b>Apellido Paterno</b>
+            <div>{{ persona?.apepaterno }}</div>
+          </div>
+          <div>
+            <b>Apellido Materno</b>
+            <div>{{ persona?.apematerno }}</div>
+          </div>
+          <div *ngIf="persona?.edad">
+            <b>Edad</b>
+            <div>{{ persona?.edad }}</div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div>
+            <b>Correo Electrónico</b>
+            <div>{{ persona?.usuario?.correoElectronico }}</div>
+          </div>
+
+          <div>
+            <b>DNI</b>
+            <div>{{ persona?.dni }}</div>
+          </div>
+
+          <div *ngIf="fechaNacimiento">
+            <b>Fecha Nacimiento</b>
+            <div>{{ fechaNacimiento }}</div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="right-align">
+      <button
+        type="button"
+        (click)="cerrarModal()"
+        class="waves-effect waves-light btn amber darken-3"
+      >
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>

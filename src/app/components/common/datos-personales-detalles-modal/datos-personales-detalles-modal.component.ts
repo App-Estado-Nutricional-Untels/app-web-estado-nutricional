@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
+import { Persona } from 'src/app/models/persona.interface';
 
 @Component({
   selector: 'app-datos-personales-detalles-modal',
@@ -13,10 +14,20 @@ export class DatosPersonalesDetallesModalComponent implements OnInit {
 
   @Input()
   modalActions!: EventEmitter<string | MaterializeAction>;
+
+  @Input()
+  persona: Persona | undefined;
   
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  get fechaNacimiento(): string | undefined {
+    return this.persona?.fechaNacimiento?.split("T")[0];
+  }
+
+  cerrarModal(): void {
+    this.modalActions.emit({action:"modal",params:['close']});
+  }
 }

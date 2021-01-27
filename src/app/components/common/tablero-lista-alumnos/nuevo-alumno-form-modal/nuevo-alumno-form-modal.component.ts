@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MaterializeAction } from 'angular2-materialize';
 import { ToastrService } from 'ngx-toastr';
 import { RegistroUsuarioAlumnoBody } from 'src/app/models/request/body/registro-usuario-alumno-body.interface';
@@ -25,6 +25,9 @@ export class NuevoAlumnoFormModalComponent implements OnInit {
 
   @Input()
   modalActions!: EventEmitter<string | MaterializeAction>;
+
+  @Output()
+  registrado: EventEmitter<string> = new EventEmitter<string>();
 
   estado = NuevoUsuarioFormModalEstados.INICIAL;
 
@@ -54,7 +57,8 @@ export class NuevoAlumnoFormModalComponent implements OnInit {
       .registroUsuarioAlumno(this.formulario)
       .subscribe(
         (resp) => {
-          this.limpiarFormulario();
+          this.registrado.emit(resp.mensaje);
+          this.cerrarModal();
           this._toastrService.success(resp.mensaje);
           this.estado = NuevoUsuarioFormModalEstados.INICIAL;
         },

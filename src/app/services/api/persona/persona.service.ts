@@ -21,14 +21,14 @@ export class PersonaService {
   ) {}
 
   obtenerListadoPersonas(
-    param: ListadoPersonasParam
+    param?: ListadoPersonasParam
   ): Observable<ApiResponse<Persona[]>> {
     const url = `${environment.baseUri}${ApiPaths.obtenerListadoPersonas}`;
     const token = this._appUsuarioService.obtenerToken();
     const tipoToken = this._appUsuarioService.obtenerTipoToken();
 
     const headers = HeaderFactory.build(token, tipoToken);
-    const params = ParamFactory.build<ListadoPersonasParam>(param);
+    const params = (param) ? ParamFactory.build<ListadoPersonasParam>(param) : undefined;
 
     return this._http.get<ApiResponse<Persona[]>>(url, { 
       headers: headers,

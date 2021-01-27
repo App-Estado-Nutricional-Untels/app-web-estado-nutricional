@@ -104,6 +104,7 @@
 <app-nuevo-alumno-form-modal
   [modalId]="'app-nuevo-alumno-form-modal'"
   [modalActions]="nuevoAlumnoFormModalActions"
+  (registrado)="filtrarTodo()"
 ></app-nuevo-alumno-form-modal>
 
 <app-datos-antropometricos-actuales-alumno-modal

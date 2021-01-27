@@ -23,7 +23,11 @@ export class ListaUsuariosComponent implements OnInit {
 
   listaPersonas :Persona[] = [];
 
+  personaSeleccionada: Persona | undefined;
+
   nuevoUsuarioFormModalActions = new EventEmitter<string|MaterializeAction>();
+  datosPersonalesDetallesModalActions = new EventEmitter<string|MaterializeAction>();
+  eliminarUsuarioModalActions = new EventEmitter<string|MaterializeAction>();
 
   constructor(
     private _personaService: PersonaService
@@ -49,7 +53,34 @@ export class ListaUsuariosComponent implements OnInit {
       );
   }
 
+  filtrarTodo(): void {
+    this.estado = ListaUsuariosEstados.CARGANDO;
+    this._personaService
+      .obtenerListadoPersonas()
+      .subscribe(
+        (resp) => {
+          this.listaPersonas = resp.datos;
+          this.estado = ListaUsuariosEstados.CON_DATOS;
+        },
+        (respError) => {
+          console.warn(respError);
+          this.estado = ListaUsuariosEstados.VACIO;
+        }
+      );
+  }
+
   abrirNuevoUsuarioFormModal(): void {
     this.nuevoUsuarioFormModalActions.emit({action:"modal",params:['open']});
   }
+
+  abrirDatosPersonalesDetallesModal(indice: number): void {
+    this.personaSeleccionada = this.listaPersonas[indice];
+    this.datosPersonalesDetallesModalActions.emit({action:"modal",params:['open']});
+  }
+
+  abrirEliminarUsuarioModal(indice: number): void {
+    this.personaSeleccionada = this.listaPersonas[indice];
+    this.eliminarUsuarioModalActions.emit({action:"modal",params:['open']});
+  }
+  
 }

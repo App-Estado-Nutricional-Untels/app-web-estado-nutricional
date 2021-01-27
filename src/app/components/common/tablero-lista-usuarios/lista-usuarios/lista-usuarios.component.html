@@ -39,7 +39,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let persona of listaPersonas">
+            <tr *ngFor="let persona of listaPersonas; let i = index">
               <td>{{ persona.id }}</td>
               <td>{{ persona?.dni }}</td>
               <td>{{ persona?.nombre }}</td>
@@ -64,10 +64,20 @@
                   >
                     <ul>
                       <li>
-                        <a href="#" class="modal-trigger"> Ver </a>
+                        <a
+                          href="javascript:void(0)"
+                          (click)="abrirDatosPersonalesDetallesModal(i)"
+                        >
+                          Ver
+                        </a>
                       </li>
                       <li>
-                        <a href="#" class="modal-trigger"> Eliminar </a>
+                        <a
+                          href="javascript:void(0)"
+                          (click)="abrirEliminarUsuarioModal(i)"
+                        >
+                          Eliminar
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -84,6 +94,18 @@
 <app-nuevo-usuario-form-modal
   [modalId]="'app-nuevo-usuario-form-modal'"
   [modalActions]="nuevoUsuarioFormModalActions"
+  (registrado)="filtrarTodo()"
 ></app-nuevo-usuario-form-modal>
 
-<!-- Aqui va detalles-actuales-alumno-modal -->
+<app-eliminar-usuario-modal
+  [modalId]="'app-eliminar-usuario-modal'"
+  [modalActions]="eliminarUsuarioModalActions"
+  [persona]="personaSeleccionada"
+  (eliminado)="filtrarTodo()"
+></app-eliminar-usuario-modal>
+
+<app-datos-personales-detalles-modal
+  [modalId]="'app-datos-personales-detalles-modal'"
+  [modalActions]="datosPersonalesDetallesModalActions"
+  [persona]="personaSeleccionada"
+></app-datos-personales-detalles-modal>
