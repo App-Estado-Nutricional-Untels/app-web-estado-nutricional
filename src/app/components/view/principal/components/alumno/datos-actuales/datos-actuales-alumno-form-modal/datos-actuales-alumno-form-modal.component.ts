@@ -6,6 +6,7 @@ import { DatosAntropometricosService } from 'src/app/services/api/datos-antropom
 import { ToastrService } from 'ngx-toastr';
 import { ApiErrorResponseMessageFactory } from 'src/app/utils/api-error-response-message-factory';
 import { MaterializeAction } from 'angular2-materialize';
+import { format, parse } from 'date-fns';
 
 enum DatosActualesAlumnoFormModalEstados {
   INICIAL,
@@ -81,6 +82,7 @@ export class DatosActualesAlumnoFormModalComponent implements OnInit {
     rendimientoAcademico: '',
     fechaNacimiento: ''
   };
+  fechaNacimientoFormulario = '';
 
   constructor(
     private _comboService: ComboService,
@@ -99,6 +101,8 @@ export class DatosActualesAlumnoFormModalComponent implements OnInit {
     this.estado = DatosActualesAlumnoFormModalEstados.CARGANDO;
 
     if (this.inicial) {
+      
+      this.formulario.fechaNacimiento = format(parse(this.fechaNacimientoFormulario, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy');
       this._datosAntropometricosService
         .registroDatosAntropometricosInicialesAutenticado(this.formulario)
         .subscribe(
@@ -106,6 +110,7 @@ export class DatosActualesAlumnoFormModalComponent implements OnInit {
             this.cerrarModal();
             this._toastrService.success(resp.mensaje);
             this.estado = DatosActualesAlumnoFormModalEstados.INICIAL;
+            window.location.reload();
           },
           (respError) => {
             console.warn(respError.error);
@@ -121,6 +126,7 @@ export class DatosActualesAlumnoFormModalComponent implements OnInit {
             this.cerrarModal();
             this._toastrService.success(resp.mensaje);
             this.estado = DatosActualesAlumnoFormModalEstados.INICIAL;
+            window.location.reload();
           },
           (respError) => {
             console.warn(respError.error);
@@ -166,6 +172,7 @@ export class DatosActualesAlumnoFormModalComponent implements OnInit {
     this.formulario.nivelEstres = '';
     this.formulario.peso = 0;
     this.formulario.rendimientoAcademico = '';
+    this.fechaNacimientoFormulario = '';
   }
 
   cerrarModal(): void {
